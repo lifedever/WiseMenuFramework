@@ -1,11 +1,11 @@
-<#import "static.ftl" as static>
-<#macro show title>
+<#import "../tags.ftl" as tags>
+
+<#macro show>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>${title}</title>
-
-    <@static.css></@static.css>
+    <title><@tags.spring.message code="app.title"/> </title>
+    <@tags.static.css />
 </head>
 </#macro>

@@ -1,4 +1,4 @@
-<#import "static.ftl" as static>
+<#import "../tags.ftl" as tags>
 <#macro show>
 <div class="footer">
     <div class="pull-right">
@@ -8,11 +8,9 @@
         <strong>Copyright</strong> Example Company &copy; 2014-2015
     </div>
 </div>
-
 </div>
 </div>
-<@static.js></@static.js>
+<@tags.static.js />
 </body>
-
 </html>
 </#macro>

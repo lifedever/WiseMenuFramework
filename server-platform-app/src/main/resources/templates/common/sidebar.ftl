@@ -1,10 +1,9 @@
-<#import "profile.ftl" as profile>
-<#import "../lib/shiro.ftl" as shiro>
+<#import "../tags.ftl" as tags>
 <#macro show>
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav metismenu" id="side-menu">
-            <@profile.show></@profile.show>
+            <@tags.profile.show />
             <li>
                 <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span
                         class="fa arrow"></span></a>
@@ -20,11 +19,11 @@
             <li>
                 <a href="/users"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
             </li>
-            <@shiro.hasRole role="admin">
+            <@tags.shiro.hasRole role="admin">
                 <li>
                     <a href="/admin/users">admin-users</a>
                 </li>
-            </@shiro.hasRole>
+            </@tags.shiro.hasRole>
         </ul>
 
     </div>

@@ -1,20 +1,14 @@
-<#import "header.ftl" as header>
-<#import "footer.ftl" as footer>
-<#import "sidebar.ftl" as side>
-<#import "navTop.ftl" as navTop>
-<#import "../lib/shiro.ftl" as shiro>
-<#import "/spring.ftl" as spring>
+<#import "../tags.ftl" as tags>
 <#macro main title>
 <!DOCTYPE html>
 <html>
-    <@header.show title="${appSettings.title}"/>
+    <@tags.header.show/>
 <body class="md-skin">
-
 <div id="wrapper">
-<@side.show />
+<@tags.sidebar.show />
 <div id="page-wrapper" class="gray-bg">
     <div class="row border-bottom">
-        <@navTop.show></@navTop.show>
+        <@tags.navTop.show />
     </div>
     <div class="row wrapper border-bottom white-bg page-heading">
         <#nested />
@@ -31,6 +25,5 @@
             </div>
         </div>
     </div>
-    <@footer.show/>
-
+    <@tags.footer.show/>
 </#macro>

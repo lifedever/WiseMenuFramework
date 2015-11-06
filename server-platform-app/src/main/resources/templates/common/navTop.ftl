@@ -1,4 +1,4 @@
-<#import "../lib/shiro.ftl" as shiro>
+<#import "../tags.ftl" as tags>
 <#macro show>
 <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -7,7 +7,7 @@
     </div>
 <ul class="nav navbar-top-links navbar-right">
 <li>
-<span class="m-r-sm text-muted welcome-message">欢迎回来, <strong> <@shiro.principal/></strong>!</span>
+<span class="m-r-sm text-muted welcome-message">欢迎回来, <strong> <@tags.shiro.principal/></strong>!</span>
 </li>
     <li class="dropdown">
         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">

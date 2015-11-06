@@ -1,9 +1,7 @@
-<#import "common/header.ftl" as header>
-<#import "/spring.ftl" as spring />
-<#import "common/static.ftl" as static>
+<#import "tags.ftl" as tags>
 <!DOCTYPE html>
 <html>
-<@header.show title="极智菜单管理平台" />
+<@tags.header.show></@tags.header.show>
 <body class="gray-bg">
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
@@ -11,7 +9,7 @@
                 <h1 class="logo-name"><a href="/">智+</a></h1>
             </div>
             <h3>欢迎来到极智菜单管理平台+</h3>
-            <@spring.message code="app.title" />
+            <@tags.spring.message code="app.title" />
             <p>Login in. To see it in action.</p>
             <form class="m-t" role="form" action="/login" method="post">
                 <div class="form-group">
@@ -29,7 +27,7 @@
             <p class="m-t"> <small>Base on Bootstrap 3 &copy; 2014</small> </p>
         </div>
     </div>
-    <@static.js/>
+    <@tags.static.js/>
 </body>
 
 </html>
