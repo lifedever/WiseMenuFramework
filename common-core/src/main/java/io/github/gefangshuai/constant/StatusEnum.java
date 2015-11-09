@@ -5,5 +5,5 @@ package io.github.gefangshuai.constant;
  * Created by gefangshuai on 2015/11/6.
  */
 public enum StatusEnum {
-    INVALID, VALID;
+    INVALID, VALID, UNKNOWN
 }

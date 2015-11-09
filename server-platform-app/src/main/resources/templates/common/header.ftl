@@ -1,6 +1,6 @@
 <#import "../tags.ftl" as tags>
 
-<#macro show>
+<#macro show title="">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

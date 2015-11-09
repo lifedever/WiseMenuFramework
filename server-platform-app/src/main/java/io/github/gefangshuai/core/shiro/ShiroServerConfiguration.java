@@ -1,5 +1,10 @@
 package io.github.gefangshuai.core.shiro;
 
+import org.apache.shiro.authc.AuthenticationInfo;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.apache.shiro.authc.credential.PasswordMatcher;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
@@ -19,12 +24,20 @@ import java.util.Map;
  * Created by gefangshuai on 2015/11/4.
  */
 @Configuration
-public class ShiroConfiguration {
+public class ShiroServerConfiguration {
     private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 
     @Bean(name = "ShiroRealmImpl")
-    public MyShiroRealm getShiroRealm() {
-        return new MyShiroRealm();
+    public ShiroServerRealm getShiroRealm() {
+        ShiroServerRealm serverRealm = new ShiroServerRealm();
+
+        HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
+        credentialsMatcher.setHashAlgorithmName("md5");
+        credentialsMatcher.setHashIterations(2);
+        credentialsMatcher.setStoredCredentialsHexEncoded(true);
+
+        serverRealm.setCredentialsMatcher(credentialsMatcher);
+        return serverRealm;
     }
 
 
@@ -68,8 +81,8 @@ public class ShiroConfiguration {
      * 设置自定义的formFilter
      * @return
      */
-    public CustomFormAuthenticationFilter getCustomFormAuthenticationFilter() {
-        CustomFormAuthenticationFilter authenticationFilter = new CustomFormAuthenticationFilter();
+    public ShiroServerFormAuthenticationFilter getCustomFormAuthenticationFilter() {
+        ShiroServerFormAuthenticationFilter authenticationFilter = new ShiroServerFormAuthenticationFilter();
         return authenticationFilter;
     }
 
@@ -89,6 +102,8 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/fonts/**", "anon");
         filterChainDefinitionMap.put("/font-awesome/**", "anon");
+        filterChainDefinitionMap.put("/create", "anon");
+        filterChainDefinitionMap.put("/account/**", "anon");
         filterChainDefinitionMap.put("/login", "authc");
         filterChainDefinitionMap.put("/users/**", "authc");
         filterChainDefinitionMap.put("/admin/**", "authc");

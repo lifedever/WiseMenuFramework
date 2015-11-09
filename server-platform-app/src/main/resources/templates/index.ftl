@@ -1,5 +1,5 @@
-<#import "common/layout.ftl" as main>
-<@main.main title="333">
+<#import "tags.ftl" as tags>
+<@tags.layout.main>
 <div class="col-sm-4">
     <h2>This is main title</h2>
     <ol class="breadcrumb">
@@ -16,4 +16,4 @@
         <a href="" class="btn btn-primary">This is action area</a>
     </div>
 </div>
-</@main.main>
+</@tags.layout.main>

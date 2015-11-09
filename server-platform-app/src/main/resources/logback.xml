@@ -22,5 +22,5 @@
         </layout>
     </appender>
 
-    <logger name="io.github.gefangshuai" level="debug" />
+    <logger name="io.github.gefangshuai" level="DEBUG" />
 </configuration>

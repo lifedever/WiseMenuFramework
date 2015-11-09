@@ -13,7 +13,7 @@ import javax.servlet.ServletResponse;
 /**
  * shiro登录权限验证过滤器
  */
-public class CustomFormAuthenticationFilter extends FormAuthenticationFilter {
+public class ShiroServerFormAuthenticationFilter extends FormAuthenticationFilter {
 
     @Override
     protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {

@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,300,500,700");
+@import url("http://fonts.useso.com/css?family=Open+Sans:300,400,600,700&lang=en");
+@import url("http://fonts.useso.com/css?family=Roboto:400,300,500,700");
 /*
  *
  *   INSPINIA - Responsive Admin Theme
@@ -4372,7 +4372,7 @@ body.mini-navbar.fixed-sidebar .logo-element {
 }
 .logo-name {
   color: #e6e6e6;
-  font-size: 180px;
+  font-size: 140px;
   font-weight: 800;
   letter-spacing: -10px;
   margin-bottom: 0px;
