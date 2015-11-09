@@ -7,7 +7,6 @@ import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -21,7 +20,6 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @NotNull
     private String name;            // 商铺名称
 
     @ElementCollection

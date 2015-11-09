@@ -1,4 +1,4 @@
-<#import "tags.ftl" as tags>
+<#import "../tags.ftl" as tags>
 <!DOCTYPE html>
 <html>
 <@tags.header.show></@tags.header.show>
@@ -13,11 +13,11 @@
             <form class="m-t" role="form" action="/account/save" method="post">
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" name="username" placeholder="<@tags.spring.message code='app.form.placeholder.username'/>" required="">
+                    <input type="text" class="form-control" name="user.username" placeholder="<@tags.spring.message code='app.form.placeholder.username'/>" required="">
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" name="password" placeholder="<@tags.spring.message code='app.form.placeholder.password'/>" required="">
+                    <input type="password" class="form-control" name="user.password" placeholder="<@tags.spring.message code='app.form.placeholder.password'/>" required="">
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="form-group input-group">
                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                    <input type="text" class="form-control" name="mobile" placeholder="<@tags.spring.message code='app.form.placeholder.mobile'/>" required="">
+                    <input type="text" class="form-control" name="user.mobile" placeholder="<@tags.spring.message code='app.form.placeholder.mobile'/>" required="">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b"><@tags.spring.message code="app.create.registerBtn"/></button>
                 <p class="text-muted text-center"><small><@tags.spring.message code="app.create.haveAccount"/>?</small></p>

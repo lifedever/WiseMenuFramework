@@ -8,7 +8,7 @@
     <h3 class="font-bold">Page Not Found</h3>
     <div class="error-desc">
         <br>
-        <a href="/" class="btn btn-white">back</a>
+        <a href="javascript:history.go(-1)" class="btn btn-white">back</a>
     </div>
 </div>
 <!-- Mainly scripts -->

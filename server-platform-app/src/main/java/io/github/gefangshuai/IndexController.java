@@ -1,7 +1,7 @@
 package io.github.gefangshuai;
 
 import io.github.gefangshuai.business.model.Restaurant;
-import io.github.gefangshuai.permission.model.User;
+import io.github.gefangshuai.business.service.RestaurantService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
@@ -9,14 +9,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by gefangshuai on 2015/11/6.
  */
 @Controller
 public class IndexController{
 
+    /**
+     * 首页
+     * @param model
+     * @return
+     */
     @RequestMapping("/")
-    public String greeting(Model model) {
+    public String greeting(Model model, HttpSession session) {
+
         return "index";
     }
 
@@ -26,9 +35,7 @@ public class IndexController{
     @RequestMapping("/create")
     @RequiresGuest
     public String createAccount(Model model){
-        User user = new User();
-        model.addAttribute("user", user);
-        return "createAccount";
+        return "account/createAccount";
     }
 
     @RequestMapping(value = "/login")

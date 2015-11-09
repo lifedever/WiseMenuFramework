@@ -1,5 +1,7 @@
 package io.github.gefangshuai.account.controller;
 
+import io.github.gefangshuai.business.model.Restaurant;
+import io.github.gefangshuai.business.service.RestaurantService;
 import io.github.gefangshuai.constant.StatusEnum;
 import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
@@ -18,19 +20,28 @@ import javax.annotation.Resource;
 public class AccountController {
 
     @Resource
-    private UserService userService;
+    private RestaurantService restaurantService;
 
     /**
      * 保存注册
      */
     @RequestMapping("save")
-    public String saveAccount(User user, String confirm_password) {
-        if (!confirm_password.equals(user.getPassword())) {
+    public String saveAccount(Restaurant restaurant, String confirm_password) {
+        if (!confirm_password.equals(restaurant.getUser().getPassword())) {
             return "/create";
         }
-        userService.createUser(user, Role.RESTAURANT);
+        restaurantService.save(restaurant);
         return "redirect:/login";
     }
+
+    /**
+     * 补充信息
+     */
+    @RequestMapping("additional")
+    public String additionalRestaurant(){
+        return "account/restaurantInfoModal";
+    }
+
 
     /**
      * 忘记密码

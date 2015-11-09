@@ -12,7 +12,7 @@
         ${exception.message}
         </p>
         <br>
-        <a href="/" class="btn btn-primary">Dashboard</a>
+        <a href="javascript:history.go(-1)" class="btn btn-white">back</a>
     </div>
 </div>
 <!-- Mainly scripts -->

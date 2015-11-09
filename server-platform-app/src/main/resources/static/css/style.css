@@ -8091,3 +8091,23 @@ body.md-skin {
     display: none;
   }
 }
+
+.bg-warning {
+  background: #f8ac59;
+  color: #fff;
+}
+
+.bg-primary {
+  background: #1ab394;
+  color: #fff;
+}
+
+.bg-success {
+  background: #1c84c6;
+  color: #fff;
+}
+
+.bg-danger {
+  background: #ed5565;
+  color: #fff;
+}

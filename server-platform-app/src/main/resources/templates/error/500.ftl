@@ -13,7 +13,7 @@
             <p class="text-danger">
                 <strong>${exception.message}</strong>
             </p>
-            <a href="/" class="btn btn-primary m-t">Dashboard</a>
+            <a href="javascript:history.go(-1)" class="btn btn-white">back</a>
         </div>
     </div>
     <!-- Mainly scripts -->
