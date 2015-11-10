@@ -2,13 +2,13 @@ package io.github.gefangshuai.account.controller;
 
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
-import io.github.gefangshuai.constant.StatusEnum;
-import io.github.gefangshuai.permission.model.Role;
-import io.github.gefangshuai.permission.model.User;
-import io.github.gefangshuai.permission.service.UserService;
-import io.github.gefangshuai.utils.HashUtils;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 
@@ -38,10 +38,9 @@ public class AccountController {
      * 补充信息
      */
     @RequestMapping("additional")
-    public String additionalRestaurant(){
+    public String additionalRestaurant() {
         return "account/restaurantInfoModal";
     }
-
 
     /**
      * 忘记密码

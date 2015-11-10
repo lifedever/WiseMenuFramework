@@ -7,6 +7,7 @@ import org.hibernate.annotations.CascadeType;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class Restaurant {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private String name;            // 商铺名称
+    private String name;            // 门店名称
 
     @ElementCollection
     private List<String> telNum;    // 联系方式，可以多个(前台页面暂时只支持一个)
@@ -28,6 +29,10 @@ public class Restaurant {
     private String city;            // 市
     private String district;        // 区
     private String address;         // 详细地址
+
+    private String memo;            // 门店描述
+    private String imagePath;       // 门店图片地址
+
 
     @OneToOne
     @JoinColumn(name = "userId")
@@ -98,5 +103,21 @@ public class Restaurant {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }

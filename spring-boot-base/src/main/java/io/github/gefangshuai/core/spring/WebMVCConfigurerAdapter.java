@@ -1,9 +1,15 @@
 package io.github.gefangshuai.core.spring;
 
+import org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer;
+import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.Resource;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -68,6 +74,18 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
         properties.setProperty("org.apache.shiro.authz.UnauthenticatedException", "/error/401");
         exceptionResolver.setExceptionMappings(properties);
         return exceptionResolver;
+    }
+
+    /**
+     * 配置文件上传
+     * @return
+     */
+    @Bean(name="multipartResolver")
+    public CommonsMultipartResolver multipartResolver(){
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setDefaultEncoding("utf-8");
+        multipartResolver.setMaxUploadSize(100000000);
+        return multipartResolver;
     }
 
 }
