@@ -1,21 +1,25 @@
 <#import "../tags.ftl" as tags>
 <#macro show>
-<li class="nav-header" style="height: 139px;">
+<#if Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].imagePath??>
+    <#assign shopImage="/account/load/shopImage/${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].id}"/>
+<#else>
+    <#assign shopImage="/img/profile_big.jpg"/>
+</#if>
+<li class="nav-header" style="height: 180px;">
     <@tags.shiro.user>
-        <div class="dropdown profile-element">
-        <span>
-            <img alt="image" class="img-circle" src="img/profile_small.jpg"/>
-         </span>
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-            <span class="clear"> <span class="block m-t-xs">
-                <strong class="font-bold"><@tags.shiro.principal ></@tags.shiro.principal></strong>
-
+        <div class="profile-element">
+            <span>
+                <img alt="image" class="img-circle" src="${shopImage}"/>
             </span>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#" id="profileName">
+                <span class="clear"> <span class="block m-t-xs">
+                    <strong class="font-bold">${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].name!}</strong>
+                </span>
             </a>
         </div>
     </@tags.shiro.user>
     <div class="logo-element">
-        菜+
+        智+
     </div>
 </li>
 </#macro>
