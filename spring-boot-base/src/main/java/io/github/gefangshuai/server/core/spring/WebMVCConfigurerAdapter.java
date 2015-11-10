@@ -1,14 +1,8 @@
-package io.github.gefangshuai.core.spring;
+package io.github.gefangshuai.server.core.spring;
 
-import org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;

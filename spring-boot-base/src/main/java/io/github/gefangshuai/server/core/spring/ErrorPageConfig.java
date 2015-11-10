@@ -1,4 +1,4 @@
-package io.github.gefangshuai.core.spring;
+package io.github.gefangshuai.server.core.spring;
 
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;

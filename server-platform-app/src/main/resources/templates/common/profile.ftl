@@ -9,6 +9,7 @@
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="clear"> <span class="block m-t-xs">
                 <strong class="font-bold"><@tags.shiro.principal ></@tags.shiro.principal></strong>
+
             </span>
             </a>
         </div>

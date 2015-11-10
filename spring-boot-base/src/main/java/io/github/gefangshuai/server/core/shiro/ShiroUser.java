@@ -1,4 +1,4 @@
-package io.github.gefangshuai.core.shiro;
+package io.github.gefangshuai.server.core.shiro;
 
 /**
  * Created by gefangshuai on 2015/11/5.

@@ -1,10 +1,10 @@
-package io.github.gefangshuai.core.shiro;
+package io.github.gefangshuai.server.core.shiro;
 
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
 import io.github.gefangshuai.permission.model.User;
-import io.github.gefangshuai.permission.service.UserService;
-import io.github.gefangshuai.core.spring.AppApplicationContext;
+import io.github.gefangshuai.constant.SessionConstant;
+import io.github.gefangshuai.server.core.spring.AppApplicationContext;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
@@ -27,8 +27,8 @@ public class ShiroServerFormAuthenticationFilter extends FormAuthenticationFilte
         shiroUser.setRoles(new String[]{user.getRole().getName()});
 
         Session session = subject.getSession();
-        session.setAttribute("shiroUser", shiroUser);
-        session.setAttribute("restaurant", restaurant);
+        session.setAttribute(SessionConstant.USER_KEY, shiroUser);
+        session.setAttribute(SessionConstant.RESTAURANT_KEY, restaurant);
 
         return super.onLoginSuccess(token, subject, request, response);
     }

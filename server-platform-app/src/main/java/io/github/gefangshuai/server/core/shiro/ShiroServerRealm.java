@@ -1,12 +1,10 @@
-package io.github.gefangshuai.core.shiro;
+package io.github.gefangshuai.server.core.shiro;
 
-import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.permission.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;

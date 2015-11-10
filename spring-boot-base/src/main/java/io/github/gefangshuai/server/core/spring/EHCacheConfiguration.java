@@ -1,4 +1,4 @@
-package io.github.gefangshuai.core.spring;
+package io.github.gefangshuai.server.core.spring;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;

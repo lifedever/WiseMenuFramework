@@ -1,9 +1,9 @@
-package io.github.gefangshuai.account.controller;
+package io.github.gefangshuai.server.account.controller;
 
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
 import io.github.gefangshuai.constant.ResultCode;
-import io.github.gefangshuai.core.context.AppConfig;
+import io.github.gefangshuai.server.core.context.AppConfig;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -34,6 +34,20 @@ public class AccountFormController {
         return restaurant;
     }
 
+    /**
+     * 补充信息
+     */
+    @RequestMapping("additional/{id}")
+    public String additionalRestaurant() {
+        return "account/restaurantInfoModal";
+    }
+
+    /**
+     * 保存店铺信息
+     * @param restaurant
+     * @param file
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value = "restaurant/{id}/save", method = RequestMethod.POST)
     public ResultCode saveRestaurant(@ModelAttribute("restaurant") Restaurant restaurant, MultipartFile file) {
@@ -48,6 +62,7 @@ public class AccountFormController {
             }
         }
         restaurantService.update(restaurant);
+        restaurantService.updateSession(restaurant);
         return ResultCode.OK;
     }
 }

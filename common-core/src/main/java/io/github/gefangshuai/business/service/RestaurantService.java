@@ -2,11 +2,14 @@ package io.github.gefangshuai.business.service;
 
 import io.github.gefangshuai.business.dao.RestaurantDao;
 import io.github.gefangshuai.business.model.Restaurant;
+import io.github.gefangshuai.constant.SessionConstant;
 import io.github.gefangshuai.exception.ModelPersistentException;
 import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.permission.service.UserService;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,5 +50,14 @@ public class RestaurantService {
             restaurant.setDistrict(null);
         }
         restaurantDao.save(restaurant);
+    }
+
+    /**
+     * 刷新session里的数据
+     * @param restaurant
+     */
+    public void updateSession(Restaurant restaurant) {
+        Session session = SecurityUtils.getSubject().getSession();
+        session.setAttribute(SessionConstant.RESTAURANT_KEY, restaurant);
     }
 }

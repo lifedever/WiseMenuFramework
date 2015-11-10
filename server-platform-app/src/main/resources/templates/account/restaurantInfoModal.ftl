@@ -9,20 +9,20 @@
             <div class="row">
                 <div class="col-sm-12">
                     <form id="restaurantModalForm" class="form-horizontal"
-                          action="/account/restaurant/${Session.restaurant.id}/save"
+                          action="/account/restaurant/${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].id}/save"
                           method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label class="control-label col-sm-2">门店名称</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="name" placeholder="您门店的名字">
+                                <input type="text" class="form-control required" name="name" value="${restaurant.name!}" placeholder="您门店的名字">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2">联系方式</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="telNum"
+                                <input type="text" class="form-control" name="telNum"  value="${restaurant.telNum[0]!}"
                                        placeholder="门店联系信息，常用座机或手机，座机请加区号">
                             </div>
                         </div>
@@ -39,13 +39,13 @@
                             <div class="col-sm-10" id="cxSelect">
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <select class="province form-control" name="province"></select>
+                                        <select class="province form-control required" data-value="${restaurant.province!}" name="province"></select>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="city form-control" name="city" disabled="disabled"></select>
+                                        <select class="city form-control required" data-value="${restaurant.city!}" name="city" disabled="disabled"></select>
                                     </div>
                                     <div class="col-md-4">
-                                        <select class="area form-control" name="district" disabled="disabled"></select>
+                                        <select class="area form-control" data-value="${restaurant.district!}" name="district" disabled="disabled"></select>
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                             <label class="control-label col-sm-2">详细地址</label>
 
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="address" placeholder="具体街道门号详情">
+                                <input type="text" class="form-control required" name="address" value="${restaurant.address!}" placeholder="具体街道门号详情">
                             </div>
                         </div>
                         <div class="form-group">
@@ -62,7 +62,7 @@
 
                             <div class="col-sm-10">
                                 <textarea class="form-control" name="memo" placeholder="可以对您的餐厅主打菜系或者特色口味进行描述，限100字以内."
-                                          rows="4"></textarea>
+                                          rows="4">${restaurant.memo!}</textarea>
                             </div>
                         </div>
                         <div>
@@ -84,7 +84,9 @@
         selects: ['province', 'city', 'area'],  // selects 为数组形式，请注意顺序
         nodata: 'none'
     });
-    $('#restaurantModalForm').ajaxForm({
+    var $restaurantModalForm = $('#restaurantModalForm');
+    $restaurantModalForm.validate();
+    $restaurantModalForm.ajaxForm({
         success: function (data) {
             if (data.code == '200') {
                 $('#globalModal').modal('hide');

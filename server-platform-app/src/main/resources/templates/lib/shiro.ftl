@@ -13,15 +13,15 @@
     用户登录时，显示的信息
 -->
 <#macro user>
-    <#if Session.shiroUser?exists>
+    <#if Session['io.github.gefangshuai.server.constant.session.userKey']?exists>
         <#nested >
     </#if>
 </#macro>
 
 <#--显示当前登录用户的名字，为空则显示guestName-->
 <#macro principal guestName="游客">
-    <#if Session.shiroUser?exists>
-    ${Session.shiroUser.principal}
+    <#if Session['io.github.gefangshuai.server.constant.session.userKey']?exists>
+    ${Session['io.github.gefangshuai.server.constant.session.userKey'].principal}
     <#else>
     游客
     </#if>

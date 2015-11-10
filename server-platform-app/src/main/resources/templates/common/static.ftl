@@ -13,9 +13,13 @@
 <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="/js/jquery.form.js"></script>
 <script src="/js/toastr.js"></script>
+<script src="/js/jquery.metadata.js"></script>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/jquery.validate.messages_cn.js"></script>
+<script src="/js/jquery.validate.custom.js"></script>
+
 <!-- Custom and plugin javascript -->
 <script src="/js/inspinia.js"></script>
 <script src="/js/plugins/pace/pace.min.js"></script>
-
 <script src="/js/app.js"></script>
 </#macro>

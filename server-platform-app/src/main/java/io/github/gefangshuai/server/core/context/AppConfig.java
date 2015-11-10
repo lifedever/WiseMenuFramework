@@ -1,4 +1,4 @@
-package io.github.gefangshuai.core.context;
+package io.github.gefangshuai.server.core.context;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

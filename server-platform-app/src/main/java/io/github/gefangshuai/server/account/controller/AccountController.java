@@ -1,14 +1,9 @@
-package io.github.gefangshuai.account.controller;
+package io.github.gefangshuai.server.account.controller;
 
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 
@@ -34,13 +29,7 @@ public class AccountController {
         return "redirect:/login";
     }
 
-    /**
-     * 补充信息
-     */
-    @RequestMapping("additional")
-    public String additionalRestaurant() {
-        return "account/restaurantInfoModal";
-    }
+
 
     /**
      * 忘记密码
