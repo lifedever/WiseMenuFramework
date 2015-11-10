@@ -90,6 +90,7 @@
         success: function (data) {
             if (data.code == '200') {
                 $('#globalModal').modal('hide');
+                location.reload();
                 toastr.success('门店信息保存成功!')
             } else {
                 toastr.error(data.code + ': 门店信息保存失败!')

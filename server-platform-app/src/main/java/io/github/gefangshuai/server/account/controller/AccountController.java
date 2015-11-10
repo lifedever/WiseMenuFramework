@@ -2,10 +2,23 @@ package io.github.gefangshuai.server.account.controller;
 
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
+import io.github.gefangshuai.server.core.context.AppConfig;
+import io.github.gefangshuai.server.core.spring.AppApplicationContext;
+import io.github.gefangshuai.utils.StoreUtils;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by gefangshuai on 2015/11/9.
@@ -16,7 +29,8 @@ public class AccountController {
 
     @Resource
     private RestaurantService restaurantService;
-
+    @Resource
+    private AppConfig appConfig;
     /**
      * 保存注册
      */
@@ -37,5 +51,19 @@ public class AccountController {
     @RequestMapping("forgot")
     public String forgotPassword() {
         return null;
+    }
+
+    @RequestMapping("load/shopImage/{id}")
+    public ResponseEntity<byte[]> loadShopImage(@PathVariable long id, HttpServletRequest request) throws IOException {
+        Restaurant restaurant = restaurantService.findOne(id);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_PNG);
+        if (StringUtils.isBlank(restaurant.getImagePath())) {
+            return null;
+        }else{
+
+            return new ResponseEntity<>(FileUtils.readFileToByteArray(new File(appConfig.getStorePath() + restaurant.getImagePath())),
+                    headers, HttpStatus.CREATED);
+        }
     }
 }

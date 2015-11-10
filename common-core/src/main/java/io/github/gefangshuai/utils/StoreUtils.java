@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,6 +41,14 @@ public class StoreUtils {
         return sdf.format(new Date());
     }
 
+    /**
+     * 获取web路径
+     * @param request
+     * @return
+     */
+    public static String getWebRootPath(HttpServletRequest request){
+        return request.getServletContext().getRealPath("");
+    }
     public static void main(String[] args) {
         System.out.println(getShortPath());
     }
