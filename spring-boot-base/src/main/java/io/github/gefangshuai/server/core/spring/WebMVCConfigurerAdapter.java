@@ -19,10 +19,6 @@ import java.util.Properties;
 @Configuration
 public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter {
 
-    @Bean
-    public NavigationHandlerInterceptor getNavigationHandlerInterceptor(){
-        return new NavigationHandlerInterceptor();
-    }
 
     /**
      * 国际化配置
@@ -47,8 +43,8 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(getNavigationHandlerInterceptor())
-                .addPathPatterns("/**");
+        /*registry.addInterceptor(getNavigationHandlerInterceptor())
+                .addPathPatterns("*//**");*/
         registry.addInterceptor(localeChangeInterceptor()).addPathPatterns("/**");
     }
 

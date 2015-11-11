@@ -2,8 +2,8 @@ package io.github.gefangshuai.server.core.shiro;
 
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
-import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.constant.SessionConstant;
+import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.server.core.spring.AppApplicationContext;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.session.Session;

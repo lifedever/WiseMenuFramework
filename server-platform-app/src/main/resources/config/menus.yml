@@ -1,0 +1,34 @@
+app.menus:
+  restaurantMenus:
+    - title: 菜品管理
+      url:
+      icon: fa fa-cutlery
+      subMenus:
+      - title: 菜品列表
+        url: /rtat/foods
+        icon:
+      - title: 菜品分类
+        icon:
+        url: /rtat/foods/classification
+    - title: 酒水管理
+      url:
+      icon: fa fa-coffee
+      subMenus:
+      - title: 酒水列表
+        icon:
+        url: /rtat/drinks
+      - title: 酒水分类
+        icon:
+        url: /rtat/drinks/classification
+    - title: 订单统计
+      url:  /rtat/orders
+      icon: fa fa-reorder
+    - title: 账户管理
+      url:  /rtat/account
+      icon: fa fa-database
+    - title: 消息管理
+      url:  /rtat/messages
+      icon: fa fa-envelope
+    - title: 店铺信息
+      url:  /rtat/info
+      icon: fa fa-user

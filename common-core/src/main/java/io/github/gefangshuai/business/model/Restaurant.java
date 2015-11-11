@@ -1,17 +1,10 @@
 package io.github.gefangshuai.business.model;
 
 import io.github.gefangshuai.permission.model.User;
-import org.apache.commons.io.IOUtils;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -125,8 +118,4 @@ public class Restaurant {
         this.imagePath = imagePath;
     }
 
-    @Transient
-    public byte[] getImageData() throws IOException {
-        return IOUtils.toByteArray(new FileInputStream("F:\\我的图片\\个人相册\\IMG_0120.JPG"));
-    }
 }

@@ -1,7 +1,5 @@
 package io.github.gefangshuai.server;
 
-import io.github.gefangshuai.business.model.Restaurant;
-import io.github.gefangshuai.business.service.RestaurantService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
@@ -9,8 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by gefangshuai on 2015/11/6.
@@ -24,8 +21,7 @@ public class IndexController{
      * @return
      */
     @RequestMapping("/")
-    public String greeting(Model model, HttpSession session) {
-
+    public String greeting(Model model, HttpServletRequest request) {
         return "index";
     }
 

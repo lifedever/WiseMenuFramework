@@ -2,11 +2,12 @@ package io.github.gefangshuai.server.account.controller;
 
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
-import io.github.gefangshuai.server.core.context.AppConfig;
-import io.github.gefangshuai.server.core.spring.AppApplicationContext;
-import io.github.gefangshuai.utils.StoreUtils;
+import io.github.gefangshuai.constant.SessionConstant;
+import io.github.gefangshuai.server.core.context.AppConfigContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -30,7 +31,7 @@ public class AccountController {
     @Resource
     private RestaurantService restaurantService;
     @Resource
-    private AppConfig appConfig;
+    private AppConfigContext appConfigContext;
     /**
      * 保存注册
      */
@@ -55,14 +56,13 @@ public class AccountController {
 
     @RequestMapping("load/shopImage/{id}")
     public ResponseEntity<byte[]> loadShopImage(@PathVariable long id, HttpServletRequest request) throws IOException {
-        Restaurant restaurant = restaurantService.findOne(id);
+        Restaurant restaurant = (Restaurant) SecurityUtils.getSubject().getSession().getAttribute(SessionConstant.RESTAURANT_KEY);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
         if (StringUtils.isBlank(restaurant.getImagePath())) {
             return null;
         }else{
-
-            return new ResponseEntity<>(FileUtils.readFileToByteArray(new File(appConfig.getStorePath() + restaurant.getImagePath())),
+            return new ResponseEntity<>(FileUtils.readFileToByteArray(new File(appConfigContext.getStorePath() + restaurant.getImagePath())),
                     headers, HttpStatus.CREATED);
         }
     }

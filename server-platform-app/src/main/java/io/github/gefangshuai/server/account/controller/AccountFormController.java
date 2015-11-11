@@ -3,7 +3,7 @@ package io.github.gefangshuai.server.account.controller;
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
 import io.github.gefangshuai.constant.ResultCode;
-import io.github.gefangshuai.server.core.context.AppConfig;
+import io.github.gefangshuai.server.core.context.AppConfigContext;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class AccountFormController {
     @Resource
     private RestaurantService restaurantService;
     @Resource
-    private AppConfig appConfig;
+    private AppConfigContext appConfigContext;
 
     @ModelAttribute("restaurant")
     public Restaurant bindRestaurant(@PathVariable long id) {
@@ -54,7 +54,7 @@ public class AccountFormController {
 
         if (file != null) {
             try {
-                String relativePath = StoreUtils.storeFile(appConfig.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream());
+                String relativePath = StoreUtils.storeFile(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream());
                 restaurant.setImagePath(relativePath);
             } catch (IOException e) {
                 e.printStackTrace();

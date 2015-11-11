@@ -27,7 +27,6 @@ public class RestaurantService {
     private RestaurantDao restaurantDao;
     @Resource
     private UserService userService;
-    @Resource
 
     @Transactional
     public Restaurant save(Restaurant restaurant) {
