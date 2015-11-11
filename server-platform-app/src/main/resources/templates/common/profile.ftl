@@ -7,12 +7,12 @@
 </#if>
 <li class="nav-header" style="height: 180px;">
     <@tags.shiro.user>
-        <div class="profile-element">
+        <div class="profile-element text-center">
             <span>
                 <img alt="image" class="img-circle" src="${shopImage}"/>
             </span>
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#" id="profileName">
-                <span class="clear"> <span class="block m-t-xs">
+            <a class="dropdown-toggle" href="#" id="profileName">
+                <span class="block m-t-xs">
                     <strong class="font-bold">${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].name!}</strong>
                 </span>
             </a>

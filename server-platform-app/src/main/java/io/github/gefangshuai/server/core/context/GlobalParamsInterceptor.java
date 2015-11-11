@@ -26,7 +26,7 @@ public class GlobalParamsInterceptor extends HandlerInterceptorAdapter {
             request.setAttribute(MenusContext.MENUS_CONTEXT_KEY, menusContext.getAdministratorMenus());
         }
         if (SecurityUtils.getSubject().hasRole(Role.RESTAURANT.getName())) {
-            request.setAttribute(MenusContext.MENUS_CONTEXT_KEY, menusContext.getAdministratorMenus());
+            request.setAttribute(MenusContext.MENUS_CONTEXT_KEY, menusContext.getRestaurantMenus());
         }
 
         logger.debug("----ServletPath: " + request.getServletPath() + "----");

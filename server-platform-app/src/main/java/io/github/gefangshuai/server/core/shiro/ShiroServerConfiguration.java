@@ -103,7 +103,7 @@ public class ShiroServerConfiguration {
         filterChainDefinitionMap.put("/login", "authc");
         filterChainDefinitionMap.put("/rtat/**", "authc,roles[restaurant]");
         filterChainDefinitionMap.put("/admin/**", "authc,roles[administrator]");
-        filterChainDefinitionMap.put("/**", "authc,roles[restaurant,administrator]");
+        filterChainDefinitionMap.put("/**", "authc");
 
         filterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return filterFactoryBean;

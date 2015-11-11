@@ -9781,3 +9781,7 @@ body.md-skin {
 #profileName {
     font-size:18px;
 }
+
+.profile-element{
+    margin-right: 30px;
+}
