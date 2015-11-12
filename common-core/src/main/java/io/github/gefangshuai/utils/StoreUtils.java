@@ -20,7 +20,7 @@ public class StoreUtils {
      */
     public static String storeFile(String rootDir, String extension, InputStream inputStream) throws IOException {
         rootDir = rootDir.endsWith("/") ? StringUtils.chop(rootDir) : rootDir;
-        String relativePath = "/" + getShortPath() + "/" + System.nanoTime() + extension;
+        String relativePath = getRelativePath(extension);
         String filePath = rootDir + relativePath;
         File storeFile = new File(filePath);
         if(!storeFile.getParentFile().exists())
@@ -28,6 +28,23 @@ public class StoreUtils {
         IOUtils.copyLarge(inputStream, new FileOutputStream(filePath));
         return relativePath;
     }
+
+    /**
+     * 保存裁剪的数据
+     */
+    public static String storeCutFile(String rootDir, String extension, InputStream inputStream, int xText, int yText, int widthText, int heightText) throws IOException {
+        rootDir = rootDir.endsWith("/") ? StringUtils.chop(rootDir) : rootDir;
+        String relativePath = getRelativePath(extension);
+        String filePath = rootDir + relativePath;
+        ImageUtils.cutImage(inputStream, filePath, xText, yText, widthText, heightText);
+        return relativePath;
+    }
+
+    private static String getRelativePath(String extension){
+        String relativePath = "/" + getShortPath() + "/" + System.nanoTime() + extension;
+        return relativePath;
+    }
+
 
     /**
      * 根据文件名称，获取后缀，如：".jpq",".png",
@@ -49,7 +66,6 @@ public class StoreUtils {
     public static String getWebRootPath(HttpServletRequest request){
         return request.getServletContext().getRealPath("");
     }
-    public static void main(String[] args) {
-        System.out.println(getShortPath());
-    }
+
+
 }

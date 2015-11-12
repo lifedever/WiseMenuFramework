@@ -11,7 +11,7 @@
             <span>
                 <img alt="image" class="img-circle" src="${shopImage}"/>
             </span>
-            <a class="dropdown-toggle" href="#" id="profileName">
+            <a class="dropdown-toggle" id="profileName">
                 <span class="block m-t-xs">
                     <strong class="font-bold">${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].name!}</strong>
                 </span>

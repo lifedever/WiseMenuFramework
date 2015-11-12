@@ -93,6 +93,7 @@ public class ShiroServerConfiguration {
         filterFactoryBean.setSuccessUrl("/");
         filterFactoryBean.setFilters(filterMap);
 
+        filterChainDefinitionMap.put("/favicon.ico", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");

@@ -4,6 +4,7 @@ import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
 import io.github.gefangshuai.constant.ResultCode;
 import io.github.gefangshuai.server.core.context.AppConfigContext;
+import io.github.gefangshuai.utils.ImageUtils;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -44,17 +45,18 @@ public class AccountFormController {
 
     /**
      * 保存店铺信息
+     *
      * @param restaurant
      * @param file
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "restaurant/{id}/save", method = RequestMethod.POST)
-    public ResultCode saveRestaurant(@ModelAttribute("restaurant") Restaurant restaurant, MultipartFile file) {
+    public ResultCode saveRestaurant(@ModelAttribute("restaurant") Restaurant restaurant, double xText, double yText, double widthText, double heightText, MultipartFile file) {
 
         if (file != null) {
             try {
-                String relativePath = StoreUtils.storeFile(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream());
+                String relativePath = StoreUtils.storeCutFile(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream(), (int) xText, (int) yText, (int) widthText, (int) heightText);
                 restaurant.setImagePath(relativePath);
             } catch (IOException e) {
                 e.printStackTrace();
