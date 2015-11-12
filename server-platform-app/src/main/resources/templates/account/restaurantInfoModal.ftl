@@ -71,7 +71,9 @@
                             <button class="btn btn-sm btn-primary" type="button" id="btnCut">确认裁剪</button>
                             <span id="cutInfo" class="text-success" style="display: none">裁剪成功！</span>
                         </div>
-                        <img src="/img/profile_big.jpg" id="image">
+                        <div class="image-crop" style="height: 300px;">
+                            <img src="/img/profile_big.jpg" id="image">
+                        </div>
                         <input type="hidden" id="xText" name="xText" value="0">
                         <input type="hidden" id="yText" name="yText" value="0">
                         <input type="hidden" id="widthText" name="widthText" value="0">
@@ -110,7 +112,7 @@
 
     var $image = $('#image');
     $image.cropper({
-        aspectRatio: 12 / 9,
+        highlight: true,
         minContainerWidth: 320,
         minContainerHeight: 300,
         crop: function (data) {
