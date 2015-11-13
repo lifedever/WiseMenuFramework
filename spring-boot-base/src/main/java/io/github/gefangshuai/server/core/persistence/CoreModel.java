@@ -49,4 +49,14 @@ public class CoreModel implements Serializable {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+    @Transient
+    public boolean isNew() {
+        return id == null || id == 0;
+    }
+
+    @Transient
+    public boolean isNotNew() {
+        return id != null && id > 0;
+    }
 }

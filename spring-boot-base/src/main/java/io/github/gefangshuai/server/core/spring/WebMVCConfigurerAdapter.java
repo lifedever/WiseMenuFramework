@@ -54,14 +54,17 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
     @Bean(name = "errorMapping")
     public SimpleMappingExceptionResolver simpleMappingExceptionResolver() {
         SimpleMappingExceptionResolver exceptionResolver = new SimpleMappingExceptionResolver();
-        exceptionResolver.setDefaultErrorView("/error/500");
-        exceptionResolver.setDefaultStatusCode(500);
+
 
         // 设置异常映射
         Properties properties = new Properties();
         properties.setProperty("org.apache.shiro.authz.UnauthorizedException", "/error/403");
         properties.setProperty("org.apache.shiro.authz.UnauthenticatedException", "/error/401");
         exceptionResolver.setExceptionMappings(properties);
+
+        exceptionResolver.setDefaultErrorView("/error/500");
+        exceptionResolver.setDefaultStatusCode(500);
+
         return exceptionResolver;
     }
 

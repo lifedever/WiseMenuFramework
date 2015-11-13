@@ -14,12 +14,12 @@
 <@tags.static.js />
 <script>
     var showProfileModal = function(){
-        $.get('/account/additional/${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].id}', function(data){
+        $.get('/account/additional/${Session['session_key_restaurant'].id}', function(data){
             $('#globalModal').html(data).modal('show')
         });
     };
 
-    var hasActive = '${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].name!}';
+    var hasActive = '${Session['session_key_restaurant'].name!}';
     if(hasActive == ''){
         showProfileModal();
     }
@@ -28,7 +28,6 @@
         showProfileModal();
     });
 </script>
-
 </body>
 </html>
 </#macro>

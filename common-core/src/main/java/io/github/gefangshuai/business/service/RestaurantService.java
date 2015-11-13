@@ -30,7 +30,7 @@ public class RestaurantService {
 
     @Transactional
     public Restaurant save(Restaurant restaurant) {
-        if (restaurant.getId() > 0)
+        if (restaurant.isNotNew())
             throw new ModelPersistentException("the restaurant's ID must be 0 or null!");
         User user = userService.createUser(restaurant.getUser(), Role.RESTAURANT);
         restaurant.setUser(user);

@@ -4,6 +4,7 @@ import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;
 import io.github.gefangshuai.constant.SessionConstant;
 import io.github.gefangshuai.server.core.context.AppConfigContext;
+import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
@@ -15,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -32,18 +34,20 @@ public class AccountController {
     private RestaurantService restaurantService;
     @Resource
     private AppConfigContext appConfigContext;
+
     /**
      * 保存注册
      */
     @RequestMapping("save")
-    public String saveAccount(Restaurant restaurant, String confirm_password) {
+    public String saveAccount(Restaurant restaurant, String confirm_password, RedirectAttributes redirectAttributes) {
         if (!confirm_password.equals(restaurant.getUser().getPassword())) {
+            FlashMessageUtils.error(redirectAttributes, "两次密码输入不一致!");
             return "/create";
         }
         restaurantService.save(restaurant);
+        FlashMessageUtils.success(redirectAttributes, "注册成功，请登录!");
         return "redirect:/login";
     }
-
 
 
     /**
@@ -61,7 +65,7 @@ public class AccountController {
         headers.setContentType(MediaType.IMAGE_PNG);
         if (StringUtils.isBlank(restaurant.getImagePath())) {
             return null;
-        }else{
+        } else {
             return new ResponseEntity<>(FileUtils.readFileToByteArray(new File(appConfigContext.getStorePath() + restaurant.getImagePath())),
                     headers, HttpStatus.CREATED);
         }

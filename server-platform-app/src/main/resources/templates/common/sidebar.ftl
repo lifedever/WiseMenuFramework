@@ -20,8 +20,9 @@
                             </ul>
                         </li>
                     <#else>
-                        <li>
-                            <a href="${menu.url}"><i class="${menu.icon}"></i> <span class="nav-label">${menu.title}</span></a>
+                        <li <#if menu.flag == nav_menu>class="active" </#if>>
+                            <a href="${menu.url}"><i class="${menu.icon}"></i> <span
+                                    class="nav-label">${menu.title}</span></a>
                         </li>
                     </#if>
                 </#list>

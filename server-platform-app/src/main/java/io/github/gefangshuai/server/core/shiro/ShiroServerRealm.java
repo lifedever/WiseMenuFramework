@@ -34,7 +34,6 @@ public class ShiroServerRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         UsernamePasswordToken credentials = (UsernamePasswordToken) token;
         String username = credentials.getUsername();
-        String password = new String((char[]) credentials.getCredentials());
         if (username == null) {
             throw new UnknownAccountException("username not provided");
         }

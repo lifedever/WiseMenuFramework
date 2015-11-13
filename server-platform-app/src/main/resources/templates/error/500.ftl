@@ -11,7 +11,7 @@
 
         <div class="error-desc">
             <p class="text-danger">
-                <strong>${exception.message!}</strong>
+                <strong>${exception!}</strong>
             </p>
             <a href="javascript:history.go(-1)" class="btn btn-white">back</a>
         </div>

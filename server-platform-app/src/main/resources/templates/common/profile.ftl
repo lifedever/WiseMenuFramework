@@ -1,7 +1,7 @@
 <#import "../tags.ftl" as tags>
 <#macro show>
-<#if Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].imagePath??>
-    <#assign shopImage="/account/load/shopImage/${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].id}"/>
+<#if Session['session_key_restaurant'].imagePath??>
+    <#assign shopImage="/account/load/shopImage/${Session['session_key_restaurant'].id}"/>
 <#else>
     <#assign shopImage="/img/profile_big.jpg"/>
 </#if>
@@ -13,7 +13,7 @@
             </span>
             <a class="dropdown-toggle" id="profileName">
                 <span class="block m-t-xs">
-                    <strong class="font-bold">${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].name!}</strong>
+                    <strong class="font-bold">${Session['session_key_restaurant'].name!}</strong>
                 </span>
             </a>
         </div>

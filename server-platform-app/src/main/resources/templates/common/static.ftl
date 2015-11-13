@@ -23,4 +23,17 @@
 <script src="/js/inspinia.js"></script>
 <script src="/js/plugins/pace/pace.min.js"></script>
 <script src="/js/app.js"></script>
+
+<script>
+    var flashMessageSuccess = '${flash_message_success!}',
+        flashMessageWarning = '${flash_message_warning!}',
+        flashMessageError = '${flash_message_error!}';
+    if(flashMessageSuccess)
+        toastr.success(flashMessageSuccess, '恭喜');
+    if(flashMessageWarning)
+        toastr.warning(flashMessageWarning, '警告');
+    if(flashMessageError)
+        toastr.error(flashMessageError, '错误');
+</script>
+
 </#macro>

@@ -35,6 +35,7 @@ $SubmitBtn.on('click', function () {
 var $image = $('#image');
 $image.cropper({
     highlight: true,
+    viewMode: 3,
     minContainerWidth: 320,
     minContainerHeight: 300,
     crop: function (data) {

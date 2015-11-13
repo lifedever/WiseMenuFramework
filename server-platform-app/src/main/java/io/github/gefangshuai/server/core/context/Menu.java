@@ -9,6 +9,7 @@ public class Menu {
     private String title;
     private String url;
     private String icon;
+    private String flag;    // 菜单标识，用于高亮显示菜单
     private List<Menu> subMenus;
 
     public String getTitle() {
@@ -41,5 +42,13 @@ public class Menu {
 
     public void setSubMenus(List<Menu> subMenus) {
         this.subMenus = subMenus;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }

@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <form id="restaurantModalForm" class=""
-              action="/account/restaurant/${Session['io.github.gefangshuai.server.constant.session.RestaurantKey'].id}/save"
+              action="/account/restaurant/${Session['session_key_restaurant'].id}/save"
               method="post" enctype="multipart/form-data">
             <div class="modal-body">
                 <div class="row">
@@ -72,7 +72,7 @@
                             <span id="cutInfo" class="text-success" style="display: none">裁剪成功！</span>
                         </div>
                         <div class="image-crop" style="height: 300px;">
-                            <img src="/img/profile_big.jpg" id="image">
+                            <img src="/img/no-pic.png" id="image">
                         </div>
                         <input type="hidden" id="xText" name="xText" value="0">
                         <input type="hidden" id="yText" name="yText" value="0">

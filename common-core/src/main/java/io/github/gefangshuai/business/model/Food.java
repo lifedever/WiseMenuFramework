@@ -1,15 +1,112 @@
 package io.github.gefangshuai.business.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import io.github.gefangshuai.business.model.listener.FoodAndDrinksPersistentListener;
+import io.github.gefangshuai.server.core.persistence.CoreModel;
+
+import javax.persistence.*;
 
 /**
  * 菜品表
  * Created by gefangshuai on 2015/11/13.
  */
-//@Entity
-//@Table(name = "b_foods")
-public class Food {
-    private long id;
+@Entity
+@Table(name = "b_foods")
+@EntityListeners({FoodAndDrinksPersistentListener.class})
+public class Food extends CoreModel {
     private String name;    // 名字
+    private double price;   // 价格
+    private String imagePath;   // 图片地址
+    private String flavor;      // 口味
+    private String materials;   // 用料
+    private boolean isHot = true;   // 是否热菜
+    private boolean isMeat = true;  // 是否荤菜
+    private boolean isMuslim = true;    // 是否清真
+
+    @ManyToOne
+    @JoinColumn(name = "food_type_id")
+    private FoodType foodType;
+
+    @ManyToOne
+    @JoinColumn(name = "restaurant_id")
+    private Restaurant restaurant;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
+    public String getMaterials() {
+        return materials;
+    }
+
+    public void setMaterials(String materials) {
+        this.materials = materials;
+    }
+
+    public boolean isHot() {
+        return isHot;
+    }
+
+    public void setHot(boolean hot) {
+        isHot = hot;
+    }
+
+    public boolean isMeat() {
+        return isMeat;
+    }
+
+    public void setMeat(boolean meat) {
+        isMeat = meat;
+    }
+
+    public boolean isMuslim() {
+        return isMuslim;
+    }
+
+    public void setMuslim(boolean muslim) {
+        isMuslim = muslim;
+    }
+
+    public FoodType getFoodType() {
+        return foodType;
+    }
+
+    public void setFoodType(FoodType foodType) {
+        this.foodType = foodType;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 }

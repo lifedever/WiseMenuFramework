@@ -5,7 +5,7 @@
             "debug": false,
             "progressBar": false,
             "preventDuplicates": false,
-            "positionClass": "toast-bottom-center",
+            "positionClass": "toast-top-center",
             "onclick": null,
             "showDuration": "400",
             "hideDuration": "1000",

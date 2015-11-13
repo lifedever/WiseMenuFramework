@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
  */
 public class NavigationHandlerInterceptor extends HandlerInterceptorAdapter {
     Logger logger = Logger.getLogger(NavigationHandlerInterceptor.class);
-
+    private static final String NAV_MENU_ATTR = "nav_menu";
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         String menu = "";
@@ -29,7 +29,7 @@ public class NavigationHandlerInterceptor extends HandlerInterceptorAdapter {
             Menu menuAnno = (Menu) clazz.getAnnotation(Menu.class);
             menu = menuAnno.value();
         }
-        request.setAttribute("", menu);
+        request.setAttribute(NAV_MENU_ATTR, menu);
         logger.debug("---servlet menu: " + menu);
         super.postHandle(request, response, handler, modelAndView);
     }

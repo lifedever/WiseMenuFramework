@@ -3,35 +3,46 @@ app.menus:
     - title: 首页
       url: /
       icon: fa fa-th-large
+      flag:
     - title: 菜品管理
       url:
       icon: fa fa-cutlery
+      flag: foods
       subMenus:
       - title: 菜品列表
         url: /rtat/foods
         icon:
+        flag: foods-list
       - title: 菜品分类
         icon:
         url: /rtat/foods/classification
+        flag: foods-type
     - title: 酒水管理
       url:
       icon: fa fa-coffee
+      flag: drinks
       subMenus:
       - title: 酒水列表
         icon:
         url: /rtat/drinks
+        flag: drinks-list
       - title: 酒水分类
         icon:
         url: /rtat/drinks/classification
+        flag: drinks-type
     - title: 订单统计
       url:  /rtat/orders
       icon: fa fa-reorder
+      flag: orders
     - title: 账户管理
       url:  /rtat/account
       icon: fa fa-user
+      flag: account
     - title: 消息管理
       url:  /rtat/messages
       icon: fa fa-envelope
+      flag: messages
     - title: 店铺信息
       url:  /rtat/info
       icon: fa fa-edit
+      flag: info

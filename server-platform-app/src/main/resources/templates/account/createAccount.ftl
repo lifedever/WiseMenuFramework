@@ -6,7 +6,7 @@
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
             <div>
-                <h1 class="logo-name"><a href="/">智+</a></h1>
+                <h1 class="logo-name"><a href="/">极智</a></h1>
             </div>
             <h2><@tags.spring.message code="app.title" /></h2>
             <p><@tags.spring.message code="app.create.pleaseRegister"/></p>

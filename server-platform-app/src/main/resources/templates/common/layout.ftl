@@ -5,7 +5,7 @@
     <@tags.header.show title="${title}"/>
 <body class="">
 <div id="wrapper">
-    <@tags.sidebar.show />
+    <@tags.sidebar.show/>
 <div id="page-wrapper" class="gray-bg">
 
     <div class="row border-bottom">

@@ -1,21 +1,28 @@
 package io.github.gefangshuai.server;
 
+import io.github.gefangshuai.permission.model.User;
+import io.github.gefangshuai.permission.service.UserService;
 import io.github.gefangshuai.server.core.config.Menu;
+import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by gefangshuai on 2015/11/6.
  */
 @Controller
-@Menu("")
 public class IndexController{
+    @Resource
+    private UserService userService;
 
     /**
      * 首页
@@ -36,13 +43,24 @@ public class IndexController{
         return "account/createAccount";
     }
 
-    @RequestMapping(value = "/login")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
+        return "login";
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(RedirectAttributes redirectAttributes){
         Subject subject = SecurityUtils.getSubject();
         if (subject.isAuthenticated()) {
             return "redirect:/";
         } else {
-            return "login";
+            User user = userService.findByUsername((String) subject.getPrincipal());
+            if (user == null) {
+                FlashMessageUtils.error(redirectAttributes, "用户不存在！");
+            }else{
+                FlashMessageUtils.error(redirectAttributes, "用户名或密码错误！");
+            }
+            return "redirect:/login";
         }
     }
 
