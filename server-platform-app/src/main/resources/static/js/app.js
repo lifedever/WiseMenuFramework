@@ -19,4 +19,8 @@
     };
 
     initToastr();
+
+    var confirmImageCut = function(){
+
+    }
 })();

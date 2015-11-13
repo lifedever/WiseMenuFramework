@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -43,8 +44,6 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        /*registry.addInterceptor(getNavigationHandlerInterceptor())
-                .addPathPatterns("*//**");*/
         registry.addInterceptor(localeChangeInterceptor()).addPathPatterns("/**");
     }
 

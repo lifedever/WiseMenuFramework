@@ -3,7 +3,6 @@ package io.github.gefangshuai.server.core.context;
 import io.github.gefangshuai.permission.model.Role;
 import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.mgt.SecurityManager;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 

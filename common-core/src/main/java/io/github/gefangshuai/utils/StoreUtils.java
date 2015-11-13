@@ -36,6 +36,9 @@ public class StoreUtils {
         rootDir = rootDir.endsWith("/") ? StringUtils.chop(rootDir) : rootDir;
         String relativePath = getRelativePath(extension);
         String filePath = rootDir + relativePath;
+        File storeFile = new File(filePath);
+        if(!storeFile.getParentFile().exists())
+            storeFile.getParentFile().mkdirs();
         ImageUtils.cutImage(inputStream, filePath, xText, yText, widthText, heightText);
         return relativePath;
     }

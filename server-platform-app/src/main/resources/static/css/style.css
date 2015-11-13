@@ -9781,10 +9781,15 @@ body.md-skin {
 }
 
 .profile-element{
-    margin-right: 30px;
+    margin-right: 35px;
+    margin-top: -20px;
 }
 
 .jcrop-active {
     width: 300px;
     height:300px;
+}
+
+.text-default{
+    color: white;
 }

@@ -1,6 +1,7 @@
 package io.github.gefangshuai.business.model;
 
 import io.github.gefangshuai.permission.model.User;
+import io.github.gefangshuai.server.core.persistence.CoreModel;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -13,11 +14,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "b_restaurant")
-public class Restaurant {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
+public class Restaurant extends CoreModel{
     private String name;            // 门店名称
 
     @ElementCollection
@@ -37,10 +34,6 @@ public class Restaurant {
     private User user;              // 对应用户表
 
 
-    public long getId() {
-        return id;
-    }
-
 
     public User getUser() {
         return user;
@@ -48,10 +41,6 @@ public class Restaurant {
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {

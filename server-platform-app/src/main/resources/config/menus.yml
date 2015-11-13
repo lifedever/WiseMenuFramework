@@ -1,5 +1,8 @@
 app.menus:
   restaurantMenus:
+    - title: 首页
+      url: /
+      icon: fa fa-th-large
     - title: 菜品管理
       url:
       icon: fa fa-cutlery
@@ -25,10 +28,10 @@ app.menus:
       icon: fa fa-reorder
     - title: 账户管理
       url:  /rtat/account
-      icon: fa fa-database
+      icon: fa fa-user
     - title: 消息管理
       url:  /rtat/messages
       icon: fa fa-envelope
     - title: 店铺信息
       url:  /rtat/info
-      icon: fa fa-user
+      icon: fa fa-edit

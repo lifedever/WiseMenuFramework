@@ -1,6 +1,7 @@
 package io.github.gefangshuai.permission.model;
 
 import io.github.gefangshuai.constant.StatusEnum;
+import io.github.gefangshuai.server.core.persistence.CoreModel;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,10 +12,8 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "p_users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+public class User extends CoreModel {
+
     @NotNull
     private String username;        // 登陆名称
     @NotNull
@@ -28,15 +27,6 @@ public class User {
 
     public User() {
 
-    }
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -71,19 +61,19 @@ public class User {
         this.password = password;
     }
 
-    public StatusEnum getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusEnum status) {
-        this.status = status;
-    }
-
     public String getSalt() {
         return salt;
     }
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
     }
 }

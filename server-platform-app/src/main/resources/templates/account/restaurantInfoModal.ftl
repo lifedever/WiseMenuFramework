@@ -58,8 +58,8 @@
                                           rows="4">${restaurant.memo!}</textarea>
                         </div>
                         <div>
-                            <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit">
-                                <strong>确定</strong>
+                            <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="button" id="SubmitBtn">
+                                <strong> 确定 </strong>
                             </button>
                         </div>
                     </div>
@@ -86,70 +86,4 @@
 </div>
 <script src="/js/plugins/cxSelect/jquery.cxselect.min.js"></script>
 <script src="/js/plugins/cropper/cropper.js"></script>
-<script>
-    $('#cxSelect').cxSelect({
-        url: '/js/plugins/cxSelect/data/cityData.min.json',  // 提示：如果服务器不支持 .json 类型文件，请将文件改为 .js 文件
-        selects: ['province', 'city', 'area'],  // selects 为数组形式，请注意顺序
-        nodata: 'none'
-    });
-    var $restaurantModalForm = $('#restaurantModalForm');
-    $restaurantModalForm.validate();
-    $restaurantModalForm.ajaxForm({
-
-        success: function (data) {
-            if (data.code == '200') {
-                $('#globalModal').modal('hide');
-                location.reload();
-                toastr.success('门店信息保存成功!')
-            } else {
-                toastr.error(data.code + ': 门店信息保存失败!')
-            }
-        },
-        error: function () {
-            toastr.error(data.code + ': 门店信息保存失败!')
-        }
-    });
-
-    var $image = $('#image');
-    $image.cropper({
-        highlight: true,
-        minContainerWidth: 320,
-        minContainerHeight: 300,
-        crop: function (data) {
-
-        }
-    });
-
-    var $inputImage = $("#inputImage");
-    if (window.FileReader) {
-        $inputImage.change(function () {
-            var fileReader = new FileReader(),
-                    files = this.files,
-                    file;
-
-            if (!files.length) {
-                return;
-            }
-            file = files[0];
-            if (/^image\/\w+$/.test(file.type)) {
-                var blobURL = URL.createObjectURL(file);
-                $image.one('built.cropper', function () {
-                    URL.revokeObjectURL(blobURL); // Revoke when load complete
-                }).cropper('reset', true).cropper('replace', blobURL);
-            } else {
-                alert('请选择图片文件！');
-            }
-            $('#cutInfo').hide();
-        });
-    }
-
-    $('#btnCut').on('click', function () {
-        var data = $image.cropper('getData');
-        $('#xText').val(data.x);
-        $('#yText').val(data.y);
-        $('#widthText').val(data.width);
-        $('#heightText').val(data.height);
-        $('#cutInfo').show();
-    })
-
-</script>
+<script src="/js/template/account-restaurantInfoModal.js"></script>

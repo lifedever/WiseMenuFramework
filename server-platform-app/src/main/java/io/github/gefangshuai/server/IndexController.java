@@ -1,5 +1,6 @@
 package io.github.gefangshuai.server;
 
+import io.github.gefangshuai.server.core.config.Menu;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by gefangshuai on 2015/11/6.
  */
 @Controller
+@Menu("")
 public class IndexController{
 
     /**

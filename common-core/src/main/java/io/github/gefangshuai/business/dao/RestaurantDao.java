@@ -1,7 +1,7 @@
 package io.github.gefangshuai.business.dao;
 
 import io.github.gefangshuai.business.model.Restaurant;
-import io.github.gefangshuai.server.core.dao.CoreDao;
+import io.github.gefangshuai.server.core.persistence.CoreDao;
 import org.springframework.data.jpa.repository.Query;
 
 /**
