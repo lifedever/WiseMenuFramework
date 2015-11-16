@@ -4,7 +4,6 @@ import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
@@ -20,7 +19,6 @@ import java.util.Properties;
 @Configuration
 public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter {
 
-
     /**
      * 国际化配置
      */
@@ -33,9 +31,10 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
 
     /**
      * 防止出现：Cannot change HTTP accept header - use a different locale resolution strategy异常
+     *
      * @return
      */
-    @Bean(name="localeResolver")
+    @Bean(name = "localeResolver")
     public SessionLocaleResolver sessionLocaleResolver() {
         SessionLocaleResolver localeResolver = new SessionLocaleResolver();
         localeResolver.setDefaultLocale(new Locale("zh", "CN"));
@@ -49,6 +48,7 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
 
     /**
      * 定义mvc错误及页面映射
+     *
      * @return
      */
     @Bean(name = "errorMapping")
@@ -68,12 +68,14 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
         return exceptionResolver;
     }
 
+
     /**
      * 配置文件上传
+     *
      * @return
      */
-    @Bean(name="multipartResolver")
-    public CommonsMultipartResolver multipartResolver(){
+    @Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
         multipartResolver.setDefaultEncoding("utf-8");
         multipartResolver.setMaxUploadSize(100000000);

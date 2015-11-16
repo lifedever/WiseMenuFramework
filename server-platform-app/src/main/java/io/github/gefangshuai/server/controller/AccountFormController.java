@@ -1,4 +1,4 @@
-package io.github.gefangshuai.server.account.controller;
+package io.github.gefangshuai.server.controller;
 
 import io.github.gefangshuai.business.model.Restaurant;
 import io.github.gefangshuai.business.service.RestaurantService;

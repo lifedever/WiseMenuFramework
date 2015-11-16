@@ -9,7 +9,7 @@
 
     <div class="error-desc">
         <p class="text-danger">
-        ${exception.message}
+        ${exception}
         </p>
         <br>
         <a href="javascript:history.go(-1)" class="btn btn-white">back</a>

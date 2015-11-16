@@ -64,15 +64,19 @@ public class IndexController{
         }
     }
 
-    @RequestMapping("logout")
+    @RequestMapping("/logout")
     public String logout() {
         SecurityUtils.getSubject().logout();
         return "redirect:/login";
     }
 
-
     @RequestMapping("/404")
     public String error404() {
         return "error/404";
+    }
+
+    @RequestMapping("/forbidden")
+    public String forbidden(){
+        return "error/403";
     }
 }

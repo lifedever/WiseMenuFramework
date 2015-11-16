@@ -5,7 +5,7 @@
 <#else>
     <#assign shopImage="/img/profile_big.jpg"/>
 </#if>
-<li class="nav-header" style="height: 180px;">
+<li class="nav-header" style="height: 155px;">
     <@tags.shiro.user>
         <div class="profile-element text-center">
             <span>

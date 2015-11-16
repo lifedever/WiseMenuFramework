@@ -67,10 +67,10 @@ public class ShiroServerConfiguration {
     }
 
     @Bean
-    public AuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor() {
-        AuthorizationAttributeSourceAdvisor sourceAdvisor = new AuthorizationAttributeSourceAdvisor();
+    public CustomAuthorizationAttributeSourceAdvisor getAuthorizationAttributeSourceAdvisor() {
+        CustomAuthorizationAttributeSourceAdvisor sourceAdvisor = new CustomAuthorizationAttributeSourceAdvisor();
         sourceAdvisor.setSecurityManager(getDefaultWebSecurityManager());
-        return new AuthorizationAttributeSourceAdvisor();
+        return new CustomAuthorizationAttributeSourceAdvisor();
     }
 
     /**
@@ -84,13 +84,15 @@ public class ShiroServerConfiguration {
 
     @Bean(name = "shiroFilter")
     public ShiroFilterFactoryBean getShiroFilterFactoryBean() {
+        ShiroFilterFactoryBean filterFactoryBean = new ShiroFilterFactoryBean();
+
         Map<String, Filter> filterMap = new HashMap<>();
         filterMap.put("authc", getCustomFormAuthenticationFilter());
-        ShiroFilterFactoryBean filterFactoryBean = new ShiroFilterFactoryBean();
 
         filterFactoryBean.setSecurityManager(getDefaultWebSecurityManager());
         filterFactoryBean.setLoginUrl("/login");
         filterFactoryBean.setSuccessUrl("/");
+        filterFactoryBean.setUnauthorizedUrl("/forbidden");
         filterFactoryBean.setFilters(filterMap);
 
         filterChainDefinitionMap.put("/favicon.ico", "anon");

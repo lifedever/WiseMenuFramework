@@ -11,8 +11,9 @@
 
     <div class="error-desc">
         <p class="text-danger">
-        ${exception.message}
+        禁止访问!
         </p>
+        <p>${exception.message}</p>
         <br>
         <a href="javascript:history.go(-1)" class="btn btn-white">back</a>
     </div>
