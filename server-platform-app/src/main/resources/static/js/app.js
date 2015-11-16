@@ -20,7 +20,8 @@
 
     initToastr();
 
-    var confirmImageCut = function(){
-
-    }
+    $('.message').on('click', function (e) {
+        e.preventDefault();
+        $(this).slideUp()
+    });
 })();

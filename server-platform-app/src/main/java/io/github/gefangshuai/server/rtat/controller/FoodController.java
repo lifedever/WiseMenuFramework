@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by gefangshuai on 2015/11/13.
  */
-@Menu("foods")
+@Menu("foods-list")
 @Controller
 @RequestMapping("/rtat/foods")
 public class FoodController {
 
     @RequestMapping
-    @Menu("foods-list")
     public String index(){
-        return "rtat/list";
+        return "rtat/foods/list";
     }
+
 }

@@ -5,6 +5,7 @@
 <link href="/css/animate.css" rel="stylesheet">
 <link href="/js/plugins/cropper/cropper.css" rel="stylesheet">
 <link href="/css/style.css" rel="stylesheet">
+<link href="/css/app.css" rel="stylesheet">
 </#macro>
 <#macro js>
 <!-- Mainly scripts -->
