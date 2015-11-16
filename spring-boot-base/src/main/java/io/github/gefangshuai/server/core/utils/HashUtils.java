@@ -1,4 +1,4 @@
-package io.github.gefangshuai.utils;
+package io.github.gefangshuai.server.core.utils;
 
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;

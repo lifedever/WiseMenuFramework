@@ -1,7 +1,6 @@
 package io.github.gefangshuai.server.rtat.controller;
 
 import io.github.gefangshuai.server.core.config.Menu;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Menu("foods")
 @Controller
-@RequiresRoles("aa")
 @RequestMapping("/rtat/foods")
 public class FoodController {
 
