@@ -19,7 +19,7 @@ public class NavigationHandlerInterceptor extends HandlerInterceptorAdapter {
     private static final String NAV_MENU_ATTR = "nav_menu";
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        String menu = "";
+        String menu = "index";
         Method method = ((HandlerMethod) handler).getMethod();
         Class clazz = ((HandlerMethod) handler).getBeanType();
         if (method.isAnnotationPresent(Menu.class)) {

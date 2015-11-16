@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FoodController {
 
     @RequestMapping
+    @Menu("foods-list")
     public String index(){
         return "rtat/list";
     }

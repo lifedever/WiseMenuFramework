@@ -3,7 +3,7 @@ app.menus:
     - title: 首页
       url: /
       icon: fa fa-th-large
-      flag:
+      flag: index
     - title: 菜品管理
       url:
       icon: fa fa-cutlery

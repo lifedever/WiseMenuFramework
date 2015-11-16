@@ -1,10 +1,10 @@
 <#ftl strip_whitespace=true>
-<#--需配合 Session.shiroUser 使用-->
+<#--需配合 Session['session_key_user'] 使用-->
 <#--
     用户没有登录时，显示的信息
 -->
 <#macro guest>
-    <#if !Session.shiroUser?exists>
+    <#if !Session['session_key_user']?exists>
         <#nested>
     </#if>
 </#macro>
@@ -29,28 +29,28 @@
 
 <#--当前用户有角色显示的内容-->
 <#macro hasRole role>
-    <#if Session.shiroUser?exists && Session.shiroUser.roles?seq_contains(role)>
+    <#if Session['session_key_user']?exists && Session['session_key_user'].roles?seq_contains(role)>
         <#nested>
     </#if>
 </#macro>
 
 <#--没有角色显示的内容-->
 <#macro lacksRole role>
-    <#if !Session.shiroUser?exists || !Session.shiroUser.roles?seq_contains(role)>
+    <#if !Session['session_key_user']?exists || !Session['session_key_user'].roles?seq_contains(role)>
         <#nested>
     </#if>
 </#macro>
 
 <#--有权限显示的内容-->
 <#macro hasPermission permission>
-    <#if Session.shiroUser?exists && Session.shiroUser.permissions?seq_contains(permission)>
+    <#if Session['session_key_user']?exists && Session['session_key_user'].permissions?seq_contains(permission)>
         <#nested>
     </#if>
 </#macro>
 
 <#--没有权限显示的内容-->
 <#macro lacksPermission permission>
-    <#if !Session.shiroUser?exists || !Session.shiroUser.permissions?seq_contains(permission)>
+    <#if !Session['session_key_user']?exists || !Session['session_key_user'].permissions?seq_contains(permission)>
         <#nested>
     </#if>
 </#macro>

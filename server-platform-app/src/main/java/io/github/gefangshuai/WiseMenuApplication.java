@@ -1,18 +1,16 @@
 package io.github.gefangshuai;
 
 import io.github.gefangshuai.server.core.context.AppConfigContext;
-import io.github.gefangshuai.server.core.context.MenusContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 
 @SpringBootApplication
-@EnableConfigurationProperties({AppConfigContext.class, MenusContext.class})
+@EnableConfigurationProperties({AppConfigContext.class})
 public class WiseMenuApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
