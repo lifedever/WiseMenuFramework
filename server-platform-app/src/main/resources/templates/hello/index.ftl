@@ -4,14 +4,70 @@
 </head>
 <body>
 <h1>WebSocket 实例</h1>
+
+<div>
+    <div>
+        <button id="connect" onclick="connect();">Connect</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+    </div>
+    <div id="conversationDiv">
+        <p>
+            <label>notice content?</label>
+        </p>
+        <p>
+            <textarea id="name" rows="5"></textarea>
+        </p>
+        <button id="sendName" onclick="sendName();">Send</button>
+        <p id="response"></p>
+    </div>
+</div>
+
+<script src="/js/sockjs-0.3.4.min.js"></script>
+<script src="/js/stomp.min.js"></script>
 <script>
-    var socket = new WebSocket('/app/hello')
-    socket.open = function(){
-        socket.send("hello");
-    };
-    socket.onmessage = function(data) {
-        console.log(data);
-    };
+    var stompClient = null;
+
+    function setConnected(connected) {
+        document.getElementById('connect').disabled = connected;
+        document.getElementById('disconnect').disabled = !connected;
+        document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
+        document.getElementById('response').innerHTML = '';
+    }
+
+    function connect() {
+        var socket = new SockJS('/socket');
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            setConnected(true);
+            /*console.log('Connected: ' + frame);
+            stompClient.subscribe('/topic/greetings', function (greeting) {
+                showGreeting(JSON.parse(greeting.body).content);
+            });*/
+        });
+    }
+
+    function disconnect() {
+        if (stompClient != null) {
+            stompClient.disconnect();
+        }
+        setConnected(false);
+        console.log("Disconnected");
+    }
+
+    function sendName() {
+        var value = document.getElementById('name').value;
+        stompClient.send("/app/change-notice", {}, value);
+    }
+
+    function showGreeting(message) {
+        var response = document.getElementById('response');
+        var p = document.createElement('p');
+        p.style.wordWrap = 'break-word';
+        p.appendChild(document.createTextNode(message));
+        response.appendChild(p);
+    }
+
+    connect();
 </script>
 </body>
 </html>

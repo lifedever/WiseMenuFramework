@@ -23,6 +23,8 @@
 <!-- Custom and plugin javascript -->
 <script src="/js/inspinia.js"></script>
 <script src="/js/plugins/pace/pace.min.js"></script>
+<script src="/js/sockjs-0.3.4.min.js"></script>
+<script src="/js/stomp.min.js"></script>
 <script src="/js/app.js"></script>
 
 <script>

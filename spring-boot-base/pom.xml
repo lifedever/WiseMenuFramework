@@ -38,12 +38,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <exclusions>
+            <!--<exclusions>
                 <exclusion>
                     <groupId>org.apache.tomcat</groupId>
                     <artifactId>tomcat-juli</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions>-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

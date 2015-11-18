@@ -24,4 +24,16 @@
         e.preventDefault();
         $(this).slideUp()
     });
+
+    var noticeSocket = function(){
+        var s = new SockJS('/socket');
+        var stompClient = Stomp.over(s);
+        stompClient.connect({}, function () {
+            console.log('notice socket connected!');
+            stompClient.subscribe('/topic/notice', function (data) {
+                $('.message span.content').html(data.body);
+            });
+        });
+    }
+    noticeSocket();
 })();

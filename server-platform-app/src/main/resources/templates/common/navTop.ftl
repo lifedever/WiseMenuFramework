@@ -1,7 +1,7 @@
 <#import "../tags.ftl" as tags>
 <#macro show>
 <div class="message ">
-    <strong>公告: </strong><a href="#" class="text-navy">关于赶紧续费不然停机的通知!</a>
+    <strong>公告: </strong><a href="#" class="text-navy"><span class="content">关于赶紧续费不然停机的通知!</span></a>
     <button class="btn btn-xs btn-default pull-right">隐藏</button>
 </div>
 <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">

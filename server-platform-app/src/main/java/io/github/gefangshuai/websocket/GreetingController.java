@@ -1,7 +1,8 @@
 package io.github.gefangshuai.websocket;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class GreetingController {
+    @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
 
     @RequestMapping("/helloIndex")
     public String index(){
         return "/hello/index";
     }
 
-    @MessageMapping("/hello")
-    @SendTo("/topic/greetings")
-    public Greeting greeting(HelloMessage message) throws InterruptedException {
-        Thread.sleep(3000);
-        return new Greeting("Hello, " + message.getName() + "!");
+    @MessageMapping("/change-notice")
+    public void greeting(String value) throws InterruptedException {
+        this.simpMessagingTemplate.convertAndSend("/topic/notice", value);
     }
 }
