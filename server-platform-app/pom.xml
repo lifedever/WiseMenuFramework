@@ -26,11 +26,7 @@
             <artifactId>common-core</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency>
+
         <!-- others -->
 
         <dependency>
@@ -42,7 +38,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        
+
     </dependencies>
     <build>
         <plugins>
@@ -61,27 +57,17 @@
             </plugin>-->
             <!--jetty 插件-->
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.16.v20140903</version>
+                <version>9.2.11.v20150529</version>
                 <configuration>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8080</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
-                    <systemProperties>
-                        <systemProperty>
-                            <name>org.eclipse.jetty.util.URI.charset</name>
-                            <value>UTF-8</value>
-                        </systemProperty>
-                    </systemProperties>
-                    <stopKey>books</stopKey>
-                    <stopPort>8533</stopPort>
+                    <httpConnector>
+                        <port>8888</port>
+                    </httpConnector>
                 </configuration>
             </plugin>
 
