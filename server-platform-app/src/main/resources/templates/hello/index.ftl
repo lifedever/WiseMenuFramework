@@ -58,15 +58,6 @@
         var value = document.getElementById('name').value;
         stompClient.send("/app/change-notice", {}, value);
     }
-
-    function showGreeting(message) {
-        var response = document.getElementById('response');
-        var p = document.createElement('p');
-        p.style.wordWrap = 'break-word';
-        p.appendChild(document.createTextNode(message));
-        response.appendChild(p);
-    }
-
     connect();
 </script>
 </body>

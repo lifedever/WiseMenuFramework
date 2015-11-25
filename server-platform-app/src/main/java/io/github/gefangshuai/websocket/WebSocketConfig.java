@@ -19,8 +19,8 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
     }
 
     @Override
-    public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/topic");        // 指定客户端订阅的前缀，也就是服务端发送地址的前缀
-        config.setApplicationDestinationPrefixes("/app");   // 指定服务端接收地址的前缀
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.enableSimpleBroker("/topic");        // 指定客户端订阅的前缀，也就是服务端发送地址的前缀
+        registry.setApplicationDestinationPrefixes("/app");   // 指定服务端接收地址的前缀
     }
 }
