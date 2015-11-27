@@ -23,7 +23,7 @@
                 <a class="btn btn-circle btn-primary pull-left" href="/rtat/foods"><i
                         class="fa fa-chevron-left"></i></a>
 
-                <div class="page-title">添加新菜品</div>
+                <div class="page-title">菜品信息</div>
             </div>
         </div>
     </div>
@@ -73,24 +73,43 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <label>是否为热菜</label>
-
                                         <div class="radio">
                                             <label>
-                                                <input type="radio" name="isHot" value="true" <#if food.isHot>checked</#if>> 是
+                                                <input type="radio" name="hot" value="true" <#if food.hot>checked</#if>> 是
                                             </label>
                                             <label>
-                                                <input type="radio" name="isHot" value="false" <#if !isHot>checked</#if>> 否
+                                                <input type="radio" name="hot" value="false" <#if !food.hot>checked</#if>> 否
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <label>描述</label>
-                                        <textarea class="form-control required" name="memo" rows="4"
-                                                  placeholder="50个字以内, 对菜品进行简单的描述，如: 口味适合年轻人">${food.memo!}</textarea>
+                                        <label>是否为荤菜</label>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="meat" value="true" <#if food.meat>checked</#if>> 是
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="meat" value="false" <#if !food.meat>checked</#if>> 否
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>是否为清真</label>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="muslim" value="true" <#if food.muslim>checked</#if>> 是
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="muslim" value="false" <#if !food.muslim>checked</#if>> 否
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary pull-right">提交</button>
                             </div>
                             <div class="col-md-4">
@@ -100,6 +119,13 @@
                                         <@cropper.html inputId="inputFoodImage" cutBtn="btnFoodCut"
                                         cutInfoLabel="cutFoodInfo" image="foodImage"
                                         xText="xFoodText" yText="yFoodText" widthText="widthFoodText" heightText="heightFoodText" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>描述</label>
+                                        <textarea class="form-control required" name="memo" rows="4"
+                                                  placeholder="50个字以内, 对菜品进行简单的描述，如: 口味适合年轻人">${food.memo!}</textarea>
                                     </div>
                                 </div>
                             </div>

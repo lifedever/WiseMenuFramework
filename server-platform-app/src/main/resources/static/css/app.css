@@ -7,3 +7,6 @@
 .pad10-lr {
     padding: 0 10px;
 }
+.pad10-tb {
+    padding: 10px 0;
+}

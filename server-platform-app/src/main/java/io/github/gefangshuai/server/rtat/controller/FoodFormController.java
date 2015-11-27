@@ -4,6 +4,7 @@ import io.github.gefangshuai.rtat.model.Food;
 import io.github.gefangshuai.rtat.service.FoodService;
 import io.github.gefangshuai.server.core.config.Menu;
 import io.github.gefangshuai.server.core.context.AppConfigContext;
+import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -51,14 +53,18 @@ public class FoodFormController {
     }
 
     @RequestMapping("/edit/{id}")
-    public String editFood(@ModelAttribute Food food, Model model){
+    public String editFood(@ModelAttribute Food food, Model model, RedirectAttributes redirectAttributes) {
+        if (food == null) {
+            FlashMessageUtils.error(redirectAttributes, "相关菜品不存在！");
+            return "redirect:/rtat/foods";
+        }
         model.addAttribute("food", food);
         return "rtat/foods/form";
     }
 
     @RequestMapping(value = "/save/{id}", method = RequestMethod.POST)
     public String saveFood(@ModelAttribute Food food, double xText, double yText, double widthText, double heightText, MultipartFile file) {
-        if (file != null && file.getSize()>0) {
+        if (file != null && file.getSize() > 0) {
             try {
                 String relativePath = StoreUtils.storeCutFile(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream(), (int) xText, (int) yText, (int) widthText, (int) heightText);
                 food.setImagePath(relativePath);

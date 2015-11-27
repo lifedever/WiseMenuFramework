@@ -24,7 +24,7 @@ public class Food extends CoreModel {
     private String memo;        // 描述
     private boolean hot = true;   // 是否热菜
     private boolean meat = true;  // 是否荤菜
-    private boolean muslim = true;    // 是否清真
+    private boolean muslim = false;    // 是否清真
 
     @ManyToOne
     @JoinColumn(name = "food_type_id")

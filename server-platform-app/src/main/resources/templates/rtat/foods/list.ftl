@@ -32,11 +32,27 @@
 
 
                             <div class="small m-t-xs">
-                                ${food.memo}
+                            ${food.memo}
                             </div>
-                            <div class="m-t text-righ">
 
-                                <a href="/rtat/foods/edit/${food.id}" class="btn btn-xs btn-outline btn-primary">edit <i
+                            <div class="m-t pad10-tb">
+                                <div class="pull-left">
+                                    <#if food.hot>
+                                        <span class="label label-danger">热</span>
+                                    <#else>
+                                        <span class="label label-default">凉</span>
+                                    </#if>
+                                    <#if food.meat>
+                                        <span class="label label-success">荤</span>
+                                    <#else>
+                                        <span class="label label-info">素</span>
+                                    </#if>
+                                    <#if food.muslim>
+                                        <span class="label label-primary">清真</span>
+                                    </#if>
+                                </div>
+                                <a href="/rtat/foods/edit/${food.id}"
+                                   class="btn btn-xs btn-outline btn-primary pull-right">edit <i
                                         class="fa fa-long-arrow-right"></i> </a>
                             </div>
                         </div>
