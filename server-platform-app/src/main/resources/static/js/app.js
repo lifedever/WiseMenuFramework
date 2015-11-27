@@ -25,5 +25,14 @@
         $(this).slideUp()
     });
 
+    $('[data-toggle="delete"]').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var message = $this.data('message')?$this.data('message'):'确定要删除此记录吗？';
+        if(confirm(message)) {
+            location.href = $this.attr('href');
+        }
+
+    });
 
 })();

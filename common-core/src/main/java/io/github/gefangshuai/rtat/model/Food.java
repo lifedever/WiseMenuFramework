@@ -19,6 +19,8 @@ public class Food extends CoreModel {
     @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private double price;   // 价格
     private String imagePath;   // 图片地址
+    private String thumbPath;   // 缩略图地址
+
     private String flavor;      // 口味
     private String materials;   // 用料
     private String memo;        // 描述
@@ -120,5 +122,13 @@ public class Food extends CoreModel {
 
     public void setMemo(String memo) {
         this.memo = memo;
+    }
+
+    public String getThumbPath() {
+        return thumbPath;
+    }
+
+    public void setThumbPath(String thumbPath) {
+        this.thumbPath = thumbPath;
     }
 }

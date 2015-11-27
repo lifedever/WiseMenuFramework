@@ -1,7 +1,11 @@
 package io.github.gefangshuai.utils;
 
+import net.coobird.thumbnailator.Thumbnailator;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.util.ThumbnailatorUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.jboss.jandex.Main;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -22,27 +26,56 @@ public class StoreUtils {
         String relativePath = getRelativePath(extension);
         String filePath = rootDir + relativePath;
         File storeFile = new File(filePath);
-        if(!storeFile.getParentFile().exists())
+        if (!storeFile.getParentFile().exists())
             storeFile.getParentFile().mkdirs();
         IOUtils.copyLarge(inputStream, new FileOutputStream(filePath));
         return relativePath;
+    }
+
+    private static String getFilePath(String rootDir, String relativePath) {
+        rootDir = rootDir.endsWith("/") ? StringUtils.chop(rootDir) : rootDir;
+        String filePath = rootDir + relativePath;
+        File storeFile = new File(filePath);
+        if (!storeFile.getParentFile().exists())
+            storeFile.getParentFile().mkdirs();
+        return filePath;
     }
 
     /**
      * 保存裁剪的数据
      */
     public static String storeCutFile(String rootDir, String extension, InputStream inputStream, int xText, int yText, int widthText, int heightText) throws IOException {
-        rootDir = rootDir.endsWith("/") ? StringUtils.chop(rootDir) : rootDir;
         String relativePath = getRelativePath(extension);
-        String filePath = rootDir + relativePath;
-        File storeFile = new File(filePath);
-        if(!storeFile.getParentFile().exists())
-            storeFile.getParentFile().mkdirs();
+        String filePath = getFilePath(rootDir, relativePath);
         ImageUtils.cutImage(inputStream, filePath, xText, yText, widthText, heightText);
         return relativePath;
     }
 
-    private static String getRelativePath(String extension){
+    /**
+     * 保存裁剪的数据，同时生成缩略图
+     */
+    public static String storeCutFileWithThumb(String rootDir, String extension, InputStream inputStream,
+                                               int xText, int yText, int widthText, int heightText, int thumbWidth, int thumbHeight) throws IOException {
+        String relativePath = getRelativePath(extension);
+        String filePath = getFilePath(rootDir, relativePath);
+        ImageUtils.cutImage(inputStream, filePath, xText, yText, widthText, heightText);
+        Thumbnails.of(filePath)
+                .size(thumbWidth, thumbHeight)
+                .toFile(getThumbPath(filePath));
+        return relativePath;
+    }
+
+    public static String getThumbPath(String path) {
+        String pathOne = path.substring(0, path.lastIndexOf("."));
+        String pattern = path.substring(path.lastIndexOf("."));
+        return pathOne + "-thumb" + pattern;
+    }
+
+    public static void main(String[] args) throws IOException {
+        System.out.println(getThumbPath("ddddd.jpg"));
+    }
+
+    private static String getRelativePath(String extension) {
         String relativePath = "/" + getShortPath() + "/" + System.nanoTime() + extension;
         return relativePath;
     }
@@ -51,7 +84,7 @@ public class StoreUtils {
     /**
      * 根据文件名称，获取后缀，如：".jpq",".png",
      */
-    public static String getExtension(String fileName){
+    public static String getExtension(String fileName) {
         return StringUtils.substring(fileName, fileName.lastIndexOf("."));
     }
 
@@ -62,10 +95,11 @@ public class StoreUtils {
 
     /**
      * 获取web路径
+     *
      * @param request
      * @return
      */
-    public static String getWebRootPath(HttpServletRequest request){
+    public static String getWebRootPath(HttpServletRequest request) {
         return request.getServletContext().getRealPath("");
     }
 

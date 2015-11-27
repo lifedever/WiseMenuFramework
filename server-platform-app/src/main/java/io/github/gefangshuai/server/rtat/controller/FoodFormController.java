@@ -5,6 +5,7 @@ import io.github.gefangshuai.rtat.service.FoodService;
 import io.github.gefangshuai.server.core.config.Menu;
 import io.github.gefangshuai.server.core.context.AppConfigContext;
 import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
+import io.github.gefangshuai.server.core.utils.WebUtils;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -66,8 +67,9 @@ public class FoodFormController {
     public String saveFood(@ModelAttribute Food food, double xText, double yText, double widthText, double heightText, MultipartFile file) {
         if (file != null && file.getSize() > 0) {
             try {
-                String relativePath = StoreUtils.storeCutFile(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream(), (int) xText, (int) yText, (int) widthText, (int) heightText);
+                String relativePath = StoreUtils.storeCutFileWithThumb(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream(), (int) xText, (int) yText, (int) widthText, (int) heightText, 400, 300);
                 food.setImagePath(relativePath);
+                food.setThumbPath(StoreUtils.getThumbPath(relativePath));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -76,15 +78,25 @@ public class FoodFormController {
         return "redirect:/rtat/foods";
     }
 
+
+
     @RequestMapping("/img/{id}")
     public ResponseEntity<byte[]> loadImage(@ModelAttribute Food food) throws IOException {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_PNG);
         if (StringUtils.isBlank(food.getImagePath())) {
             return null;
         } else {
-            return new ResponseEntity<>(FileUtils.readFileToByteArray(new File(appConfigContext.getStorePath() + food.getImagePath())),
-                    headers, HttpStatus.CREATED);
+            return WebUtils.loadImage(appConfigContext.getStorePath() + food.getImagePath());
+
+        }
+    }
+
+    @RequestMapping("/img/{id}/thumb")
+    public ResponseEntity<byte[]> loadImageThumb(@ModelAttribute Food food) throws IOException {
+
+        if (StringUtils.isBlank(food.getImagePath())) {
+            return null;
+        } else {
+            return WebUtils.loadImage(appConfigContext.getStorePath() + food.getThumbPath());
         }
     }
 }

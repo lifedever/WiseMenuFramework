@@ -3,11 +3,14 @@
     var hasCut = false;
     var $image = $('#' +'${image}');
     $image.cropper({
-        aspectRatio: 16 / 9,
+        aspectRatio: 4 / 3,
         highlight: true,
         viewMode: 3,
+        dragMode: 'move',
+        cropBoxMovable: false,
         minContainerWidth: ${minContainerWidth},
         minContainerHeight: ${minContainerHieght},
+        minCropBoxWidth: ${minContainerWidth},
         crop: function (data) {
             hasCut = false;
         }
