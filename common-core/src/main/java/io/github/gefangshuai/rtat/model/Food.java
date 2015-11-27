@@ -1,6 +1,6 @@
-package io.github.gefangshuai.business.model;
+package io.github.gefangshuai.rtat.model;
 
-import io.github.gefangshuai.business.model.listener.FoodAndDrinksPersistentListener;
+import io.github.gefangshuai.rtat.model.listener.FoodAndDrinksPersistentListener;
 import io.github.gefangshuai.server.core.persistence.CoreModel;
 
 import javax.persistence.*;
@@ -18,6 +18,7 @@ public class Food extends CoreModel {
     private String imagePath;   // 图片地址
     private String flavor;      // 口味
     private String materials;   // 用料
+    private String memo;        // 描述
     private boolean isHot = true;   // 是否热菜
     private boolean isMeat = true;  // 是否荤菜
     private boolean isMuslim = true;    // 是否清真
@@ -108,5 +109,13 @@ public class Food extends CoreModel {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
     }
 }

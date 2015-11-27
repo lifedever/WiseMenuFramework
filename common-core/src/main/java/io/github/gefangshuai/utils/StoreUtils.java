@@ -1,6 +1,5 @@
 package io.github.gefangshuai.utils;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 

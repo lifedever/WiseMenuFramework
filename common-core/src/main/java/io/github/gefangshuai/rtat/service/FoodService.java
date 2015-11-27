@@ -1,8 +1,7 @@
-package io.github.gefangshuai.business.service;
+package io.github.gefangshuai.rtat.service;
 
-import io.github.gefangshuai.business.dao.FoodDao;
-import io.github.gefangshuai.business.model.Food;
-import io.github.gefangshuai.server.core.persistence.CoreDao;
+import io.github.gefangshuai.rtat.dao.FoodDao;
+import io.github.gefangshuai.rtat.model.Food;
 import io.github.gefangshuai.server.core.persistence.CoreService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

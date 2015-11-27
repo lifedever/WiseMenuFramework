@@ -13,7 +13,7 @@ $SubmitBtn.on('click', function () {
     $restaurantModalForm.ajaxSubmit({
         beforeSubmit: function () {
             if($('#inputImage').val() && !hasCut){
-                toastr.warning('请对选择的图片确认裁剪!')
+                toastr.warning('请对选择的图片确认裁剪!');
                 return false;
             }
         },

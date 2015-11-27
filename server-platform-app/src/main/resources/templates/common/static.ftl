@@ -1,5 +1,6 @@
 <#macro css>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/js/plugins/jasny-bootstrap/css/jasny-bootstrap.min.css">
 <link href="/font-awesome/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/toastr.css">
 <link href="/css/animate.css" rel="stylesheet">
@@ -11,6 +12,7 @@
 <!-- Mainly scripts -->
 <script src="/js/jquery-2.1.1.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/plugins/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
 <script src="/js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="/js/jquery.form.js"></script>

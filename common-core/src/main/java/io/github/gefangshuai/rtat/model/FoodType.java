@@ -1,6 +1,6 @@
-package io.github.gefangshuai.business.model;
+package io.github.gefangshuai.rtat.model;
 
-import io.github.gefangshuai.business.model.listener.FoodAndDrinksPersistentListener;
+import io.github.gefangshuai.rtat.model.listener.FoodAndDrinksPersistentListener;
 import io.github.gefangshuai.server.core.persistence.CoreModel;
 
 import javax.persistence.*;

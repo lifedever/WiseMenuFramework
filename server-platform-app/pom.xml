@@ -98,6 +98,6 @@
                 <version>2.5</version>
             </plugin>-->
         </plugins>
-        <finalName>Server Platform App</finalName>
+        <finalName>Server-Platform-App</finalName>
     </build>
 </project>

@@ -1,12 +1,12 @@
 package io.github.gefangshuai.server.rtat.controller;
 
-import io.github.gefangshuai.business.model.Food;
-import io.github.gefangshuai.business.service.FoodService;
+import io.github.gefangshuai.rtat.model.Food;
+import io.github.gefangshuai.rtat.service.FoodService;
 import io.github.gefangshuai.server.core.config.Menu;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 
@@ -21,7 +21,7 @@ public class FoodFormController {
     private FoodService foodService;
 
     @ModelAttribute
-    public Food getFoodModel(@PathVariable Long id){
+    public Food getFoodModel(@RequestParam(value="id", defaultValue = "0") Long id){
         Food food;
         if (id == null || id == 0) {
             food = new Food();
@@ -31,7 +31,7 @@ public class FoodFormController {
         return food;
     }
 
-    @RequestMapping("/add/{id}")
+    @RequestMapping("/add")
     public String addFood(@ModelAttribute Food food){
         return "rtat/foods/form";
     }

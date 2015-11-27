@@ -45,6 +45,9 @@ public class IndexController{
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
+        if (SecurityUtils.getSubject().isAuthenticated()) {
+            return "redirect:/";
+        }
         return "login";
     }
 

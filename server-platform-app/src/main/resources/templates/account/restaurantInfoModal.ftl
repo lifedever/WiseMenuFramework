@@ -11,8 +11,6 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-7">
-
-
                         <div class="form-group">
                             <label>门店名称</label>
                             <input type="text" class="form-control required" name="name" value="${restaurant.name!}"

@@ -1,6 +1,6 @@
-package io.github.gefangshuai.business.dao;
+package io.github.gefangshuai.rtat.dao;
 
-import io.github.gefangshuai.business.model.Food;
+import io.github.gefangshuai.rtat.model.Food;
 import io.github.gefangshuai.server.core.persistence.CoreDao;
 
 /**

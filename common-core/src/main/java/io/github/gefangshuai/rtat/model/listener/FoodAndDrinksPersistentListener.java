@@ -1,6 +1,6 @@
-package io.github.gefangshuai.business.model.listener;
+package io.github.gefangshuai.rtat.model.listener;
 
-import io.github.gefangshuai.business.model.Restaurant;
+import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.constant.SessionConstant;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.shiro.SecurityUtils;

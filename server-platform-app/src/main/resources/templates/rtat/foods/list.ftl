@@ -10,7 +10,7 @@
                     </div>
                     <button class="btn btn-primary" type="submit"> <i class="fa fa-search"></i> 查询</button>
                 </form>
-                <a class="btn btn-primary pull-left" href="/rtat/foods/add/0"><i class="fa fa-plus"></i> 添加新菜品</a>
+                <a class="btn btn-primary pull-left" href="/rtat/foods/add"><i class="fa fa-plus"></i> 添加新菜品</a>
             </div>
         </div>
     </div>
