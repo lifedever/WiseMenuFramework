@@ -1,5 +1,6 @@
 <#import "../../tags.ftl" as tags>
 <@tags.footer.jsShow>
+<#--TODO 描述超出长度自动省略号-->
 </@tags.footer.jsShow>
 <@tags.layout.main title="菜品列表">
 <div class="wrapper wrapper-content animated fadeInRight">
