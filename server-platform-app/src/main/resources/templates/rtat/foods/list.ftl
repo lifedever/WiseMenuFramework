@@ -1,4 +1,6 @@
 <#import "../../tags.ftl" as tags>
+<@tags.footer.jsShow>
+</@tags.footer.jsShow>
 <@tags.layout.main title="菜品列表">
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content m-b-sm border-bottom">
@@ -43,7 +45,9 @@
                             <small class="text-muted">Category</small>
                             <a href="#" class="product-name"> ${food.name}</a>
                             <div class="small m-t-xs">
-                            ${food.memo}
+                                <div class="memo">
+                                    ${food.memo}
+                                </div>
                             </div>
 
                             <div class="m-t pad10-tb">

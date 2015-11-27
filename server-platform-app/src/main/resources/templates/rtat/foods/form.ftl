@@ -25,13 +25,11 @@
                 <div class="col-md-12">
                     <a class="btn btn-circle btn-primary pull-left" href="/rtat/foods"><i
                             class="fa fa-chevron-left"></i></a>
-
                     <div class="page-title ">
                         菜品信息
-
                         <div class="col-xs-3  pull-right">
                             <select class="form-control">
-                                <option value="">分类</option>
+                                <option value="">无定义</option>
                                 <option value="">分类</option>
                                 <option value="">分类</option>
                             </select>
