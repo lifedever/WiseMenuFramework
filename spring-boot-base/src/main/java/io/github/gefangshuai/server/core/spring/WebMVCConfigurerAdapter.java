@@ -1,8 +1,12 @@
 package io.github.gefangshuai.server.core.spring;
 
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.context.embedded.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
@@ -51,7 +55,7 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
      *
      * @return
      */
-    @Bean(name = "errorMapping")
+    /*@Bean(name = "errorMapping")
     public SimpleMappingExceptionResolver simpleMappingExceptionResolver() {
         SimpleMappingExceptionResolver exceptionResolver = new SimpleMappingExceptionResolver();
 
@@ -67,7 +71,7 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
 
         return exceptionResolver;
     }
-
+*/
 
     /**
      * 配置文件上传
@@ -80,6 +84,18 @@ public class WebMVCConfigurerAdapter extends WebMvcAutoConfiguration.WebMvcAutoC
         multipartResolver.setDefaultEncoding("utf-8");
         multipartResolver.setMaxUploadSize(100000000);
         return multipartResolver;
+    }
+
+    @Bean
+    public EmbeddedServletContainerCustomizer containerCustomizer() {
+        return new EmbeddedServletContainerCustomizer(){
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, "/400"));
+                container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500"));
+                container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/404"));
+            }
+        };
     }
 
 }

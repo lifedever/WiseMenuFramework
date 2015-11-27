@@ -14,10 +14,12 @@ import javax.annotation.Resource;
 @Service
 @Transactional(readOnly = true)
 public class FoodService extends CoreService<Food, Long>{
+
     private FoodDao foodDao;
 
     @Resource
     public void setFoodDao(FoodDao foodDao) {
+        this.foodDao = foodDao;
         super.coreDao = foodDao;
     }
 }

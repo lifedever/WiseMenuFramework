@@ -7,6 +7,7 @@ import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
+import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,5 +82,10 @@ public class IndexController{
     @RequestMapping("/forbidden")
     public String forbidden(){
         return "error/403";
+    }
+
+    @RequestMapping("/500")
+    public String error500(){
+        return "error/500";
     }
 }
