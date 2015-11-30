@@ -26,7 +26,7 @@
             </a>
             <ul class="nav nav-second-level collapse">
                 <li class="active"><a href="/rtat/foods">菜品列表</a></li>
-                <li><a href="/rtat/foods/classification">菜品分类</a></li>
+                <li><a href="/rtat/foods/type">菜品分类</a></li>
             </ul>
         </li>
         <li <#if nav_menu?starts_with('drinks')>class="active" </#if>>
@@ -37,7 +37,7 @@
             </a>
             <ul class="nav nav-second-level collapse">
                 <li><a href="/rtat/drinks">酒水列表</a></li>
-                <li><a href="/rtat/drinks/classification">酒水分类</a></li>
+                <li><a href="/rtat/drinks/type">酒水分类</a></li>
             </ul>
         </li>
         <li <#if nav_menu?starts_with('orders')>class="active" </#if>>

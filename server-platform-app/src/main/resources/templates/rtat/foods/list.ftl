@@ -43,6 +43,7 @@
 </#assign>
 <@tags.layout.main title="菜品列表" javascript=javascript>
 <div class="wrapper wrapper-content animated fadeInRight">
+
     <div class="ibox-content m-b-sm border-bottom">
         <div class="row">
             <div class="col-md-12">
@@ -71,7 +72,13 @@
                 </div>
             </div>
         </div>
+        <div class="row margin10-t">
+            <div class="col-md-12">
+                分类筛选:
+            </div>
+        </div>
     </div>
+
     <div class="row">
         <#list recordPage.content as food>
             <div class="col-md-3">
