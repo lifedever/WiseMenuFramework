@@ -1,5 +1,8 @@
 package io.github.gefangshuai.server.core.persistence;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,8 +34,13 @@ public abstract class CoreService<T, ID extends Serializable> {
         return coreDao.findAll(sort);
     }
 
+    public Page<T> findAll(Pageable pageable){
+        return coreDao.findAll(pageable);
+    }
+
     @Transactional
     public void delete(ID id) {
         coreDao.delete(id);
     }
+
 }

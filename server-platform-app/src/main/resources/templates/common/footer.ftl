@@ -2,6 +2,9 @@
 <#macro jsShow>
 <@tags.static.js />
 <script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
     var showProfileModal = function(){
         $.get('/account/additional/${Session['session_key_restaurant'].id}', function(data){
             $('#globalModal').html(data).modal('show')

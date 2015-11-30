@@ -1,21 +1,63 @@
 <#import "../../tags.ftl" as tags>
-<@tags.footer.jsShow>
-<#--TODO 描述超出长度自动省略号-->
-</@tags.footer.jsShow>
-<@tags.layout.main title="菜品列表">
+<#assign javascript>
+<script src="/js/jquery.dotdotdot.min.js"></script>
+<script>
+    $('div.memo').dotdotdot({
+        /*	The text to add as ellipsis. */
+        ellipsis: '... ',
+
+        /*	How to cut off the text/html: 'word'/'letter'/'children' */
+        wrap: 'letter',
+
+        /*	Wrap-option fallback to 'letter' for long words */
+        fallbackToLetter: true,
+
+        /*	jQuery-selector for the element to keep and put after the ellipsis. */
+        after: null,
+
+        /*	Whether to update the ellipsis: true/'window' */
+        watch: false,
+
+        /*	Optionally set a max-height, if null, the height will be measured. */
+        height: 19,
+
+        /*	Deviation for the height-option. */
+        tolerance: 0,
+
+        /*	Callback function that is fired after the ellipsis is added,
+         receives two parameters: isTruncated(boolean), orgContent(string). */
+        callback: function (isTruncated, orgContent) {
+        },
+
+        lastCharacter: {
+
+            /*	Remove these characters from the end of the truncated text. */
+            remove: [' ', ',', ';', '.', '!', '?'],
+
+            /*	Don't add an ellipsis if this array contains
+             the last character of the truncated text. */
+            noEllipsis: []
+        }
+    });
+</script>
+</#assign>
+<@tags.layout.main title="菜品列表" javascript=javascript>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="ibox-content m-b-sm border-bottom">
         <div class="row">
             <div class="col-md-12">
-                <form role="form" class="form-inline pull-right">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" class="form-control">
+                <form role="form" class="form-inline">
+                    <div class="input-group pull-right">
+                        <input type="text" id="name" name="key" class="form-control" value="${key!}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> 查询</button>
+                        </span>
                     </div>
-                    <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> 查询</button>
                 </form>
                 <div class="btn-group">
                     <a class="btn btn-primary pull-left" href="/rtat/foods/add/0"><i class="fa fa-plus"></i> 添加新菜品</a>
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
@@ -31,7 +73,7 @@
         </div>
     </div>
     <div class="row">
-        <#list foods as food>
+        <#list recordPage.content as food>
             <div class="col-md-3">
                 <div class="ibox">
                     <div class="ibox-content product-box">
@@ -45,9 +87,18 @@
                                 </span>
                             <small class="text-muted">Category</small>
                             <a href="#" class="product-name"> ${food.name}</a>
+
                             <div class="small m-t-xs">
-                                <div class="memo">
-                                    ${food.memo}
+                                <div class="memo" data-toggle="tooltip" title="${food.memo}">
+                                    <#if food.memo??&&food.memo != ''>
+                                    <span class="text-primary">
+                                        ${food.memo}
+                                    </span>
+                                    <#else>
+                                        <span class="text-danger">
+                                            无定义!
+                                        </span>
+                                    </#if>
                                 </div>
                             </div>
 
@@ -72,7 +123,8 @@
                                        class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
                                     <span class="split"></span>
                                     <a href="/rtat/foods/delete/${food.id}"
-                                       class="btn btn-xs btn-outline btn-danger" data-toggle="delete"> <i class="fa fa-trash"></i> 删除</a>
+                                       class="btn btn-xs btn-outline btn-danger" data-toggle="delete"> <i
+                                            class="fa fa-trash"></i> 删除</a>
                                 </div>
                             </div>
                         </div>
@@ -80,6 +132,11 @@
                 </div>
             </div>
         </#list>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <@tags.data.pagination recordPage=recordPage key=key></@tags.data.pagination>
+        </div>
     </div>
 </div>
 </@tags.layout.main>

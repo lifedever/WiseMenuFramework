@@ -7,3 +7,4 @@
 <#import "common/profile.ftl" as profile>
 <#import "common/sidebar.ftl" as sidebar>
 <#import "lib/shiro.ftl" as shiro>
+<#import "common/data.ftl" as data>

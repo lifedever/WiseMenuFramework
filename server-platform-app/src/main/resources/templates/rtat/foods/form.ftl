@@ -131,7 +131,7 @@
                     <div class="form-group">
                         <div class="col-sm-12">
                             <label>描述</label>
-                                        <textarea class="form-control required" name="memo" rows="4"
+                                        <textarea class="form-control" name="memo" rows="4"
                                                   placeholder="50个字以内, 对菜品进行简单的描述，如: 口味适合年轻人">${food.memo!}</textarea>
                         </div>
                     </div>

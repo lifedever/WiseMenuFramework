@@ -3,9 +3,9 @@
 <html>
 <@tags.header.show></@tags.header.show>
 <body class="gray-bg">
-    <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div class="middle-box text-center loginscreen">
         <div>
-            <div>
+            <div class="animated pulse">
                 <h1 class="logo-name"><a href="/">极智</a></h1>
             </div>
             <h2><@tags.spring.message code="app.title" /></h2>
