@@ -14,6 +14,7 @@ import javax.persistence.*;
 @EntityListeners({FoodAndDrinksPersistentListener.class})
 public class FoodType extends CoreModel{
     private String name;
+    private int orderNumber;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
@@ -33,5 +34,13 @@ public class FoodType extends CoreModel{
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(int orderNumber) {
+        this.orderNumber = orderNumber;
     }
 }

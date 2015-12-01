@@ -6,6 +6,7 @@ import io.github.gefangshuai.server.core.config.Menu;
 import io.github.gefangshuai.server.core.context.AppConfigContext;
 import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
 import io.github.gefangshuai.server.core.utils.QueryUtils;
+import io.github.gefangshuai.server.utils.ModelBeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -33,9 +34,8 @@ public class FoodController {
 
     @RequestMapping
     public String index(@RequestParam(value = "page", defaultValue = "1") int page, String key, Model model) {
-
         PageRequest pageRequest = new PageRequest(page, appConfigContext.getRtatFoodspageSize(), new Sort(Sort.Direction.DESC, "id"));
-        Page<Food> recordPage = foodService.findByNameLike(QueryUtils.getLike(key), pageRequest);
+        Page<Food> recordPage = foodService.findByRestaurantAndNameLike(ModelBeanUtils.getCurrentRestaurant(), QueryUtils.getLike(key), pageRequest);
         model.addAttribute("recordPage", recordPage);
         model.addAttribute("key", key);
         return "rtat/foods/list";
