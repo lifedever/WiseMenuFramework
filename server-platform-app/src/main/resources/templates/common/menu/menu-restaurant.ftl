@@ -25,8 +25,8 @@
                 <span class="fa arrow"></span>
             </a>
             <ul class="nav nav-second-level collapse">
-                <li class="active"><a href="/rtat/foods">菜品列表</a></li>
-                <li><a href="/rtat/foods/type">菜品分类</a></li>
+                <li <#if nav_menu?starts_with('foods-list')>class="active" </#if>><a href="/rtat/foods">菜品列表</a></li>
+                <li <#if nav_menu?starts_with('foods-type')>class="active" </#if>><a href="/rtat/foods/type">菜品分类</a></li>
             </ul>
         </li>
         <li <#if nav_menu?starts_with('drinks')>class="active" </#if>>

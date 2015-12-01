@@ -2,6 +2,7 @@ package io.github.gefangshuai.server.rtat.controller;
 
 import io.github.gefangshuai.rtat.model.FoodType;
 import io.github.gefangshuai.rtat.service.FoodTypeService;
+import io.github.gefangshuai.server.core.config.Menu;
 import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
 import io.github.gefangshuai.server.utils.ModelBeanUtils;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import javax.annotation.Resource;
  * Created by gefangshuai on 2015/11/30.
  */
 @Controller
+@Menu("foods-type")
 @RequestMapping("/rtat/foods/type")
 public class FoodTypeController {
     @Resource
