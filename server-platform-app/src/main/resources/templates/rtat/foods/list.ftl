@@ -54,7 +54,7 @@
                             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
                                 <#if currentType??>
-                                    ${currentType.name}
+                                ${currentType.name}
                                     <input type="hidden" name="typeId" value="${currentType.id}">
                                 <#else>
                                     全部分类
@@ -67,7 +67,8 @@
                                 <li class="divider"></li>
                                 <li><a href="/rtat/foods?key=${key!}">全部分类</a></li>
                                 <#list foodTypes as foodType>
-                                    <li><a href="/rtat/foods?key=${key!}&typeId=${foodType.id}">${foodType.name}</a></li>
+                                    <li><a href="/rtat/foods?key=${key!}&typeId=${foodType.id}">${foodType.name}</a>
+                                    </li>
                                 </#list>
                             </ul>
                             <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> 查询</button>
@@ -75,7 +76,7 @@
                     </div>
                 </form>
                 <div class="btn-group">
-                    <a class="btn btn-primary pull-left" href="/rtat/foods/add/0"><i class="fa fa-plus"></i> 添加新菜品</a>
+                    <a class="btn btn-primary pull-left" href="/rtat/foods/edit/0"><i class="fa fa-plus"></i> 添加新菜品</a>
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
@@ -85,7 +86,7 @@
                         <li><a href="#"><strong>在以下分类中添加：</strong></a></li>
                         <li class="divider"></li>
                         <#list foodTypes as foodType>
-                            <li><a href="#">${foodType.name}</a></li>
+                            <li><a href="/rtat/foods/edit/0?typeId=${foodType.id}">${foodType.name}</a></li>
                         </#list>
                     </ul>
                 </div>
@@ -106,13 +107,13 @@
                                 <span class="product-price">
                                     <small>￥ ${food.price} 元</small>
                                 </span>
-                            <small class="text-muted">Category</small>
+                            <small class="text-muted">${food.foodType?default('无分类')}</small>
                             <a href="#" class="product-name"> ${food.name}</a>
 
                             <div class="small m-t-xs">
                                 <div class="memo" data-toggle="tooltip" title="${food.memo}">
                                     <#if food.memo??&&food.memo != ''>
-                                    <span class="text-primary">
+                                        <span class="text-primary">
                                         ${food.memo}
                                     </span>
                                     <#else>
@@ -156,13 +157,12 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <#if recordPage?? && recordPage.totalElements gt 0>
-                <#if currentType??>
+            <#if currentType??>
                 <@tags.data.pagination recordPage=recordPage key=key typeId=currentType.id></@tags.data.pagination>
             <#else>
                 <@tags.data.pagination recordPage=recordPage key=key></@tags.data.pagination>
             </#if>
-            </#if>
+
         </div>
     </div>
 </div>

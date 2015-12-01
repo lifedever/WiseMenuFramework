@@ -28,10 +28,11 @@
                     <div class="page-title ">
                         菜品信息
                         <div class="col-xs-3  pull-right">
-                            <select class="form-control">
-                                <option value="">无定义</option>
-                                <option value="">分类</option>
-                                <option value="">分类</option>
+                            <select class="form-control" name="typeId">
+                                    <option>全部分类</option>
+                                <#list foodTypes as type>
+                                    <option value="${type.id}" <#if food.foodType?? && food.foodType.id == type.id>selected="selected"</#if> >${type.name}</option>
+                                </#list>
                             </select>
                         </div>
                         <div class="pull-right">
@@ -41,7 +42,6 @@
                 </div>
             </div>
         </div>
-
         <div class="ibox-content">
             <div class="row">
                 <div class="col-md-6 b-r">

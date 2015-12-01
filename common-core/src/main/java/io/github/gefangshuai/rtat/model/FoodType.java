@@ -43,4 +43,9 @@ public class FoodType extends CoreModel{
     public void setOrderNumber(int orderNumber) {
         this.orderNumber = orderNumber;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
