@@ -41,7 +41,7 @@
     });
 </script>
 </#assign>
-<@tags.layout.main title="菜品列表" javascript=javascript>
+<@tags.layout.main title="酒水列表" javascript=javascript>
 <div class="wrapper wrapper-content animated fadeInRight">
 
     <div class="ibox-content m-b-sm border-bottom">
@@ -65,9 +65,10 @@
                             <ul class="dropdown-menu">
                                 <li><a href="#"><strong>选择分类：</strong></a></li>
                                 <li class="divider"></li>
-                                <li><a href="/rtat/foods?key=${key!}">全部分类</a></li>
-                                <#list foodTypes as foodType>
-                                    <li><a href="/rtat/foods?key=${key!}&typeId=${foodType.id}">${foodType.name}</a>
+                                <li><a href="/rtat/drinks?key=${key!}">全部分类</a></li>
+                                <#list drinksTypes as drinksType>
+                                    <li>
+                                        <a href="/rtat/drinks?key=${key!}&typeId=${drinksType.id}">${drinksType.name}</a>
                                     </li>
                                 </#list>
                             </ul>
@@ -76,7 +77,7 @@
                     </div>
                 </form>
                 <div class="btn-group">
-                    <a class="btn btn-primary pull-left" href="/rtat/foods/edit/0"><i class="fa fa-plus"></i> 添加新菜品</a>
+                    <a class="btn btn-primary pull-left" href="/rtat/drinks/edit/0"><i class="fa fa-plus"></i> 添加新酒水</a>
                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
@@ -85,8 +86,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="#"><strong>在以下分类中添加：</strong></a></li>
                         <li class="divider"></li>
-                        <#list foodTypes as foodType>
-                            <li><a href="/rtat/foods/edit/0?typeId=${foodType.id}">${foodType.name}</a></li>
+                        <#list drinksTypes as drinksType>
+                            <li><a href="/rtat/drinks/edit/0?typeId=${drinksType.id}">${drinksType.name}</a></li>
                         </#list>
                     </ul>
                 </div>
@@ -95,30 +96,30 @@
     </div>
 
     <div class="row">
-        <#list recordPage.content as food>
+        <#list recordPage.content as drinks>
             <div class="col-md-3">
                 <div class="ibox">
                     <div class="ibox-content product-box">
 
                         <div class="product-imitation">
-                            <#if food.thumbPath??>
-                                <img src="/rtat/foods/img/${food.id}/thumb" style="width: 100%;">
+                            <#if drinks.thumbPath??>
+                                <img src="/rtat/drinks/img/${drinks.id}/thumb" style="width: 100%">
                             <#else>
                                 <img src="/img/no-pic.png" style="width: 100%">
                             </#if>
                         </div>
                         <div class="product-desc">
                                 <span class="product-price">
-                                    <small>￥ ${food.price} 元</small>
+                                    <small>￥ ${drinks.price} 元</small>
                                 </span>
-                            <small class="text-muted"><strong>分类:</strong> ${food.foodType?default('无分类')}</small>
-                            <a href="#" class="product-name"> ${food.name}</a>
+                            <small class="text-muted"><strong>分类:</strong> ${drinks.drinksType?default('无分类')}</small>
+                            <a href="#" class="product-name"> ${drinks.name}</a>
 
                             <div class="small m-t-xs">
-                                <div class="memo" data-toggle="tooltip" title="${food.memo}">
-                                    <#if food.memo??&&food.memo != ''>
+                                <div class="memo" data-toggle="tooltip" title="${drinks.memo}">
+                                    <#if drinks.memo??&&drinks.memo != ''>
                                         <span class="text-primary">
-                                        ${food.memo}
+                                        ${drinks.memo}
                                     </span>
                                     <#else>
                                         <span class="text-danger">
@@ -129,25 +130,23 @@
                             </div>
 
                             <div class="m-t pad10-b">
-                                <#if food.hot>
-                                    <span class="badge badge-danger">热</span>
-                                <#else>
-                                    <span class="badge badge-default">凉</span>
+                                <#if drinks.hot>
+                                    <span class="badge badge-danger">加热</span>
                                 </#if>
-                                <#if food.meat>
-                                    <span class="badge badge-success">荤</span>
+                                <#if drinks.alcohol>
+                                    <span class="badge badge-success">含酒精</span>
                                 <#else>
-                                    <span class="badge badge-info">素</span>
+                                    <span class="badge badge-info">无酒精</span>
                                 </#if>
-                                <#if food.muslim>
-                                    <span class="badge badge-primary">清真</span>
+                                <#if drinks.frozen>
+                                    <span class="badge badge-default">冰镇</span>
                                 </#if>
                             </div>
                             <div class="text-right">
-                                <a href="/rtat/foods/edit/${food.id}"
+                                <a href="/rtat/drinks/edit/${drinks.id}"
                                    class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
                                 <span class="split"></span>
-                                <a href="/rtat/foods/delete/${food.id}"
+                                <a href="/rtat/drinks/delete/${drinks.id}"
                                    class="btn btn-xs btn-outline btn-danger" data-toggle="delete"> <i
                                         class="fa fa-trash"></i> 删除</a>
                             </div>

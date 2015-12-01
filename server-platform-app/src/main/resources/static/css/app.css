@@ -16,6 +16,11 @@
     padding: 10px 0;
 }
 
+.pad10-b {
+    padding-bottom: 10px;
+}
+
+
 .split {
     margin: 0 1px;
 }

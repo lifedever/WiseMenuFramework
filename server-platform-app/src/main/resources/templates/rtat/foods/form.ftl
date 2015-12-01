@@ -15,7 +15,7 @@
 </script>
     <@cropper.js image="foodImage" input="inputFoodImage" cutInfoLabel="cutFoodInfo" xText="xFoodText" yText="yFoodText" widthText="widthFoodText" heightText="heightFoodText" cutBtn="btnFoodCut"  />
 </#assign>
-<@tags.layout.main title="菜品列表" javascript=javascript>
+<@tags.layout.main title="添加菜品" javascript=javascript>
 <div class="wrapper wrapper-content">
     <form action="/rtat/foods/save/${food.id}" role="form" class="form-horizontal" method="post"
           id="foodForm" enctype="multipart/form-data">
@@ -29,7 +29,7 @@
                         菜品信息
                         <div class="col-xs-3  pull-right">
                             <select class="form-control" name="typeId">
-                                    <option>全部分类</option>
+                                    <option value="0">全部分类</option>
                                 <#list foodTypes as type>
                                     <option value="${type.id}" <#if food.foodType?? && food.foodType.id == type.id>selected="selected"</#if> >${type.name}</option>
                                 </#list>
