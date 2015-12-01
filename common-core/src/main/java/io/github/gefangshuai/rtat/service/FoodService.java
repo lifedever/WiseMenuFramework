@@ -2,6 +2,7 @@ package io.github.gefangshuai.rtat.service;
 
 import io.github.gefangshuai.rtat.dao.FoodDao;
 import io.github.gefangshuai.rtat.model.Food;
+import io.github.gefangshuai.rtat.model.FoodType;
 import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.server.core.persistence.CoreService;
 import org.springframework.data.domain.Page;
@@ -28,5 +29,9 @@ public class FoodService extends CoreService<Food, Long>{
 
     public Page<Food> findByRestaurantAndNameLike(Restaurant restaurant, String name, Pageable page) {
         return foodDao.findByRestaurantAndNameLike(restaurant, name, page);
+    }
+
+    public Page<Food> findByRestaurantAndFoodTypeAndNameLike(Restaurant restaurant, FoodType foodType, String name, Pageable page){
+        return foodDao.findByRestaurantAndFoodTypeAndNameLike(restaurant, foodType, name, page);
     }
 }

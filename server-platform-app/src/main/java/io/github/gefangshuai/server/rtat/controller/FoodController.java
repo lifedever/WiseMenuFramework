@@ -1,7 +1,10 @@
 package io.github.gefangshuai.server.rtat.controller;
 
 import io.github.gefangshuai.rtat.model.Food;
+import io.github.gefangshuai.rtat.model.FoodType;
+import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.rtat.service.FoodService;
+import io.github.gefangshuai.rtat.service.FoodTypeService;
 import io.github.gefangshuai.server.core.config.Menu;
 import io.github.gefangshuai.server.core.context.AppConfigContext;
 import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by gefangshuai on 2015/11/13.
@@ -30,13 +34,28 @@ public class FoodController {
     @Resource
     private FoodService foodService;
     @Resource
+    private FoodTypeService foodTypeService;
+
+    @Resource
     private AppConfigContext appConfigContext;
 
     @RequestMapping
-    public String index(@RequestParam(value = "page", defaultValue = "1") int page, String key, Model model) {
+    public String index(@RequestParam(value = "page", defaultValue = "1") int page, String key, Long typeId, Model model) {
         PageRequest pageRequest = new PageRequest(page, appConfigContext.getRtatFoodspageSize(), new Sort(Sort.Direction.DESC, "id"));
-        Page<Food> recordPage = foodService.findByRestaurantAndNameLike(ModelBeanUtils.getCurrentRestaurant(), QueryUtils.getLike(key), pageRequest);
+        Restaurant restaurant = ModelBeanUtils.getCurrentRestaurant();
+
+        Page<Food> recordPage;
+        if (typeId == null || typeId == 0) {
+            recordPage = foodService.findByRestaurantAndNameLike(restaurant, QueryUtils.getLike(key), pageRequest);
+        }else{
+            FoodType foodType = foodTypeService.findOne(typeId);
+            model.addAttribute("currentType", foodType);
+            recordPage = foodService.findByRestaurantAndFoodTypeAndNameLike(restaurant,foodType, QueryUtils.getLike(key), pageRequest);
+        }
+        List<FoodType> foodTypes = foodTypeService.findByRestaurant(restaurant);
+
         model.addAttribute("recordPage", recordPage);
+        model.addAttribute("foodTypes", foodTypes);
         model.addAttribute("key", key);
         return "rtat/foods/list";
     }

@@ -51,6 +51,25 @@
                     <div class="input-group pull-right">
                         <input type="text" id="name" name="key" class="form-control" value="${key!}">
                         <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <#if currentType??>
+                                    ${currentType.name}
+                                    <input type="hidden" name="typeId" value="${currentType.id}">
+                                <#else>
+                                    全部分类
+                                </#if>
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#"><strong>选择分类：</strong></a></li>
+                                <li class="divider"></li>
+                                <li><a href="/rtat/foods?key=${key!}">全部分类</a></li>
+                                <#list foodTypes as foodType>
+                                    <li><a href="/rtat/foods?key=${key!}&typeId=${foodType.id}">${foodType.name}</a></li>
+                                </#list>
+                            </ul>
                             <button class="btn btn-primary" type="submit"><i class="fa fa-search"></i> 查询</button>
                         </span>
                     </div>
@@ -65,16 +84,11 @@
                     <ul class="dropdown-menu">
                         <li><a href="#"><strong>在以下分类中添加：</strong></a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <#list foodTypes as foodType>
+                            <li><a href="#">${foodType.name}</a></li>
+                        </#list>
                     </ul>
                 </div>
-            </div>
-        </div>
-        <div class="row margin10-t">
-            <div class="col-md-12">
-                分类筛选:
             </div>
         </div>
     </div>
@@ -142,7 +156,13 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <@tags.data.pagination recordPage=recordPage key=key></@tags.data.pagination>
+            <#if recordPage?? && recordPage.totalElements gt 0>
+                <#if currentType??>
+                <@tags.data.pagination recordPage=recordPage key=key typeId=currentType.id></@tags.data.pagination>
+            <#else>
+                <@tags.data.pagination recordPage=recordPage key=key></@tags.data.pagination>
+            </#if>
+            </#if>
         </div>
     </div>
 </div>
