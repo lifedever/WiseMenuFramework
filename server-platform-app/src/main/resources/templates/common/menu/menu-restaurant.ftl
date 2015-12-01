@@ -1,20 +1,7 @@
+<#import "../../tags.ftl" as tags>
 <div class="sidebar-collapse">
     <ul class="nav metismenu" id="side-menu">
-        <li class="nav-header" style="height: 155px;">
-            <div class="profile-element text-center">
-            <span>
-                <img alt="image" class="img-circle" src="/account/load/shopImage/61">
-            </span>
-                <a class="dropdown-toggle" id="profileName">
-                <span class="block m-t-xs">
-                    <strong class="font-bold">海底捞火锅城</strong>
-                </span>
-                </a>
-            </div>
-            <div class="logo-element">
-                智+
-            </div>
-        </li>
+        <@tags.profile.show/>
         <li <#if !nav_menu?exists || nav_menu == 'index'>class="active" </#if>>
             <a href="/"><i class="fa fa-th-large"></i> <span class="nav-label">首页</span></a>
         </li>

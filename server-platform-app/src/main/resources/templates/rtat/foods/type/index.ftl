@@ -56,32 +56,36 @@
                         <input type="text" id="name" name="name" class="form-control" placeholder="输入分类名称">
                     </div>
                     <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> 添加</button>
-                    <p class="pull-right text-info"> <i class="fa fa-bullhorn"></i> <strong>可拖放分类进行顺序调整.</strong></p>
+                    <p class="pull-right text-info"><i class="fa fa-bullhorn"></i> <strong>可拖放分类进行顺序调整.</strong></p>
                 </form>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <#list foodTypes as foodType>
-            <div class="col-md-4 animated fadeInDown" draggable="true" ondragstart="return dragStart(event)"
-                 ondragenter="return dragEnter(event)"
-                 ondrop="return dragDrop(event)"
-                 ondragover="return dragOver(event)"
-                 data-id="${foodType.id}">
-                <div class="ibox">
-                    <div class="ibox-content">
-                        <h2>${foodType.name}</h2>
 
-                        <div class="agile-detail">
-                            <a href="/rtat/foods/type/delete/${foodType.id}" class="pull-right btn btn-xs btn-danger"
-                               data-toggle="delete"> <i class="fa fa-trash"></i> 删除</a>
-                            <i class="fa fa-clock-o"></i> ${foodType.createTime?string('yyyy.MM.dd')}
+        <#if foodTypes?has_content>
+            <#list foodTypes as foodType>
+                <div class="col-md-4 animated fadeInDown" draggable="true" ondragstart="return dragStart(event)"
+                     ondragenter="return dragEnter(event)"
+                     ondrop="return dragDrop(event)"
+                     ondragover="return dragOver(event)"
+                     data-id="${foodType.id}">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <h2>${foodType.name}</h2>
+
+                            <div class="agile-detail">
+                                <a href="/rtat/foods/type/delete/${foodType.id}"
+                                   class="pull-right btn btn-xs btn-danger"
+                                   data-toggle="delete"> <i class="fa fa-trash"></i> 删除</a>
+                                <i class="fa fa-clock-o"></i> ${foodType.createTime?string('yyyy.MM.dd')}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </#list>
+            </#list>
+        </#if>
     </div>
 </div>
 </@tags.layout.main>
