@@ -95,67 +95,71 @@
         </div>
     </div>
 
-    <div class="row">
-        <#list recordPage.content as drinks>
-            <div class="col-md-3">
-                <div class="ibox">
-                    <div class="ibox-content product-box">
+    <#list recordPage.content as drinks>
+        <#if drinks_index%4==0>
+        <div class="row">
+        </#if>
+        <div class="col-md-3">
+            <div class="ibox">
+                <div class="ibox-content product-box">
 
-                        <div class="product-imitation">
-                            <#if drinks.thumbPath??>
-                                <img src="/rtat/drinks/img/${drinks.id}/thumb" style="width: 100%">
-                            <#else>
-                                <img src="/img/no-pic.png" style="width: 100%">
-                            </#if>
-                        </div>
-                        <div class="product-desc">
+                    <div class="product-imitation">
+                        <#if drinks.thumbPath??>
+                            <img src="/rtat/drinks/img/${drinks.id}/thumb" style="width: 100%">
+                        <#else>
+                            <img src="/img/no-pic.png" style="width: 100%">
+                        </#if>
+                    </div>
+                    <div class="product-desc">
                                 <span class="product-price">
                                     <small>￥ ${drinks.price} 元</small>
                                 </span>
-                            <small class="text-muted"><strong>分类:</strong> ${drinks.drinksType?default('无分类')}</small>
-                            <a href="#" class="product-name"> ${drinks.name}</a>
+                        <small class="text-muted"><strong>分类:</strong> ${drinks.drinksType?default('无分类')}</small>
+                        <a href="#" class="product-name"> ${drinks.name}</a>
 
-                            <div class="small m-t-xs">
-                                <div class="memo" data-toggle="tooltip" title="${drinks.memo}">
-                                    <#if drinks.memo??&&drinks.memo != ''>
-                                        <span class="text-primary">
-                                        ${drinks.memo}
+                        <div class="small m-t-xs">
+                            <div class="memo" data-toggle="tooltip" title="${drinks.memo}">
+                                <#if drinks.memo??&&drinks.memo != ''>
+                                    <span class="text-primary">
+                                    ${drinks.memo}
                                     </span>
-                                    <#else>
-                                        <span class="text-danger">
+                                <#else>
+                                    <span class="text-danger">
                                             无定义!
                                         </span>
-                                    </#if>
-                                </div>
+                                </#if>
                             </div>
+                        </div>
 
-                            <div class="m-t pad10-b">
-                                <#if drinks.hot>
-                                    <span class="badge badge-danger">加热</span>
-                                </#if>
-                                <#if drinks.alcohol>
-                                    <span class="badge badge-success">含酒精</span>
-                                <#else>
-                                    <span class="badge badge-info">无酒精</span>
-                                </#if>
-                                <#if drinks.frozen>
-                                    <span class="badge badge-default">冰镇</span>
-                                </#if>
-                            </div>
-                            <div class="text-right">
-                                <a href="/rtat/drinks/edit/${drinks.id}"
-                                   class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
-                                <span class="split"></span>
-                                <a href="/rtat/drinks/delete/${drinks.id}"
-                                   class="btn btn-xs btn-outline btn-danger" data-toggle="delete"> <i
-                                        class="fa fa-trash"></i> 删除</a>
-                            </div>
+                        <div class="m-t pad10-b">
+                            <#if drinks.hot>
+                                <span class="badge badge-danger">加热</span>
+                            </#if>
+                            <#if drinks.alcohol>
+                                <span class="badge badge-success">含酒精</span>
+                            <#else>
+                                <span class="badge badge-info">无酒精</span>
+                            </#if>
+                            <#if drinks.frozen>
+                                <span class="badge badge-default">冰镇</span>
+                            </#if>
+                        </div>
+                        <div class="text-right">
+                            <a href="/rtat/drinks/edit/${drinks.id}"
+                               class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
+                            <span class="split"></span>
+                            <a href="/rtat/drinks/delete/${drinks.id}"
+                               class="btn btn-xs btn-outline btn-danger" data-toggle="delete"> <i
+                                    class="fa fa-trash"></i> 删除</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </#list>
-    </div>
+        </div>
+        <#if (drinks_index + 1)%4==0>
+        </div>
+        </#if>
+    </#list>
     <div class="row">
         <div class="col-md-12">
             <#if currentType??>

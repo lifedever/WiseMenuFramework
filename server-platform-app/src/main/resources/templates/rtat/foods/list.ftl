@@ -94,69 +94,72 @@
         </div>
     </div>
 
-    <div class="row">
-        <#list recordPage.content as food>
-            <div class="col-md-3">
-                <div class="ibox">
-                    <div class="ibox-content product-box">
-
-                        <div class="product-imitation">
-                            <#if food.thumbPath??>
-                                <img src="/rtat/foods/img/${food.id}/thumb" style="width: 100%;">
-                            <#else>
-                                <img src="/img/no-pic.png" style="width: 100%">
-                            </#if>
-                        </div>
-                        <div class="product-desc">
+    <#list recordPage.content as food>
+        <#if food_index%4==0>
+        <div class="row">
+        </#if>
+        <div class="col-md-3">
+            <div class="ibox">
+                <div class="ibox-content product-box">
+                    <div class="product-imitation">
+                        <#if food.thumbPath??>
+                            <img src="/rtat/foods/img/${food.id}/thumb" style="width: 100%;">
+                        <#else>
+                            <img src="/img/no-pic.png" style="width: 100%">
+                        </#if>
+                    </div>
+                    <div class="product-desc">
                                 <span class="product-price">
                                     <small>￥ ${food.price} 元</small>
                                 </span>
-                            <small class="text-muted"><strong>分类:</strong> ${food.foodType?default('无分类')}</small>
-                            <a href="#" class="product-name"> ${food.name}</a>
+                        <small class="text-muted"><strong>分类:</strong> ${food.foodType?default('无分类')}</small>
+                        <a href="#" class="product-name"> ${food.name}</a>
 
-                            <div class="small m-t-xs">
-                                <div class="memo" data-toggle="tooltip" title="${food.memo}">
-                                    <#if food.memo??&&food.memo != ''>
-                                        <span class="text-primary">
-                                        ${food.memo}
+                        <div class="small m-t-xs">
+                            <div class="memo" data-toggle="tooltip" title="${food.memo}">
+                                <#if food.memo??&&food.memo != ''>
+                                    <span class="text-primary">
+                                    ${food.memo}
                                     </span>
-                                    <#else>
-                                        <span class="text-danger">
+                                <#else>
+                                    <span class="text-danger">
                                             无定义!
                                         </span>
-                                    </#if>
-                                </div>
+                                </#if>
                             </div>
+                        </div>
 
-                            <div class="m-t pad10-b">
-                                <#if food.hot>
-                                    <span class="badge badge-danger">热</span>
-                                <#else>
-                                    <span class="badge badge-default">凉</span>
-                                </#if>
-                                <#if food.meat>
-                                    <span class="badge badge-success">荤</span>
-                                <#else>
-                                    <span class="badge badge-info">素</span>
-                                </#if>
-                                <#if food.muslim>
-                                    <span class="badge badge-primary">清真</span>
-                                </#if>
-                            </div>
-                            <div class="text-right">
-                                <a href="/rtat/foods/edit/${food.id}"
-                                   class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
-                                <span class="split"></span>
-                                <a href="/rtat/foods/delete/${food.id}"
-                                   class="btn btn-xs btn-outline btn-danger" data-toggle="delete"> <i
-                                        class="fa fa-trash"></i> 删除</a>
-                            </div>
+                        <div class="m-t pad10-b">
+                            <#if food.hot>
+                                <span class="badge badge-danger">热</span>
+                            <#else>
+                                <span class="badge badge-default">凉</span>
+                            </#if>
+                            <#if food.meat>
+                                <span class="badge badge-success">荤</span>
+                            <#else>
+                                <span class="badge badge-info">素</span>
+                            </#if>
+                            <#if food.muslim>
+                                <span class="badge badge-primary">清真</span>
+                            </#if>
+                        </div>
+                        <div class="text-right">
+                            <a href="/rtat/foods/edit/${food.id}"
+                               class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
+                            <span class="split"></span>
+                            <a href="/rtat/foods/delete/${food.id}"
+                               class="btn btn-xs btn-outline btn-danger" data-toggle="delete"> <i
+                                    class="fa fa-trash"></i> 删除</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </#list>
-    </div>
+        </div>
+        <#if (food_index + 1)%4==0>
+        </div>
+        </#if>
+    </#list>
     <div class="row">
         <div class="col-md-12">
             <#if currentType??>

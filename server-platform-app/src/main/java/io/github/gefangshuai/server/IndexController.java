@@ -53,12 +53,12 @@ public class IndexController{
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(RedirectAttributes redirectAttributes){
+    public String login(HttpServletRequest request, RedirectAttributes redirectAttributes){
         Subject subject = SecurityUtils.getSubject();
         if (subject.isAuthenticated()) {
             return "redirect:/";
         } else {
-            User user = userService.findByUsername((String) subject.getPrincipal());
+            User user = userService.findByUsername(request.getParameter("username"));
             if (user == null) {
                 FlashMessageUtils.error(redirectAttributes, "用户不存在！");
             }else{
