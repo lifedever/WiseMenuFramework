@@ -1,36 +1,25 @@
 <#import "../tags.ftl" as tags>
 <#macro jsShow>
 <@tags.static.js />
+<@tags.shiro.hasRole role='restaurant'>
+<script src="/js/restaurant.js"></script>
+</@tags.shiro.hasRole>
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    })
-    var showProfileModal = function(){
-        $.get('/account/additional/${Session['session_key_restaurant'].id}', function(data){
-            $('#globalModal').html(data).modal('show')
-        });
-    };
-
-    var hasActive = '${Session['session_key_restaurant'].name!}';
-    if(hasActive == ''){
-        showProfileModal();
-    }
-
-    $('#profileName').on('click', function () {
-        showProfileModal();
     });
+
     <@tags.shiro.user>
     var noticeSocket = function () {
         var s = new SockJS('/socket');
         var stompClient = Stomp.over(s);
         stompClient.connect({}, function () {
-            console.log('notice socket connected!');
             stompClient.subscribe('/topic/notice', function (data) {
                 $('.message span.content').html(data.body);
             });
         });
     };
-    </@tags.shiro.user>
     noticeSocket();
+    </@tags.shiro.user>
 </script>
 </#macro>

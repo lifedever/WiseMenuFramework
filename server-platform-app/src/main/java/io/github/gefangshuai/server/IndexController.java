@@ -1,5 +1,6 @@
 package io.github.gefangshuai.server;
 
+import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.permission.service.UserService;
 import io.github.gefangshuai.server.core.config.Menu;
@@ -32,7 +33,14 @@ public class IndexController{
      */
     @RequestMapping("/")
     public String greeting(Model model, HttpServletRequest request) {
-        return "index";
+        if (SecurityUtils.getSubject().hasRole(Role.RESTAURANT.getName())){
+            return "index";
+        }
+        if (SecurityUtils.getSubject().hasRole(Role.ADMINISTRATOR.getName())) {
+            return "admin/index";
+        }
+
+        return "redirect:/forbidden";
     }
 
     /**

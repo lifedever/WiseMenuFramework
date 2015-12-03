@@ -1,14 +1,11 @@
 <#import "../tags.ftl" as tags>
 <#macro show>
-<div class="message ">
-    <strong>公告: </strong><a href="#" class="text-navy"><span class="content">关于赶紧续费不然停机的通知!</span></a>
-    <button class="btn btn-xs btn-default pull-right">隐藏</button>
-</div>
-<nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+<nav class="navbar navbar-static-top white-bg " role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <a class="navbar-minimalize minimalize-styl-2 btn btn-default " href="#"><i class="fa fa-bars"></i>
         </a>
     </div>
+
     <ul class="nav navbar-top-links navbar-right">
         <li>
             <span class="m-r-sm text-muted welcome-message">欢迎回来, <strong> <@tags.shiro.principal/></strong>!</span>
@@ -113,14 +110,60 @@
                 </li>
             </ul>
         </li>
-
-
         <li>
             <a href="/logout">
                 <i class="fa fa-sign-out"></i> Log out
             </a>
         </li>
+        <@tags.shiro.hasRole role="restaurant">
+            <li>
+                <a class="right-sidebar-toggle">
+                    <i class="fa fa-tasks"></i>
+                </a>
+            </li>
+        </@tags.shiro.hasRole>
     </ul>
+    <@tags.shiro.hasRole role="restaurant">
+        <div id="right-sidebar">
+            <div class="sidebar-container">
+                <div class="sidebar-title">
+                    <h3><i class="fa fa-gears"></i> 设置</h3>
+                    <small><i class="fa fa-tim"></i> 您的店铺已经线上运营105天!</small>
+                </div>
 
+                <div class="setings-item">
+                    <h4>
+                        店铺线上营业状态
+                    </h4>
+                    <p class="text-danger">
+                        <small>如需进行店铺整顿，请将店铺状态调整为歇业，以免造成不必要的损失!</small>
+                    </p>
+                    <span id="online-open-status-text">
+                        ${Session['session_key_restaurant'].opening?string('火爆营业中', '线上整顿中')}
+                    </span>
+                    <div class="switch" data-toggle="tooltip" title="改变店铺线上营业状态">
+                        <div class="onoffswitch">
+                            <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox"
+                                   id="online-open-status-switch" <#if Session['session_key_restaurant'].opening>checked</#if>>
+                            <label class="onoffswitch-label" for="online-open-status-switch">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-content">
+                    <h4>永恒寄语</h4>
+                    <div class="small">
+                        <i class="fa fa-smile-o"></i> 不想当将军的士兵不是好士兵.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </@tags.shiro.hasRole>
+</nav>
+<nav class="wrapper message bg-warning border-bottom">
+    <strong>公告: </strong><a href="#" class="text-white"><span class="content">关于赶紧续费不然停机的通知!</span></a>
+    <button class="btn btn-xs btn-default pull-right">隐藏</button>
 </nav>
 </#macro>

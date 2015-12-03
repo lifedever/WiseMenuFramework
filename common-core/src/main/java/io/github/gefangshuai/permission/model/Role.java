@@ -5,8 +5,8 @@ package io.github.gefangshuai.permission.model;
  * Created by gefangshuai on 2015/11/6.
  */
 public enum Role {
-    ADMINISTRATOR("administrator", "系统管理员", "/dashboard"),
-    RESTAURANT("restaurant", "经营者", "/dashboard"),
+    ADMINISTRATOR("administrator", "系统管理员", "/admin"),
+    RESTAURANT("restaurant", "经营者", "/"),
     CONSUMER("consumer", "消费者", "/");
 
     private String name;

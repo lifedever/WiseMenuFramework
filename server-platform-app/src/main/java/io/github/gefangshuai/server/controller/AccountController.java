@@ -59,7 +59,7 @@ public class AccountController {
 
     @RequestMapping("load/shopImage/{id}")
     public ResponseEntity<byte[]> loadShopImage(@PathVariable long id, HttpServletRequest request) throws IOException {
-        Restaurant restaurant = (Restaurant) SecurityUtils.getSubject().getSession().getAttribute(SessionConstant.RESTAURANT_KEY);
+        Restaurant restaurant = restaurantService.findOne(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
         if (StringUtils.isBlank(restaurant.getImagePath())) {

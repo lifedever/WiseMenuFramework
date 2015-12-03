@@ -1901,9 +1901,9 @@ a.DTTT_button:hover:not(.DTTT_disabled) {
 
 /* CIRCLE */
 .img-circle {
-    width: 100px;
-    height: 100px;
-    margin-left:30px;
+    width: 80px;
+    height: 80px;
+    margin-left:0px;
     border-radius: 50%;
 }
 
@@ -5836,6 +5836,12 @@ dd.project-people {
     height: 32px;
 }
 
+.project-image img {
+    width: 60px;
+    height: 60px;
+}
+
+
 .project-title a {
     font-size: 14px;
     color: #676a6c;
@@ -5969,13 +5975,17 @@ dd.project-people {
 }
 
 .message {
-    background-color: #fff;
-    border: 1px solid #e7eaec;
     text-align: left;
     display: block;
-    padding: 10px 20px;
+    padding: 12px 20px;
     position: relative;
-    border-radius: 4px;
+    border-radius: 0px;
+}
+
+.message-fixed-top {
+
+    position: fixed;
+    z-index: 999999;
 }
 
 .chat-discussion .chat-message.left .message-date {

@@ -1,5 +1,6 @@
 package io.github.gefangshuai.rtat.service;
 
+import io.github.gefangshuai.constant.StatusEnum;
 import io.github.gefangshuai.rtat.dao.RestaurantDao;
 import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.constant.SessionConstant;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by gefangshuai on 2015/11/9.
@@ -32,6 +34,7 @@ public class RestaurantService {
             throw new ModelPersistentException("the restaurant's ID must be 0 or null!");
         User user = userService.createUser(restaurant.getUser(), Role.RESTAURANT);
         restaurant.setUser(user);
+        restaurant.setStatus(StatusEnum.VALID);
         return restaurantDao.save(restaurant);
     }
 
@@ -52,6 +55,12 @@ public class RestaurantService {
         restaurantDao.save(restaurant);
     }
 
+    @Transactional
+    public void updateWithSession(Restaurant restaurant){
+        update(restaurant);
+        updateSession(restaurant);
+    }
+
     /**
      * 刷新session里的数据
      * @param restaurant
@@ -61,4 +70,7 @@ public class RestaurantService {
         session.setAttribute(SessionConstant.RESTAURANT_KEY, restaurant);
     }
 
+    public List<Restaurant> findAll() {
+        return restaurantDao.findAll();
+    }
 }

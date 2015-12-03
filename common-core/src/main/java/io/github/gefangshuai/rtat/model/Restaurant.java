@@ -1,5 +1,7 @@
 package io.github.gefangshuai.rtat.model;
 
+import com.google.gson.Gson;
+import io.github.gefangshuai.constant.StatusEnum;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.server.core.persistence.CoreModel;
 import org.hibernate.annotations.Cascade;
@@ -17,7 +19,7 @@ import java.util.List;
 public class Restaurant extends CoreModel{
     private String name;            // 门店名称
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> telNum;    // 联系方式，可以多个(前台页面暂时只支持一个)
     private String province;        // 省
     private String city;            // 市
@@ -26,14 +28,12 @@ public class Restaurant extends CoreModel{
 
     private String memo;            // 门店描述
     private String imagePath;       // 门店图片地址
-
-
+    private Boolean opening = true;        // 营业中
+    private StatusEnum status = StatusEnum.INVALID; // 是否有效
     @OneToOne
     @JoinColumn(name = "userId")
     @Cascade(CascadeType.ALL)
     private User user;              // 对应用户表
-
-
 
     public User getUser() {
         return user;
@@ -107,4 +107,24 @@ public class Restaurant extends CoreModel{
         this.imagePath = imagePath;
     }
 
+    public Boolean getOpening() {
+        return opening;
+    }
+
+    public void setOpening(Boolean opening) {
+        this.opening = opening;
+    }
+
+    public StatusEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusEnum status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 }

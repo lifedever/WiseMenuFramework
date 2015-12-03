@@ -4,7 +4,7 @@
 <html>
     <@tags.header.show title="${title}"/>
 ${css}
-<body class="">
+<body class="fixed-sidebar">
 <div id="wrapper">
     <@tags.sidebar.show/>
     <div id="page-wrapper" class="gray-bg">
