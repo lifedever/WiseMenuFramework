@@ -2,6 +2,7 @@ package io.github.gefangshuai.server.rtat.controller;
 
 import io.github.gefangshuai.rtat.model.Drinks;
 import io.github.gefangshuai.rtat.model.DrinksType;
+import io.github.gefangshuai.rtat.model.Food;
 import io.github.gefangshuai.rtat.service.DrinksService;
 import io.github.gefangshuai.rtat.service.DrinksTypeService;
 import io.github.gefangshuai.server.core.config.Menu;
@@ -87,7 +88,12 @@ public class DrinksFormController {
         return "redirect:/rtat/drinks";
     }
 
-
+    @RequestMapping("/published/{id}/{published}")
+    public String published(@ModelAttribute Drinks drinks, @PathVariable boolean published){
+        drinks.setPublished(published);
+        drinksService.save(drinks);
+        return "redirect:/rtat/drinks";
+    }
     @RequestMapping("/img/{id}")
     public ResponseEntity<byte[]> loadImage(@ModelAttribute Drinks drinks) throws IOException {
         return WebUtils.loadImage(appConfigContext.getStorePath() + drinks.getImagePath());

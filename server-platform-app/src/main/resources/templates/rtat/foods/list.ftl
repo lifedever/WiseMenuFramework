@@ -113,7 +113,12 @@
                                     <small>￥ ${food.price} 元</small>
                                 </span>
                         <small class="text-muted"><strong>分类:</strong> ${food.foodType?default('无分类')}</small>
-                        <a href="#" class="product-name"> ${food.name}</a>
+                        <a href="#" class="product-name">
+                        ${food.name}
+                            <#if !food.published>
+                                <span class="label label-danger">已下架</span>
+                            </#if>
+                        </a>
 
                         <div class="small m-t-xs">
                             <div class="memo" data-toggle="tooltip" title="${food.memo}">
@@ -145,6 +150,11 @@
                             </#if>
                         </div>
                         <div class="text-right">
+                            <#if food.published>
+                                <a href="/rtat/foods/published/${food.id}/false" class="btn btn-xs btn-outline btn-success"> <i class="fa fa-angle-double-down"></i> 下架</a>
+                            <#else>
+                                <a href="/rtat/foods/published/${food.id}/true" class="btn btn-xs btn-outline btn-success"> <i class="fa fa-angle-double-up"></i> 上架</a>
+                            </#if>
                             <a href="/rtat/foods/edit/${food.id}"
                                class="btn btn-xs btn-outline btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
                             <span class="split"></span>

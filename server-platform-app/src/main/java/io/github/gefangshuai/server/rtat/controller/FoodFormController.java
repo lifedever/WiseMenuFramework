@@ -89,6 +89,13 @@ public class FoodFormController {
         return "redirect:/rtat/foods";
     }
 
+    @RequestMapping("/published/{id}/{published}")
+    public String published(@ModelAttribute Food food, @PathVariable boolean published){
+        food.setPublished(published);
+        foodService.save(food);
+        return "redirect:/rtat/foods";
+    }
+
 
     @RequestMapping("/img/{id}")
     public ResponseEntity<byte[]> loadImage(@ModelAttribute Food food) throws IOException {
@@ -100,6 +107,7 @@ public class FoodFormController {
         }
     }
 
+
     @RequestMapping("/img/{id}/thumb")
     public ResponseEntity<byte[]> loadImageThumb(@ModelAttribute Food food) throws IOException {
 
@@ -109,4 +117,6 @@ public class FoodFormController {
             return WebUtils.loadImage(appConfigContext.getStorePath() + food.getThumbPath());
         }
     }
+
+
 }
