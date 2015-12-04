@@ -24,6 +24,7 @@ public class Drinks extends CoreModel {
     private boolean alcohol = false;   // 是否含有酒精
     private boolean hot = false;  // 是否加热
     private boolean frozen = false;    // 是否冰镇
+    private boolean published = false;  // 是否发布
 
     @ManyToOne
     @JoinColumn(name = "drinks_type_id")
@@ -111,5 +112,13 @@ public class Drinks extends CoreModel {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public boolean isPublished() {
+        return published;
+    }
+
+    public void setPublished(boolean published) {
+        this.published = published;
     }
 }

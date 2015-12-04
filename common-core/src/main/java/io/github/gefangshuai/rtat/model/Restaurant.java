@@ -28,7 +28,7 @@ public class Restaurant extends CoreModel{
 
     private String memo;            // 门店描述
     private String imagePath;       // 门店图片地址
-    private Boolean opening = true;        // 营业中
+    private boolean opening = false;        // 营业中
     private StatusEnum status = StatusEnum.INVALID; // 是否有效
     @OneToOne
     @JoinColumn(name = "userId")
@@ -107,11 +107,11 @@ public class Restaurant extends CoreModel{
         this.imagePath = imagePath;
     }
 
-    public Boolean getOpening() {
+    public boolean isOpening() {
         return opening;
     }
 
-    public void setOpening(Boolean opening) {
+    public void setOpening(boolean opening) {
         this.opening = opening;
     }
 

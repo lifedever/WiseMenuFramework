@@ -47,7 +47,8 @@ $(document).ready(function () {
     $('.right-sidebar-toggle').click(function(){
         var $sidebar = $('#right-sidebar');
 
-        $sidebar.toggleClass('sidebar-open');
+        //$sidebar.toggleClass('sidebar-open');
+        $sidebar.slideToggle();
     });
 
     // Initialize slimscroll for right sidebar

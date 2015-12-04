@@ -27,6 +27,7 @@ public class Food extends CoreModel {
     private boolean hot = true;   // 是否热菜
     private boolean meat = true;  // 是否荤菜
     private boolean muslim = false;    // 是否清真
+    private boolean published = false;  // 是否发布
 
     @ManyToOne
     @JoinColumn(name = "food_type_id")
@@ -130,5 +131,13 @@ public class Food extends CoreModel {
 
     public void setThumbPath(String thumbPath) {
         this.thumbPath = thumbPath;
+    }
+
+    public boolean isPublished() {
+        return published;
+    }
+
+    public void setPublished(boolean published) {
+        this.published = published;
     }
 }

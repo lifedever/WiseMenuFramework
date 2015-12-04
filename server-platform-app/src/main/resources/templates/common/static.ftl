@@ -27,6 +27,7 @@
 <script src="/js/plugins/pace/pace.min.js"></script>
 <script src="/js/sockjs-0.3.4.min.js"></script>
 <script src="/js/stomp.min.js"></script>
+<script src="/js/jquery.cookie-1.4.1.min.js"></script>
 <script src="/js/app.js"></script>
 
 <script>

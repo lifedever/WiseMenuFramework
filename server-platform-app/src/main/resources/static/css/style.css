@@ -3737,10 +3737,11 @@ a.forum-item-title:hover {
     overflow: hidden;
     position: fixed;
     top: 60px;
+    display: none;
     width: 260px !important;
     z-index: 1009;
     bottom: 0;
-    right: -260px;
+    right: 0px;
 }
 
 #right-sidebar.sidebar-open {
@@ -3748,6 +3749,7 @@ a.forum-item-title:hover {
 }
 
 #right-sidebar.sidebar-open.sidebar-top {
+    transition: all 3s ease;
     top: 0;
     border-top: none;
 }
