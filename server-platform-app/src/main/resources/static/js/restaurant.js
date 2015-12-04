@@ -25,11 +25,8 @@ $('#profileName').on('click', function () {
 
 if(!restaurant.opening && (!$.cookie('closeOpenWarning'))) {
     toastr.error(
-        '您的店铺正在线上整顿中，如果整顿完成，<strong>请及时更改营业状态</strong>，以免造成不必要的损失！ <a href="#" id="closeOpenWarning" class="btn btn-danger pull-right btn-xs">一天内不再提醒</a>',
-        '注意',
-        {
-            "positionClass": "toast-top-full-width",
-        }
+        '您的店铺正在线上整顿中，如果整顿完成，<strong>请及时更改营业状态</strong>，以免造成不必要的损失！ <br><a href="#" id="closeOpenWarning" class="btn btn-danger pull-right btn-xs"><i class="fa fa-trash"></i> 一天内不再提醒</a>',
+        '注意'
     )
 }
 
