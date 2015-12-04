@@ -20,6 +20,7 @@
         });
     };
     noticeSocket();
+
     </@tags.shiro.user>
 </script>
 </#macro>

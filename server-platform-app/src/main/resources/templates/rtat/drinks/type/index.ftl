@@ -39,7 +39,12 @@
         location.href = "/rtat/drinks/type/order/" + srcId + '-' + targetId;
         return false;
     }
-
+    $('.btn-edit').on('click', function (e) {
+        e.preventDefault();
+        var $this = $(this);
+        var target = $this.data('target');
+        $('.'+target).removeClass('hide');
+    });
 </script>
 </#assign>
 <@tags.layout.main title="菜品分类列表" css=css javascript=javascript>
@@ -53,7 +58,7 @@
                     </label>
 
                     <div class="form-group">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="输入分类名称">
+                        <input type="text" id="name" name="name" class="form-control required" placeholder="输入分类名称">
                     </div>
                     <button class="btn btn-primary" type="submit"><i class="fa fa-plus"></i> 添加</button>
                     <p class="pull-right text-info"> <i class="fa fa-bullhorn"></i> <strong>可拖放分类进行顺序调整.</strong></p>
@@ -72,13 +77,29 @@
                      data-id="${drinksType.id}">
                     <div class="ibox">
                         <div class="ibox-content">
-                            <h2>${drinksType.name}</h2>
+                            <h2>
+                                ${drinksType.name}
+                                    <form action="/rtat/drinks/type/edit/${drinksType.id}" method="post" class="edit-form">
+                                        <div class="input-group type-name-edit-${drinksType.id} hide">
+                                            <input type="text" class="form-control required" name="name" value="${drinksType.name}">
+                                            <div class="input-group-btn">
+                                                <button type="submit" class="btn btn-primary">保存</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                            </h2>
+
 
                             <div class="agile-detail">
-                                <a href="/rtat/drinks/type/delete/${drinksType.id}" class="pull-right btn btn-xs btn-danger"
-                                   data-toggle="delete"> <i class="fa fa-trash"></i> 删除</a>
                                 <i class="fa fa-clock-o"></i> ${drinksType.createTime?string('yyyy.MM.dd')}
+                                <div class="text-right">
+                                    <a href="#" data-target="type-name-edit-${drinksType.id}" class=" btn btn-xs btn-edit btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
+                                    <a href="/rtat/drinks/type/delete/${drinksType.id}"
+                                       class=" btn btn-xs btn-danger"
+                                       data-toggle="delete"> <i class="fa fa-trash"></i> 删除</a>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>

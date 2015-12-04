@@ -124,7 +124,7 @@
         </@tags.shiro.hasRole>
     </ul>
     <@tags.shiro.hasRole role="restaurant">
-        <div id="right-sidebar">
+        <div id="right-sidebar"">
             <div class="sidebar-container">
                 <div class="sidebar-title">
                     <h3><i class="fa fa-gears"></i> 设置</h3>

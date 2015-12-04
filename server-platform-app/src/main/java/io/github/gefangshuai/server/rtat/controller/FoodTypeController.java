@@ -38,14 +38,27 @@ public class FoodTypeController {
 
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable long id, RedirectAttributes redirectAttributes){
-        foodTypeService.delete(id);
-        FlashMessageUtils.success(redirectAttributes, "分类删除成功!");
+        try {
+            foodTypeService.delete(id);
+            FlashMessageUtils.success(redirectAttributes, "分类删除成功!");
+        } catch (Exception e) {
+            FlashMessageUtils.error(redirectAttributes, "该分类下有记录，无法删除!");
+        }
         return "redirect:/rtat/foods/type";
     }
 
     @RequestMapping("/order/{sid}-{tid}")
     public String changeOrder(@PathVariable long sid, @PathVariable long tid){
         foodTypeService.changeOrder(sid, tid);
+        return "redirect:/rtat/foods/type";
+    }
+
+    @RequestMapping("/edit/{id}")
+    public String edit(@PathVariable long id, String name, RedirectAttributes redirectAttributes){
+        FoodType foodType = foodTypeService.findOne(id);
+        foodType.setName(name);
+        foodTypeService.save(foodType);
+        FlashMessageUtils.success(redirectAttributes, "修改成功!");
         return "redirect:/rtat/foods/type";
     }
 }

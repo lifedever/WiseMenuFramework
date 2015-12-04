@@ -1,6 +1,7 @@
 package io.github.gefangshuai.server.rtat.controller;
 
 import io.github.gefangshuai.rtat.model.DrinksType;
+import io.github.gefangshuai.rtat.model.FoodType;
 import io.github.gefangshuai.rtat.service.DrinksTypeService;
 import io.github.gefangshuai.server.core.config.Menu;
 import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
@@ -46,6 +47,15 @@ public class DrinksTypeController {
     @RequestMapping("/order/{sid}-{tid}")
     public String changeOrder(@PathVariable long sid, @PathVariable long tid){
         drinksTypeService.changeOrder(sid, tid);
+        return "redirect:/rtat/drinks/type";
+    }
+
+    @RequestMapping("/edit/{id}")
+    public String edit(@PathVariable long id, String name, RedirectAttributes redirectAttributes){
+        DrinksType drinksType = drinksTypeService.findOne(id);
+        drinksType.setName(name);
+        drinksTypeService.save(drinksType);
+        FlashMessageUtils.success(redirectAttributes, "修改成功!");
         return "redirect:/rtat/drinks/type";
     }
 }
