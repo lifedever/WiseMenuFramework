@@ -1,5 +1,6 @@
 package io.github.gefangshuai.rtat.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.gson.Gson;
 import io.github.gefangshuai.constant.StatusEnum;
 import io.github.gefangshuai.permission.model.User;
@@ -30,6 +31,7 @@ public class Restaurant extends CoreModel{
     private String imagePath;       // 门店图片地址
     private boolean opening = false;        // 营业中
     private StatusEnum status = StatusEnum.INVALID; // 是否有效
+
     @OneToOne
     @JoinColumn(name = "userId")
     @Cascade(CascadeType.ALL)

@@ -8,10 +8,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.gefangshuai</groupId>
-    <artifactId>common-core</artifactId>
+    <artifactId>server-core</artifactId>
     <packaging>jar</packaging>
 
-    <name>common-core</name>
+    <name>server-core</name>
     <url>http://maven.apache.org</url>
 
     <properties>

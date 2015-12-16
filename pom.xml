@@ -9,7 +9,8 @@
     <modules>
         <module>spring-boot-base</module>
         <module>server-platform-app</module>
-        <module>common-core</module>
+        <module>server-core</module>
+        <module>server-mobile-api</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -4,6 +4,7 @@ import io.github.gefangshuai.rtat.model.*;
 import io.github.gefangshuai.server.core.persistence.CoreDao;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
 
 /**

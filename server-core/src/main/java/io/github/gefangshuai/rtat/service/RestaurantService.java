@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
-public class RestaurantService {
+public class RestaurantService{
     @Resource
     private RestaurantDao restaurantDao;
     @Resource

@@ -103,6 +103,7 @@ public class ShiroServerConfiguration {
         filterChainDefinitionMap.put("/font-awesome/**", "anon");
         filterChainDefinitionMap.put("/create", "anon");
         filterChainDefinitionMap.put("/account/**", "anon");
+        filterChainDefinitionMap.put("/api/**", "anon");
         filterChainDefinitionMap.put("/login", "authc");
         filterChainDefinitionMap.put("/rtat/**", "authc,roles[restaurant]");
         filterChainDefinitionMap.put("/admin/**", "authc,roles[administrator]");
