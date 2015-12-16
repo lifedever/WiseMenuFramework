@@ -1,5 +1,8 @@
 package io.github.gefangshuai.server.core.persistence;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import io.github.gefangshuai.server.core.utils.CommonJsonView;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -11,6 +14,7 @@ import java.util.Date;
 public class CoreModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(CommonJsonView.CoreJsonView.class)
     private Long id;
     private Date createTime;
     private Date updateTime;

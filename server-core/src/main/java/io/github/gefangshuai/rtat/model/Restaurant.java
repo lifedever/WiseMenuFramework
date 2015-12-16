@@ -1,10 +1,11 @@
 package io.github.gefangshuai.rtat.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.google.gson.Gson;
 import io.github.gefangshuai.constant.StatusEnum;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.server.core.persistence.CoreModel;
+import io.github.gefangshuai.utils.CustomJsonView;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -18,19 +19,28 @@ import java.util.List;
 @Entity
 @Table(name = "b_restaurant")
 public class Restaurant extends CoreModel{
+    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private String name;            // 门店名称
 
     @ElementCollection(fetch = FetchType.EAGER)
+    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private List<String> telNum;    // 联系方式，可以多个(前台页面暂时只支持一个)
+    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private String province;        // 省
+    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private String city;            // 市
+    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private String district;        // 区
+    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private String address;         // 详细地址
 
+    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private String memo;            // 门店描述
+    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private String imagePath;       // 门店图片地址
+
     private boolean opening = false;        // 营业中
-    private StatusEnum status = StatusEnum.INVALID; // 是否有效
+    private StatusEnum status = StatusEnum.VALID; // 是否有效
 
     @OneToOne
     @JoinColumn(name = "userId")

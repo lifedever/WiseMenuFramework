@@ -8,6 +8,7 @@ import io.github.gefangshuai.exception.ModelPersistentException;
 import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.permission.service.UserService;
+import io.github.gefangshuai.server.core.persistence.CoreService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
 import java.util.List;
 
 /**
@@ -22,9 +24,15 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
-public class RestaurantService{
-    @Resource
+public class RestaurantService extends CoreService<Restaurant, Long> {
     private RestaurantDao restaurantDao;
+
+    @Resource
+    public void setRestaurantDao(RestaurantDao restaurantDao) {
+        this.restaurantDao = restaurantDao;
+        super.coreDao = restaurantDao;
+    }
+
     @Resource
     private UserService userService;
 
@@ -56,13 +64,14 @@ public class RestaurantService{
     }
 
     @Transactional
-    public void updateWithSession(Restaurant restaurant){
+    public void updateWithSession(Restaurant restaurant) {
         update(restaurant);
         updateSession(restaurant);
     }
 
     /**
      * 刷新session里的数据
+     *
      * @param restaurant
      */
     public void updateSession(Restaurant restaurant) {
@@ -72,5 +81,9 @@ public class RestaurantService{
 
     public List<Restaurant> findAll() {
         return restaurantDao.findAll();
+    }
+
+    public List<Restaurant> findValidAndOpening() {
+        return restaurantDao.findByOpeningAndStatus(true, StatusEnum.VALID);
     }
 }

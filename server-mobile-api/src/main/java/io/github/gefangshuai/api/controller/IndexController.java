@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class IndexController {
     @RequestMapping("/")
     public String index(){
-        return "server is running!";
+        StringBuilder sb = new StringBuilder();
+        sb.append("<center>");
+        sb.append("<h1>Welcome!</h1>");
+        sb.append("<p>server is running!</p>");
+        sb.append("</center>");
+        return sb.toString();
     }
 }
