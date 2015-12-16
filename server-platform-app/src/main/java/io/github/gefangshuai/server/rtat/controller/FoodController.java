@@ -41,7 +41,7 @@ public class FoodController {
 
     @RequestMapping
     public String index(@RequestParam(value = "page", defaultValue = "1") int page, String key, Long typeId, Model model) {
-        PageRequest pageRequest = new PageRequest(page, appConfigContext.getRtatFoodspageSize(), new Sort(Sort.Direction.DESC, "id"));
+        PageRequest pageRequest = new PageRequest(page, appConfigContext.getRtatFoodspageSize(), new Sort(Sort.Direction.DESC, "published", "id"));
         Restaurant restaurant = ModelBeanUtils.getCurrentRestaurant();
 
         Page<Food> recordPage;

@@ -1,7 +1,9 @@
 package io.github.gefangshuai.rtat.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import io.github.gefangshuai.rtat.model.listener.FoodAndDrinksPersistentListener;
 import io.github.gefangshuai.server.core.persistence.CoreModel;
+import io.github.gefangshuai.utils.CustomJsonView;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.persistence.*;
@@ -14,18 +16,26 @@ import javax.persistence.*;
 @Table(name = "b_foods")
 @EntityListeners({FoodAndDrinksPersistentListener.class})
 public class Food extends CoreModel {
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String name;    // 名字
 
+    @JsonView(CustomJsonView.RestJsonView.class)
     @NumberFormat(style = NumberFormat.Style.CURRENCY)
     private double price;   // 价格
     private String imagePath;   // 图片地址
     private String thumbPath;   // 缩略图地址
 
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String flavor;      // 口味
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String materials;   // 用料
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String memo;        // 描述
+    @JsonView(CustomJsonView.RestJsonView.class)
     private boolean hot = true;   // 是否热菜
+    @JsonView(CustomJsonView.RestJsonView.class)
     private boolean meat = true;  // 是否荤菜
+    @JsonView(CustomJsonView.RestJsonView.class)
     private boolean muslim = false;    // 是否清真
     private boolean published = false;  // 是否发布
 

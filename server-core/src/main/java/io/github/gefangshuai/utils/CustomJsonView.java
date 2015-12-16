@@ -10,6 +10,8 @@ public class CustomJsonView {
     /**
      * 对Restaurant进行序列化定义标识
      */
-    public interface RestaurantJsonView extends CommonJsonView.CoreJsonView {}
+    public interface RestJsonView extends CommonJsonView.CoreJsonView {
+    }
+
 
 }

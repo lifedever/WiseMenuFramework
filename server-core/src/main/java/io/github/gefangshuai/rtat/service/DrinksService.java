@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by gefangshuai on 2015/11/13.
@@ -32,5 +33,9 @@ public class DrinksService extends CoreService<Drinks, Long>{
 
     public Page<Drinks> findByRestaurantAndDrinksTypeAndNameLike(Restaurant restaurant, DrinksType drinksType, String name, Pageable page){
         return drinksDao.findByRestaurantAndDrinksTypeAndNameLike(restaurant, drinksType, name, page);
+    }
+
+    public List<Drinks> findPublishedByRestaurantAndType(Restaurant restaurant, DrinksType drinksType) {
+        return drinksDao.findByPublishedAndRestaurantAndDrinksType(true, restaurant, drinksType);
     }
 }

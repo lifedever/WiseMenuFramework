@@ -19,24 +19,23 @@ import java.util.List;
 @Entity
 @Table(name = "b_restaurant")
 public class Restaurant extends CoreModel{
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String name;            // 门店名称
 
     @ElementCollection(fetch = FetchType.EAGER)
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
+    @JsonView(CustomJsonView.RestJsonView.class)
     private List<String> telNum;    // 联系方式，可以多个(前台页面暂时只支持一个)
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String province;        // 省
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String city;            // 市
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String district;        // 区
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String address;         // 详细地址
 
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
+    @JsonView(CustomJsonView.RestJsonView.class)
     private String memo;            // 门店描述
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
     private String imagePath;       // 门店图片地址
 
     private boolean opening = false;        // 营业中

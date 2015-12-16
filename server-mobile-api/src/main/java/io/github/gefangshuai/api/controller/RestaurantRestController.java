@@ -15,12 +15,12 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/restaurant")
-public class ApiRestaurantController {
+public class RestaurantRestController {
 
     @Autowired
     private RestaurantService restaurantService;
 
-    @JsonView(CustomJsonView.RestaurantJsonView.class)
+    @JsonView(CustomJsonView.RestJsonView.class)
     @RequestMapping
     public List<Restaurant> listRestaurants() {
         return restaurantService.findValidAndOpening();
