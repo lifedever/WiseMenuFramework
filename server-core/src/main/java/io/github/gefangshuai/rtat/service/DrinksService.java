@@ -38,4 +38,8 @@ public class DrinksService extends CoreService<Drinks, Long>{
     public List<Drinks> findPublishedByRestaurantAndType(Restaurant restaurant, DrinksType drinksType) {
         return drinksDao.findByPublishedAndRestaurantAndDrinksType(true, restaurant, drinksType);
     }
+
+    public List<Drinks> findPublishedByRestaurant(Restaurant restaurant) {
+        return drinksDao.findByPublishedAndRestaurant(true, restaurant);
+    }
 }

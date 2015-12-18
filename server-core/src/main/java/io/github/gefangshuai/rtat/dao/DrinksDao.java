@@ -18,4 +18,6 @@ public interface DrinksDao extends CoreDao<Drinks, Long> {
     Page<Drinks> findByRestaurantAndDrinksTypeAndNameLike(Restaurant restaurant, DrinksType drinksType, String name, Pageable page);
 
     List<Drinks> findByPublishedAndRestaurantAndDrinksType(boolean published, Restaurant restaurant, DrinksType drinksType);
+
+    List<Drinks> findByPublishedAndRestaurant(boolean b, Restaurant restaurant);
 }

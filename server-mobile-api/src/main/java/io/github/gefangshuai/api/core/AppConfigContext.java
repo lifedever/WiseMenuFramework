@@ -1,12 +1,8 @@
-package io.github.gefangshuai.server.core.context;
+package io.github.gefangshuai.api.core;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-/**
- * 对应 classpath:config/app.properties
- * Created by gefangshuai on 2015/11/10.
- */
-@ConfigurationProperties(prefix = "app",locations = "classpath:config/app.properties")
+@ConfigurationProperties(prefix = "app",locations = "classpath:app.properties")
 public class AppConfigContext {
     private String storePath;
     private int rtatFoodspageSize;

@@ -86,4 +86,12 @@ public class RestaurantService extends CoreService<Restaurant, Long> {
     public List<Restaurant> findValidAndOpening() {
         return restaurantDao.findByOpeningAndStatus(true, StatusEnum.VALID);
     }
+
+    /**
+     * 将图片转换成base64字符
+     * @param restaurant
+     */
+    public void encodeImageToString(Restaurant restaurant){
+
+    }
 }

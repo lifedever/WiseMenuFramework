@@ -19,4 +19,6 @@ public interface FoodDao extends CoreDao<Food, Long> {
     Page<Food> findByRestaurantAndFoodTypeAndNameLike(Restaurant restaurant, FoodType foodType, String name, Pageable page);
 
     List<Food> findByPublishedAndRestaurantAndFoodType(boolean published, Restaurant restaurant, FoodType foodType);
+
+    List<Food> findByPublishedAndRestaurant(boolean published, Restaurant restaurant);
 }

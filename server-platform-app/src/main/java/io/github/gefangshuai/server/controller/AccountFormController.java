@@ -4,12 +4,15 @@ import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.rtat.service.RestaurantService;
 import io.github.gefangshuai.constant.ResultCode;
 import io.github.gefangshuai.server.core.context.AppConfigContext;
+import io.github.gefangshuai.utils.ImageUtils;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**

@@ -2,12 +2,10 @@ package io.github.gefangshuai.server.controller;
 
 import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.rtat.service.RestaurantService;
-import io.github.gefangshuai.constant.SessionConstant;
 import io.github.gefangshuai.server.core.context.AppConfigContext;
 import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.SecurityUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

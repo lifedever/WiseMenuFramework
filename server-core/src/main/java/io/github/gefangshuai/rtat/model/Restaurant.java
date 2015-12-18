@@ -8,6 +8,8 @@ import io.github.gefangshuai.server.core.persistence.CoreModel;
 import io.github.gefangshuai.utils.CustomJsonView;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.type.ClobType;
+import org.springframework.data.annotation.Persistent;
 
 import javax.persistence.*;
 import java.util.List;
@@ -37,6 +39,10 @@ public class Restaurant extends CoreModel{
     @JsonView(CustomJsonView.RestJsonView.class)
     private String memo;            // 门店描述
     private String imagePath;       // 门店图片地址
+
+    @JsonView(CustomJsonView.RestJsonView.class)
+    @Lob
+    private String image;           // 图片的Base64， 用于客户端显示
 
     private boolean opening = false;        // 营业中
     private StatusEnum status = StatusEnum.VALID; // 是否有效
@@ -132,6 +138,14 @@ public class Restaurant extends CoreModel{
 
     public void setStatus(StatusEnum status) {
         this.status = status;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Override

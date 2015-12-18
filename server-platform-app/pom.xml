@@ -9,7 +9,7 @@
 
     <groupId>io.github.gefangshuai</groupId>
     <artifactId>server-platform-app</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>server-platform-app</name>
     <url>http://maven.apache.org</url>
@@ -98,6 +98,6 @@
                 <version>2.5</version>
             </plugin>-->
         </plugins>
-        <finalName>Server-Platform-App</finalName>
+        <finalName>server-platform-app</finalName>
     </build>
 </project>

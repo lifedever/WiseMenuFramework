@@ -28,9 +28,6 @@ public class FoodService extends CoreService<Food, Long>{
         super.coreDao = foodDao;
     }
 
-    public List<Food> findPublishedByRestaurantAndType(Restaurant restaurant, FoodType foodType){
-        return foodDao.findByPublishedAndRestaurantAndFoodType(true, restaurant, foodType);
-    }
 
     /**
      * 根据餐厅和名称查询
@@ -53,5 +50,14 @@ public class FoodService extends CoreService<Food, Long>{
      */
     public Page<Food> findByRestaurantAndFoodTypeAndNameLike(Restaurant restaurant, FoodType foodType, String name, Pageable page){
         return foodDao.findByRestaurantAndFoodTypeAndNameLike(restaurant, foodType, name, page);
+    }
+
+    public List<Food> findPublishedByRestaurantAndType(Restaurant restaurant, FoodType foodType){
+        return foodDao.findByPublishedAndRestaurantAndFoodType(true, restaurant, foodType);
+    }
+
+
+    public List<Food> findPublishedByRestaurant(Restaurant restaurant) {
+        return foodDao.findByPublishedAndRestaurant(true, restaurant);
     }
 }
