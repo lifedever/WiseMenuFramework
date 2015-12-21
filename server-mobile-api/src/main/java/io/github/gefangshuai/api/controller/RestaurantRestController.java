@@ -52,7 +52,7 @@ public class RestaurantRestController {
         if (StringUtils.isBlank(restaurant.getImagePath())) {
             return null;
         } else {
-            return new ResponseEntity<>(FileUtils.readFileToByteArray(new File(appConfigContext.getStorePath() + restaurant.getImagePath())),
+            return new ResponseEntity<>(FileUtils.readFileToByteArray(new File(appConfigContext.getStorePath() + restaurant.getThumbImagePath())),
                     headers, HttpStatus.CREATED);
         }
     }

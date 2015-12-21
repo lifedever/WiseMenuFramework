@@ -74,10 +74,20 @@ public class DrinksFormController {
     public String saveDrinks(@ModelAttribute Drinks drinks, Long typeId, double xText, double yText, double widthText, double heightText, MultipartFile file) {
         if (file != null && file.getSize() > 0) {
             try {
-                String relativePath = StoreUtils.storeCutFileWithThumb(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream(), (int) xText, (int) yText, (int) widthText, (int) heightText, 400, 300);
+                String relativePath = StoreUtils.storeCutFileWithThumbAndCompress(
+                        appConfigContext.getGraphicsMagickHome(),
+                        appConfigContext.getStorePath(),
+                        StoreUtils.getExtension(file.getOriginalFilename()),
+                        file.getInputStream(),
+                        (int) xText,
+                        (int) yText,
+                        (int) widthText,
+                        (int) heightText,
+                        400, 300
+                );
                 drinks.setThumbPath(StoreUtils.getThumbPath(relativePath));
                 drinks.setImagePath(relativePath);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }

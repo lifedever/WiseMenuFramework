@@ -39,8 +39,8 @@ public class Restaurant extends CoreModel{
     @JsonView(CustomJsonView.RestJsonView.class)
     private String memo;            // 门店描述
     private String imagePath;       // 门店图片地址
+    private String thumbImagePath;  // 缩略图地址
 
-    @JsonView(CustomJsonView.RestJsonView.class)
     @Lob
     private String image;           // 图片的Base64， 用于客户端显示
 
@@ -146,6 +146,14 @@ public class Restaurant extends CoreModel{
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getThumbImagePath() {
+        return thumbImagePath;
+    }
+
+    public void setThumbImagePath(String thumbImagePath) {
+        this.thumbImagePath = thumbImagePath;
     }
 
     @Override

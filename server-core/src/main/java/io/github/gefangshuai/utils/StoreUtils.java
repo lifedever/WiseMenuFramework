@@ -5,6 +5,7 @@ import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.util.ThumbnailatorUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.im4java.core.IM4JavaException;
 import org.jboss.jandex.Main;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,7 +53,7 @@ public class StoreUtils {
     }
 
     /**
-     * 保存裁剪的数据，同时生成缩略图
+     * 保存裁剪的数据，同时生成缩略图(不压缩图片)
      */
     public static String storeCutFileWithThumb(String rootDir, String extension, InputStream inputStream,
                                                int xText, int yText, int widthText, int heightText, int thumbWidth, int thumbHeight) throws IOException {
@@ -62,6 +63,18 @@ public class StoreUtils {
         Thumbnails.of(filePath)
                 .size(thumbWidth, thumbHeight)
                 .toFile(getThumbPath(filePath));
+        return relativePath;
+    }
+
+    /**
+     * 保存裁剪的数据，同时压缩生成缩略图
+     */
+    public static String storeCutFileWithThumbAndCompress(String graphicsMagickHome,String rootDir, String extension, InputStream inputStream,
+                                                          int xText, int yText, int widthText, int heightText, int thumbWidth, int thumbHeight) throws InterruptedException, IOException, IM4JavaException {
+        String relativePath = getRelativePath(extension);
+        String filePath = getFilePath(rootDir, relativePath);
+        ImageUtils.cutImage(inputStream, filePath, xText, yText, widthText, heightText);
+        ImageUtils.compress(graphicsMagickHome, filePath, getThumbPath(filePath), thumbWidth+"x"+thumbHeight);
         return relativePath;
     }
 

@@ -59,8 +59,11 @@ public class AccountFormController {
         if (file != null) {
             try {
                 String relativePath = StoreUtils.storeCutFile(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream(), (int) xText, (int) yText, (int) widthText, (int) heightText);
+                String thumbRelativePath = StoreUtils.getThumbPath(relativePath);
+                ImageUtils.compress(appConfigContext.getGraphicsMagickHome(), appConfigContext.getStorePath() + relativePath, appConfigContext.getStorePath() + thumbRelativePath);
                 restaurant.setImagePath(relativePath);
-            } catch (IOException e) {
+                restaurant.setThumbImagePath(thumbRelativePath);
+            } catch (Exception e) {
                 e.printStackTrace();
                 return ResultCode.Faild;
             }

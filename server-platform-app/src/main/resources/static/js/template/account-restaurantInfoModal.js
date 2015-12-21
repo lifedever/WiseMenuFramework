@@ -34,6 +34,7 @@ $SubmitBtn.on('click', function () {
 
 var $image = $('#image');
 $image.cropper({
+    aspectRatio: 4 / 3,
     highlight: true,
     viewMode: 3,
     minContainerWidth: 320,

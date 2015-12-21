@@ -75,10 +75,20 @@ public class FoodFormController {
     public String saveFood(@ModelAttribute Food food, Long typeId, double xText, double yText, double widthText, double heightText, MultipartFile file) {
         if (file != null && file.getSize() > 0) {
             try {
-                String relativePath = StoreUtils.storeCutFileWithThumb(appConfigContext.getStorePath(), StoreUtils.getExtension(file.getOriginalFilename()), file.getInputStream(), (int) xText, (int) yText, (int) widthText, (int) heightText, 400, 300);
+                String relativePath = StoreUtils.storeCutFileWithThumbAndCompress(
+                        appConfigContext.getGraphicsMagickHome(),
+                        appConfigContext.getStorePath(),
+                        StoreUtils.getExtension(file.getOriginalFilename()),
+                        file.getInputStream(),
+                        (int) xText,
+                        (int) yText,
+                        (int) widthText,
+                        (int) heightText,
+                        400, 300
+                );
                 food.setImagePath(relativePath);
                 food.setThumbPath(StoreUtils.getThumbPath(relativePath));
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -90,7 +100,7 @@ public class FoodFormController {
     }
 
     @RequestMapping("/published/{id}/{published}")
-    public String published(@ModelAttribute Food food, @PathVariable boolean published){
+    public String published(@ModelAttribute Food food, @PathVariable boolean published) {
         food.setPublished(published);
         foodService.save(food);
         return "redirect:/rtat/foods";
