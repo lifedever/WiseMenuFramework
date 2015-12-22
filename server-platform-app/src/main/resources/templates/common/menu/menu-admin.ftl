@@ -44,7 +44,9 @@
         <li <#if nav_menu?? && nav_menu?starts_with('admin-restaurants')>class="active" </#if> >
             <a href="/admin/restaurants"><i class="fa fa-home"></i> 店铺列表</a>
         </li>
-
+        <li <#if nav_menu?? && nav_menu?starts_with('admin-settings')>class="active" </#if> >
+            <a href="/admin/settings"><i class="fa fa-gears"></i> 系统设定</a>
+        </li>
         <li>
             <a href="/admin/logs"><i class="fa fa-newspaper-o"></i> 系统日志</a>
         </li>

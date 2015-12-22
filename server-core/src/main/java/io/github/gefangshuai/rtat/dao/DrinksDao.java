@@ -20,4 +20,5 @@ public interface DrinksDao extends CoreDao<Drinks, Long> {
     List<Drinks> findByPublishedAndRestaurantAndDrinksType(boolean published, Restaurant restaurant, DrinksType drinksType);
 
     List<Drinks> findByPublishedAndRestaurant(boolean b, Restaurant restaurant);
+
 }

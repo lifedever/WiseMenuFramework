@@ -86,4 +86,8 @@ public class ImageUtils {
         }
         convert.run(op);
     }
+
+    public static void main(String[] args) throws InterruptedException, IOException, IM4JavaException {
+        compress("D:\\Program Files\\GraphicsMagick-1.3.23-Q8", "C:\\Users\\gefangshuai\\Desktop\\1757541124691.png", "C:\\Users\\gefangshuai\\Desktop\\1.png", "120");
+    }
 }

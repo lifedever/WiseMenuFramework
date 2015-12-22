@@ -84,7 +84,7 @@ public class FoodFormController {
                         (int) yText,
                         (int) widthText,
                         (int) heightText,
-                        400, 300
+                        120, 100
                 );
                 food.setImagePath(relativePath);
                 food.setThumbPath(StoreUtils.getThumbPath(relativePath));

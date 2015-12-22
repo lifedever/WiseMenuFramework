@@ -5,12 +5,16 @@ import io.github.gefangshuai.rtat.model.Food;
 import io.github.gefangshuai.rtat.model.FoodType;
 import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.server.core.persistence.CoreService;
+import io.github.gefangshuai.utils.ImageUtils;
+import io.github.gefangshuai.utils.StoreUtils;
+import org.im4java.core.IM4JavaException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -59,5 +63,17 @@ public class FoodService extends CoreService<Food, Long>{
 
     public List<Food> findPublishedByRestaurant(Restaurant restaurant) {
         return foodDao.findByPublishedAndRestaurant(true, restaurant);
+    }
+
+    @Transactional
+    public void rebuildThumb(String root, String graphicsMagickHome) throws InterruptedException, IOException, IM4JavaException {
+        List<Food> foods = foodDao.findAll();
+        for (Food food : foods) {
+            String path = root + food.getImagePath();
+            String target = StoreUtils.getThumbPath(path);
+            ImageUtils.compress(graphicsMagickHome, path, target, "120");
+            food.setThumbPath(StoreUtils.getThumbPath(food.getImagePath()));
+            save(food);
+        }
     }
 }

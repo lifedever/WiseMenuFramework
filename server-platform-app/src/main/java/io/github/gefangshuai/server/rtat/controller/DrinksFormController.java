@@ -83,7 +83,7 @@ public class DrinksFormController {
                         (int) yText,
                         (int) widthText,
                         (int) heightText,
-                        400, 300
+                        120, 100
                 );
                 drinks.setThumbPath(StoreUtils.getThumbPath(relativePath));
                 drinks.setImagePath(relativePath);

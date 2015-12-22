@@ -105,7 +105,7 @@
 
                     <div class="product-imitation">
                         <#if drinks.thumbPath??>
-                            <img src="/rtat/drinks/img/${drinks.id}/thumb" style="width: 100%">
+                            <img src="/rtat/drinks/img/${drinks.id}" style="width: 100%">
                         <#else>
                             <img src="/img/no-pic.png" style="width: 100%">
                         </#if>

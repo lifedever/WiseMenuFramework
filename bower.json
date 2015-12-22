@@ -1,0 +1,22 @@
+{
+  "name": "WiseMenuFramework",
+  "authors": [
+    "葛方帅 <gefangshuai@163.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "vue": "~1.0.12",
+    "vue-resource": "~0.5.1"
+  }
+}

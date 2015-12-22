@@ -44,4 +44,8 @@ public abstract class CoreService<T, ID extends Serializable> {
         coreDao.delete(id);
     }
 
+    public long count(){
+        return coreDao.count();
+    }
+
 }

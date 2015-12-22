@@ -103,7 +103,7 @@
                 <div class="ibox-content product-box">
                     <div class="product-imitation">
                         <#if food.thumbPath??>
-                            <img src="/rtat/foods/img/${food.id}/thumb" style="width: 100%;">
+                            <img src="/rtat/foods/img/${food.id}" style="width: 100%;">
                         <#else>
                             <img src="/img/no-pic.png" style="width: 100%">
                         </#if>
