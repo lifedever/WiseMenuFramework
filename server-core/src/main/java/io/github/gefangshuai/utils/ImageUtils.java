@@ -62,7 +62,7 @@ public class ImageUtils {
         //待处理图片的绝对路径
         op.addImage(sourcePath);
         //图片压缩比，有效值范围是0.0-100.0，数值越大，缩略图越清晰  s
-        op.quality(30.0);
+        op.quality(50.0);
         //width 和height可以是原图的尺寸，也可以是按比例处理后的尺寸
 //        op.addRawArgs("-resize", "100");
         //宽高都为100

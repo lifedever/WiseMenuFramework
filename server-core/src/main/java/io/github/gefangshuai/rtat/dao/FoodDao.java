@@ -6,6 +6,8 @@ import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.server.core.persistence.CoreDao;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -21,4 +23,7 @@ public interface FoodDao extends CoreDao<Food, Long> {
     List<Food> findByPublishedAndRestaurantAndFoodType(boolean published, Restaurant restaurant, FoodType foodType);
 
     List<Food> findByPublishedAndRestaurant(boolean published, Restaurant restaurant);
+
+    @Query("from Food where id in (:ids)")
+    List<Food> findByIds(@Param("ids") Long[] ids);
 }

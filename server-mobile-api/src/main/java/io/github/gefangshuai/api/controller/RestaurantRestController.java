@@ -6,7 +6,6 @@ import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.rtat.service.RestaurantService;
 import io.github.gefangshuai.utils.CustomJsonView;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -49,10 +48,11 @@ public class RestaurantRestController {
         Restaurant restaurant = restaurantService.findOne(id);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
-        if (StringUtils.isBlank(restaurant.getImagePath())) {
+        File file = new File(appConfigContext.getStorePath() + restaurant.getThumbImagePath());
+        if (!file.exists()) {
             return null;
         } else {
-            return new ResponseEntity<>(FileUtils.readFileToByteArray(new File(appConfigContext.getStorePath() + restaurant.getThumbImagePath())),
+            return new ResponseEntity<>(FileUtils.readFileToByteArray(file),
                     headers, HttpStatus.CREATED);
         }
     }

@@ -58,4 +58,8 @@ public class DrinksService extends CoreService<Drinks, Long>{
             save(d);
         }
     }
+
+    public List<Drinks> listByIds(Long[] ids) {
+        return drinksDao.findByIds(ids);
+    }
 }

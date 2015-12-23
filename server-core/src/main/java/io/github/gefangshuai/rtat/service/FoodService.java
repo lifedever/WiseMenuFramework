@@ -76,4 +76,8 @@ public class FoodService extends CoreService<Food, Long>{
             save(food);
         }
     }
+
+    public List<Food> listByIds(Long[] ids) {
+        return foodDao.findByIds(ids);
+    }
 }
