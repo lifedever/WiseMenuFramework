@@ -31,10 +31,16 @@ public class RestaurantRestController {
     @Resource
     private AppConfigContext appConfigContext;
 
+    /**
+     *
+     * @param p 省
+     * @param c 市
+     * @return
+     */
     @RequestMapping
     @JsonView(CustomJsonView.RestJsonView.class)
-    public List<Restaurant> listRestaurants(String callback) {
-        return restaurantService.findValidAndOpening();
+    public List<Restaurant> listRestaurants(String p, String c) {
+        return restaurantService.findValidAndOpening(p, c);
     }
 
     @RequestMapping("{id}")

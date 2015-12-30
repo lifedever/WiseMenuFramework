@@ -2,7 +2,6 @@ package io.github.gefangshuai.rtat.service;
 
 import io.github.gefangshuai.constant.StatusEnum;
 import io.github.gefangshuai.rtat.dao.RestaurantDao;
-import io.github.gefangshuai.rtat.model.Drinks;
 import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.constant.SessionConstant;
 import io.github.gefangshuai.exception.ModelPersistentException;
@@ -10,6 +9,7 @@ import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.permission.service.UserService;
 import io.github.gefangshuai.server.core.persistence.CoreService;
+import io.github.gefangshuai.server.core.utils.QueryUtils;
 import io.github.gefangshuai.utils.ImageUtils;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
 import java.io.IOException;
 import java.util.List;
 
@@ -88,7 +87,10 @@ public class RestaurantService extends CoreService<Restaurant, Long> {
         return restaurantDao.findAll();
     }
 
-    public List<Restaurant> findValidAndOpening() {
+    public List<Restaurant> findValidAndOpening(String province, String city) {
+        if(StringUtils.isNotBlank(province) && StringUtils.isNotBlank(city)){
+            return restaurantDao.findByOpeningAndStatusAndProvinceLikeAndCityLike(true, StatusEnum.VALID, QueryUtils.getRightLike(province), QueryUtils.getRightLike(city));
+        }
         return restaurantDao.findByOpeningAndStatus(true, StatusEnum.VALID);
     }
 

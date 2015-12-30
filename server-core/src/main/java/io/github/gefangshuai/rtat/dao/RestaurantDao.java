@@ -16,4 +16,6 @@ public interface RestaurantDao extends CoreDao<Restaurant, Long> {
     Restaurant findByUsername(String username);
 
     List<Restaurant> findByOpeningAndStatus(boolean opening, StatusEnum status);
+
+    List<Restaurant> findByOpeningAndStatusAndProvinceLikeAndCityLike(boolean opening, StatusEnum status, String province, String city);
 }

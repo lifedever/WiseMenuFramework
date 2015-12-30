@@ -18,7 +18,7 @@ public class QueryUtils {
         return "%" + key;
     }
 
-    public static String getRight(String key){
+    public static String getRightLike(String key){
         if (StringUtils.isBlank(key))
             key = "";
         return key + "%";
