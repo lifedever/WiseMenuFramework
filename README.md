@@ -10,4 +10,4 @@ build by spring boot!
 - Shiro
 - Ehcache
 - WebSocket
-
+- FlashMessage
