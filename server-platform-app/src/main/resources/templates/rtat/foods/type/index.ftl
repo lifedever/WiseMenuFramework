@@ -91,7 +91,7 @@
                                     </form>
                             </h2>
                             <div class="agile-detail">
-                                <i class="fa fa-clock-o"></i> ${foodType.createTime?string('yyyy.MM.dd')}
+                                <i class="fa fa-clock-o"></i> ${foodType.createdTime?string('yyyy.MM.dd')}
                                 <div class="text-right">
                                     <a href="#" data-target="type-name-edit-${foodType.id}" class=" btn btn-xs btn-edit btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
                                     <a href="/rtat/foods/type/delete/${foodType.id}"

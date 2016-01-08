@@ -1,8 +1,8 @@
 package io.github.gefangshuai.server.admin.controller;
 
+import io.github.gefangshuai.ext.annotation.Menu;
 import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.rtat.service.RestaurantService;
-import io.github.gefangshuai.server.core.config.Menu;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,6 +1,6 @@
 package io.github.gefangshuai.permission.dao;
 
-import io.github.gefangshuai.server.core.persistence.CoreDao;
+import io.github.gefangshuai.ext.persistence.CoreDao;
 import io.github.gefangshuai.permission.model.User;
 
 /**

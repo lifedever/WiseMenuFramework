@@ -1,7 +1,9 @@
 package io.github.gefangshuai.rtat.dao;
 
-import io.github.gefangshuai.rtat.model.*;
-import io.github.gefangshuai.server.core.persistence.CoreDao;
+import io.github.gefangshuai.ext.persistence.CoreDao;
+import io.github.gefangshuai.rtat.model.Drinks;
+import io.github.gefangshuai.rtat.model.DrinksType;
+import io.github.gefangshuai.rtat.model.Restaurant;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

@@ -91,7 +91,7 @@
 
 
                             <div class="agile-detail">
-                                <i class="fa fa-clock-o"></i> ${drinksType.createTime?string('yyyy.MM.dd')}
+                                <i class="fa fa-clock-o"></i> ${drinksType.createdTime?string('yyyy.MM.dd')}
                                 <div class="text-right">
                                     <a href="#" data-target="type-name-edit-${drinksType.id}" class=" btn btn-xs btn-edit btn-primary"> <i class="fa fa-edit"></i> 编辑</a>
                                     <a href="/rtat/drinks/type/delete/${drinksType.id}"

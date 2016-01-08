@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import io.github.gefangshuai.api.core.AppConfigContext;
 import io.github.gefangshuai.rtat.model.Food;
 import io.github.gefangshuai.rtat.service.FoodService;
-import io.github.gefangshuai.server.core.utils.CommonJsonView;
 import io.github.gefangshuai.utils.CustomJsonView;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;

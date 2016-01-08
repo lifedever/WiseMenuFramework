@@ -5,6 +5,5 @@ package io.github.gefangshuai.constant;
  * Created by gefangshuai on 2015/11/10.
  */
 public class SessionConstant {
-    public static final String USER_KEY = "session_key_user";
     public static final String RESTAURANT_KEY = "session_key_restaurant";
 }

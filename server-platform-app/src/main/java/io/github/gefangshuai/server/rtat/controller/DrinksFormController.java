@@ -1,17 +1,15 @@
 package io.github.gefangshuai.server.rtat.controller;
 
+import io.github.gefangshuai.ext.annotation.Menu;
+import io.github.gefangshuai.ext.utils.FlashMessageUtils;
 import io.github.gefangshuai.rtat.model.Drinks;
 import io.github.gefangshuai.rtat.model.DrinksType;
-import io.github.gefangshuai.rtat.model.Food;
 import io.github.gefangshuai.rtat.service.DrinksService;
 import io.github.gefangshuai.rtat.service.DrinksTypeService;
-import io.github.gefangshuai.server.core.config.Menu;
-import io.github.gefangshuai.server.core.context.AppConfigContext;
-import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
-import io.github.gefangshuai.server.core.utils.WebUtils;
+import io.github.gefangshuai.server.config.context.AppConfigContext;
 import io.github.gefangshuai.server.utils.ModelBeanUtils;
 import io.github.gefangshuai.utils.StoreUtils;
-import org.apache.commons.lang3.StringUtils;
+import io.github.gefangshuai.utils.WebUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

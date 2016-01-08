@@ -1,14 +1,12 @@
 package io.github.gefangshuai.server;
 
+import io.github.gefangshuai.ext.utils.FlashMessageUtils;
 import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.permission.service.UserService;
-import io.github.gefangshuai.server.core.config.Menu;
-import io.github.gefangshuai.server.core.utils.FlashMessageUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresGuest;
 import org.apache.shiro.subject.Subject;
-import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +38,7 @@ public class IndexController{
             return "admin/index";
         }
 
-        return "redirect:/forbidden";
+        return "redirect:/login";
     }
 
     /**

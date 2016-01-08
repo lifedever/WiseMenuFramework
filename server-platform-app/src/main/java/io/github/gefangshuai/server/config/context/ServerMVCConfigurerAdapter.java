@@ -1,7 +1,6 @@
-package io.github.gefangshuai.server.core.context;
+package io.github.gefangshuai.server.config.context;
 
-import io.github.gefangshuai.server.core.spring.NavigationHandlerInterceptor;
-import io.github.gefangshuai.server.core.spring.WebMVCConfigurerAdapter;
+import io.github.gefangshuai.ext.spring.WebMVCConfigurerAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -22,7 +21,6 @@ public class ServerMVCConfigurerAdapter extends WebMVCConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
         registry.addInterceptor(globalParamsInterceptor()).addPathPatterns("/**");
-        registry.addInterceptor(new NavigationHandlerInterceptor()).addPathPatterns("/**");
     }
 
 

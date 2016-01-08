@@ -1,9 +1,10 @@
 package io.github.gefangshuai.permission.model;
 
 import io.github.gefangshuai.constant.StatusEnum;
-import io.github.gefangshuai.server.core.persistence.CoreModel;
+import io.github.gefangshuai.ext.shiro.bean.UserModel;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -12,16 +13,11 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "p_users")
-public class User extends CoreModel {
+public class User extends UserModel {
 
-    @NotNull
-    private String username;        // 登陆名称
     @NotNull
     private String mobile;          // 注册手机号
     private Role role;              // 角色
-    @NotNull
-    private String password;        // 密码
-    private String salt;            // 密码盐值
 
     private StatusEnum status;      // 有效状态
 
@@ -29,13 +25,6 @@ public class User extends CoreModel {
 
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getMobile() {
         return mobile;
@@ -51,22 +40,6 @@ public class User extends CoreModel {
 
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
     }
 
     public StatusEnum getStatus() {

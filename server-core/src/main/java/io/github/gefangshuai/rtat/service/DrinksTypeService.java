@@ -1,11 +1,9 @@
 package io.github.gefangshuai.rtat.service;
 
+import io.github.gefangshuai.ext.persistence.CoreService;
 import io.github.gefangshuai.rtat.dao.DrinksTypeDao;
-import io.github.gefangshuai.rtat.dao.FoodTypeDao;
 import io.github.gefangshuai.rtat.model.DrinksType;
-import io.github.gefangshuai.rtat.model.FoodType;
 import io.github.gefangshuai.rtat.model.Restaurant;
-import io.github.gefangshuai.server.core.persistence.CoreService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +15,7 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
-public class DrinksTypeService extends CoreService<DrinksType, Long>{
+public class DrinksTypeService extends CoreService<DrinksType, Long> {
     private DrinksTypeDao drinksTypeDao;
 
     @Resource

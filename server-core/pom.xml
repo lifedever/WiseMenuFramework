@@ -21,8 +21,18 @@
     <dependencies>
         <dependency>
             <groupId>io.github.gefangshuai</groupId>
-            <artifactId>spring-boot-base</artifactId>
-            <version>1.0.0</version>
+            <artifactId>speedy-ext-persistence</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.gefangshuai</groupId>
+            <artifactId>speedy-ext-webmvc</artifactId>
+            <version>0.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.gefangshuai</groupId>
+            <artifactId>speedy-utils</artifactId>
+            <version>0.0.2</version>
         </dependency>
         <dependency>
             <groupId>net.coobird</groupId>
@@ -34,7 +44,11 @@
             <artifactId>im4java</artifactId>
             <version>1.4.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>io.github.gefangshuai</groupId>
+            <artifactId>speedy-ext-shiro</artifactId>
+            <version>0.0.2</version>
+        </dependency>
 
     </dependencies>
 </project>

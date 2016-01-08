@@ -1,11 +1,11 @@
 package io.github.gefangshuai.server.admin.controller;
 
 import io.github.gefangshuai.constant.ResultCode;
+import io.github.gefangshuai.ext.annotation.Menu;
 import io.github.gefangshuai.rtat.service.DrinksService;
 import io.github.gefangshuai.rtat.service.FoodService;
 import io.github.gefangshuai.rtat.service.RestaurantService;
-import io.github.gefangshuai.server.core.config.Menu;
-import io.github.gefangshuai.server.core.context.AppConfigContext;
+import io.github.gefangshuai.server.config.context.AppConfigContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

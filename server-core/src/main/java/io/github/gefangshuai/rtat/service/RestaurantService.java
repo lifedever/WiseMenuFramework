@@ -1,20 +1,19 @@
 package io.github.gefangshuai.rtat.service;
 
-import io.github.gefangshuai.constant.StatusEnum;
-import io.github.gefangshuai.rtat.dao.RestaurantDao;
-import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.constant.SessionConstant;
+import io.github.gefangshuai.constant.StatusEnum;
 import io.github.gefangshuai.exception.ModelPersistentException;
+import io.github.gefangshuai.ext.persistence.CoreService;
 import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
 import io.github.gefangshuai.permission.service.UserService;
-import io.github.gefangshuai.server.core.persistence.CoreService;
-import io.github.gefangshuai.server.core.utils.QueryUtils;
+import io.github.gefangshuai.rtat.dao.RestaurantDao;
+import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.utils.ImageUtils;
+import io.github.gefangshuai.utils.QueryUtils;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.session.Session;
+
 import org.im4java.core.IM4JavaException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,21 +66,7 @@ public class RestaurantService extends CoreService<Restaurant, Long> {
         restaurantDao.save(restaurant);
     }
 
-    @Transactional
-    public void updateWithSession(Restaurant restaurant) {
-        update(restaurant);
-        updateSession(restaurant);
-    }
 
-    /**
-     * 刷新session里的数据
-     *
-     * @param restaurant
-     */
-    public void updateSession(Restaurant restaurant) {
-        Session session = SecurityUtils.getSubject().getSession();
-        session.setAttribute(SessionConstant.RESTAURANT_KEY, restaurant);
-    }
 
     public List<Restaurant> findAll() {
         return restaurantDao.findAll();

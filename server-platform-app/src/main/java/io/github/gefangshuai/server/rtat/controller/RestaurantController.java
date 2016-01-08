@@ -2,6 +2,7 @@ package io.github.gefangshuai.server.rtat.controller;
 
 import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.rtat.service.RestaurantService;
+import io.github.gefangshuai.server.rtat.service.ServerRestaurantService;
 import io.github.gefangshuai.server.utils.ModelBeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,14 +19,14 @@ import javax.annotation.Resource;
 public class RestaurantController {
 
     @Resource
-    private RestaurantService restaurantService;
+    private ServerRestaurantService serverRestaurantService;
 
     @RequestMapping("/open-status/{status}")
     @ResponseBody
     public boolean changeOpenStatus(@PathVariable  boolean status) {
         Restaurant restaurant = ModelBeanUtils.getCurrentRestaurant();
         restaurant.setOpening(status);
-        restaurantService.updateWithSession(restaurant);
+        serverRestaurantService.updateWithSession(restaurant);
         return true;
     }
 }

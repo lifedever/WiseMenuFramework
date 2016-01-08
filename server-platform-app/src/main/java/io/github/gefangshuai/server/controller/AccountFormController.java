@@ -3,7 +3,8 @@ package io.github.gefangshuai.server.controller;
 import io.github.gefangshuai.rtat.model.Restaurant;
 import io.github.gefangshuai.rtat.service.RestaurantService;
 import io.github.gefangshuai.constant.ResultCode;
-import io.github.gefangshuai.server.core.context.AppConfigContext;
+import io.github.gefangshuai.server.config.context.AppConfigContext;
+import io.github.gefangshuai.server.rtat.service.ServerRestaurantService;
 import io.github.gefangshuai.utils.ImageUtils;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.springframework.stereotype.Controller;
@@ -11,9 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 
 /**
  * Created by gefangshuai on 2015/11/10.
@@ -25,6 +23,9 @@ public class AccountFormController {
     private RestaurantService restaurantService;
     @Resource
     private AppConfigContext appConfigContext;
+
+    @Resource
+    private ServerRestaurantService serverRestaurantService;
 
     @ModelAttribute("restaurant")
     public Restaurant bindRestaurant(@PathVariable long id) {
@@ -69,7 +70,7 @@ public class AccountFormController {
             }
         }
         restaurantService.update(restaurant);
-        restaurantService.updateSession(restaurant);
+        serverRestaurantService.updateSession(restaurant);
         return ResultCode.OK;
     }
 }

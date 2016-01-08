@@ -7,7 +7,7 @@
     <artifactId>wisemenuframework</artifactId>
     <version>1.0.0</version>
     <modules>
-        <module>spring-boot-base</module>
+        <module>server-base</module>
         <module>server-platform-app</module>
         <module>server-core</module>
         <module>server-mobile-api</module>
@@ -25,34 +25,7 @@
     </parent>
     <properties>
     </properties>
-    <dependencies>
-        <!-- Utils -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>18.0</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>2.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>1.3.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.gson</groupId>
-            <artifactId>gson</artifactId>
-            <version>2.3.1</version>
-        </dependency>
-    </dependencies>
+    
     <build>
         <plugins>
             <plugin>

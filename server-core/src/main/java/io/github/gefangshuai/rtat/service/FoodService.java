@@ -1,10 +1,10 @@
 package io.github.gefangshuai.rtat.service;
 
+import io.github.gefangshuai.ext.persistence.CoreService;
 import io.github.gefangshuai.rtat.dao.FoodDao;
 import io.github.gefangshuai.rtat.model.Food;
 import io.github.gefangshuai.rtat.model.FoodType;
 import io.github.gefangshuai.rtat.model.Restaurant;
-import io.github.gefangshuai.server.core.persistence.CoreService;
 import io.github.gefangshuai.utils.ImageUtils;
 import io.github.gefangshuai.utils.StoreUtils;
 import org.im4java.core.IM4JavaException;
@@ -22,7 +22,7 @@ import java.util.List;
  */
 @Service
 @Transactional(readOnly = true)
-public class FoodService extends CoreService<Food, Long>{
+public class FoodService extends CoreService<Food, Long> {
 
     private FoodDao foodDao;
 

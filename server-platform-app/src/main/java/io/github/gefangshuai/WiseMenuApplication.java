@@ -1,6 +1,6 @@
 package io.github.gefangshuai;
 
-import io.github.gefangshuai.server.core.context.AppConfigContext;
+import io.github.gefangshuai.server.config.context.AppConfigContext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

@@ -1,8 +1,8 @@
 package io.github.gefangshuai.rtat.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import io.github.gefangshuai.ext.persistence.CoreModel;
 import io.github.gefangshuai.rtat.model.listener.FoodAndDrinksPersistentListener;
-import io.github.gefangshuai.server.core.persistence.CoreModel;
 import io.github.gefangshuai.utils.CustomJsonView;
 
 import javax.persistence.*;
@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "b_food_type")
 @EntityListeners({FoodAndDrinksPersistentListener.class})
-public class FoodType extends CoreModel{
+public class FoodType extends CoreModel {
     @JsonView(CustomJsonView.RestJsonView.class)
     private String name;
     private int orderNumber;

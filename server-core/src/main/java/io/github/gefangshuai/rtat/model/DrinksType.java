@@ -1,8 +1,8 @@
 package io.github.gefangshuai.rtat.model;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import io.github.gefangshuai.ext.persistence.CoreModel;
 import io.github.gefangshuai.rtat.model.listener.FoodAndDrinksPersistentListener;
-import io.github.gefangshuai.server.core.persistence.CoreModel;
 import io.github.gefangshuai.utils.CustomJsonView;
 
 import javax.persistence.*;

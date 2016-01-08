@@ -1,8 +1,8 @@
 package io.github.gefangshuai.rtat.dao;
 
 import io.github.gefangshuai.constant.StatusEnum;
+import io.github.gefangshuai.ext.persistence.CoreDao;
 import io.github.gefangshuai.rtat.model.Restaurant;
-import io.github.gefangshuai.server.core.persistence.CoreDao;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;

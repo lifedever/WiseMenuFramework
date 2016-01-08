@@ -1,6 +1,7 @@
 package io.github.gefangshuai.utils;
 
-import io.github.gefangshuai.server.core.utils.CommonJsonView;
+
+import io.github.gefangshuai.ext.utils.CommonJsonView;
 
 /**
  * 组织Json序列化

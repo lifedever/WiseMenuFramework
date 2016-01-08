@@ -1,4 +1,4 @@
-package io.github.gefangshuai.server.core.context;
+package io.github.gefangshuai.server.config.context;
 
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;

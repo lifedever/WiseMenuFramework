@@ -1,10 +1,10 @@
 package io.github.gefangshuai.permission.service;
 
 import io.github.gefangshuai.constant.StatusEnum;
+import io.github.gefangshuai.ext.shiro.utils.HashUtils;
+import io.github.gefangshuai.permission.dao.UserDao;
 import io.github.gefangshuai.permission.model.Role;
 import io.github.gefangshuai.permission.model.User;
-import io.github.gefangshuai.permission.dao.UserDao;
-import io.github.gefangshuai.server.core.utils.HashUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

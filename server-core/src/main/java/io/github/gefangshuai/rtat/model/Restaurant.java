@@ -3,13 +3,11 @@ package io.github.gefangshuai.rtat.model;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.gson.Gson;
 import io.github.gefangshuai.constant.StatusEnum;
+import io.github.gefangshuai.ext.persistence.CoreModel;
 import io.github.gefangshuai.permission.model.User;
-import io.github.gefangshuai.server.core.persistence.CoreModel;
 import io.github.gefangshuai.utils.CustomJsonView;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
-import org.hibernate.type.ClobType;
-import org.springframework.data.annotation.Persistent;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,7 +18,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "b_restaurant")
-public class Restaurant extends CoreModel{
+public class Restaurant extends CoreModel {
     @JsonView(CustomJsonView.RestJsonView.class)
     private String name;            // 门店名称
 

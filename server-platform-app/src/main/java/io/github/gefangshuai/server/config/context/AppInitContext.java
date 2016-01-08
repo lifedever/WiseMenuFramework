@@ -1,4 +1,4 @@
-package io.github.gefangshuai.server.core.context;
+package io.github.gefangshuai.server.config.context;
 
 import org.springframework.stereotype.Component;
 

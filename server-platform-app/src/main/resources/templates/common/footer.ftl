@@ -9,7 +9,7 @@
         $('[data-toggle="tooltip"]').tooltip()
     });
 
-    <@tags.shiro.user>
+   /* <@tags.shiro.user>
     var noticeSocket = function () {
         var s = new SockJS('/socket');
         var stompClient = Stomp.over(s);
@@ -19,7 +19,7 @@
             });
         });
     };
-    noticeSocket();
+    noticeSocket();*/
 
     </@tags.shiro.user>
 </script>
