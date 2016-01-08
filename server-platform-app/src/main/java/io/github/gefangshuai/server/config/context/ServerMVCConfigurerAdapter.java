@@ -1,9 +1,12 @@
 package io.github.gefangshuai.server.config.context;
 
+import freemarker.cache.ClassTemplateLoader;
+import io.github.gefangshuai.ext.shiro.ShiroExtConfiguration;
 import io.github.gefangshuai.ext.spring.WebMVCConfigurerAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 /**
  * Web 有关适配器
