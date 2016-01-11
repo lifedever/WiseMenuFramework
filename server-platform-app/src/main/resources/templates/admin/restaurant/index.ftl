@@ -56,7 +56,7 @@
                         <td class="project-title">
                             <a href="#">${rtat.name?default('<span class="text-danger">信息尚未完善!</span>')}</a>
                             <br>
-                            <small>注册日期 ${rtat.createTime?string('yyyy.MM.dd')}</small>
+                            <small>注册日期 ${rtat.createdTime?string('yyyy.MM.dd')}</small>
                             <br>
                             <small></small>
                         </td>
